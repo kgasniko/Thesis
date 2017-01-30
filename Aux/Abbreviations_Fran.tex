@@ -1,0 +1,385 @@
+\usepackage{multicol}
+
+\usepackage{longtable}
+\usepackage[nomain,acronym, xindy={glsnumbers=false}, 
+  toc, %section, %glossary in the toc as sections
+  nonumberlist,  %to suppress the location list within the glossary
+  sort=standard
+  ]{glossaries}[2013/07/05]
+  
+%\usepackage[nonumberlist]{glossaries} %to suppress the location list within the glossary
+\renewcommand*{\glspostdescription}{} %to suppress the dot at the end of the glossary description
+\let\oldgls\gls
+\renewcommand*\gls{\protect\oldgls}
+
+\newcommand {\cf}{\mbox{cf.}\xspace} 
+\newcommand {\wrt}{\mbox{w.r.t.}\xspace}
+
+\newcommand {\mtau}{{\ensuremath{\Pgt}}\xspace} 
+\newcommand {\mtauh}{{\ensuremath{\Pgt_h}}\xspace} 
+
+\newcommand {\isorel}{{\ensuremath{\mathrm{Iso}_{\mathrm{rel}}\xspace}}}
+ 
+%  \newglossarystyle{mystyle}{%
+%  % put the glossary in the itemize environment:
+%  \renewenvironment{theglossary}{\begin{itemize}}{\end{itemize}}%
+%  % have nothing after \begin{theglossary}:
+%  \renewcommand*{\glossaryheader}{}%
+%  % have nothing between glossary groups:
+%  \renewcommand*{\glsgroupheading}[1]{}%
+%  \renewcommand*{\glsgroupskip}{}%
+%  % set how each entry should appear:
+%  \renewcommand*{\glossaryentryfield}[4]{%
+%  \item % bullet point
+%  \glstarget{##1}{##2}% the entry name
+%  \space (##4)% the symbol in brackets
+%  \space ##3% the description
+%  %\space [##5]% the number list in square brackets
+%  }%
+%  % set how sub-entries appear:
+%  \renewcommand*{\glossarysubentryfield}[6]{%
+%    \glossaryentryfield{##2}{##3}{##4}{##5}{##6}}%
+%  }
+
+ \newglossarystyle{mystyle}{%
+  \renewenvironment{theglossary}
+    {\tablehead{}\tabletail{}%
+     \begin{supertabular}{@{}>{\bfseries}lp{\textwidth}}}%
+     %p{\glsdescwidth}}}%
+     %p{\glspagelistwidth}}}%
+    {\end{supertabular}}%
+  \renewcommand*{\glossaryheader}{}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand*{\glossaryentryfield}[5]{%
+    %\glsentryitem{##1}\glstarget{##1}{##2} & ##3 & ##5\\}%
+    ##4 & \glsentryitem{##1}\glstarget{##1}{##2}\\}%
+  \renewcommand*{\glossarysubentryfield}[6]{%
+     &
+     \glssubentryitem{##2}%
+     \glstarget{##2}{\strut}##4 & ##6\\}%
+  \renewcommand*{\glsgroupskip}{ & \\}%
+}
+ 
+\newglossarystyle{mmystyle}{%
+  \setglossarystyle{mystyle}%
+  \renewenvironment{theglossary}%
+    {%
+     \begin{multicols}{2}
+     \setlength{\parindent}{0pt}%
+     \setlength{\parskip}{0pt plus 0.3pt}%
+     }%
+    {\end{multicols}}%
+}
+ 
+ \makeatletter
+  %%
+  %% modification of mcolalttree;
+  %% everything taken verbatim from mcolalttree, exception indicated
+  %%
+  \newglossarystyle{mymcolalttree}{%
+    \setglossarystyle{alttree}%
+    \renewenvironment{theglossary}%
+      {%
+        \begin{multicols}{2}%
+         \setlength{\parindent}{0pt}%
+     \setlength{\parskip}{0pt plus 0.3pt}%
+        %\def\@gls@prevlevel{0}%\textbf{
+        %\mbox{}\par
+        %\begin{supertabular}{@{}>{\bfseries}lp{\textwidth}}%
+      }%
+      {%\end{supertabular}
+      \par\end{multicols}}%
+      %\renewcommand*{\glsgroupheading}[1]{\begin{description}[style=multiline,align=left]}
+    \renewcommand{\glossaryentryfield}[5]{%
+      %\ifnum\@gls@prevlevel=0
+      %\hangindent\glstreeindent%%%%%%%%%%%%%% this has been added
+      %\else
+       %\settowidth{\glstreeindent}{\textbf{\@glswidestname\space}}%
+       %\hangindent\glstreeindent
+       %\parindent\glstreeindent
+      %\fi
+      %\makebox[0pt][r]{\makebox[\glstreeindent][l]{%
+      % \textbf{##4}\glsentryitem{##1}\glstarget{##1}{##2}}}%
+      %\ifx\relax##4\relax
+      \begin{description}[style=multiline,align=left]
+      \item[##4:] \glstarget{##1}{##2}%
+      %\item[##4:] \glsentrylong{##1}%
+      \end{description}\vspace{-.5cm}
+      %\else
+      %  (##4)\space
+      %\fi
+      %##3\glspostdescription \space ##5\par
+      %##4 & \glsentryitem{##1}\glstarget{##1}{##2}\\%
+      %\textbf{##4} \glstarget{##1}{##2}\par
+      %\def\@gls@prevlevel{0}%
+    }%
+%     \renewcommand*{\glossarysubentryfield}[6]{%
+%      &
+%      \glssubentryitem{##2}%
+%      \glstarget{##2}{\strut}##4 & ##6\\}%
+   \renewcommand*{\glsgroupskip}{\mbox{ }\\ \vspace{-0.1cm}}%
+  }%
+\makeatother
+ 
+ 
+ 
+%  \newglossarystyle{mystyle}{%
+%   \renewenvironment{theglossary}%
+%     {\tablehead{}\tabletail{}%
+%      \begin{supertabular}{@{}>{\bfseries}l@{\hspace*{3cm}p{}@{}}}%
+%     {\end{supertabular}}%
+%   \renewcommand*{\glossaryheader}{}%
+%   \renewcommand*{\glsgroupheading}[1]{}%
+%   \renewcommand*{\glossaryentryfield}[5]{%
+%     \glsentryitem{##1}\glstarget{##1}{##2} & ##3 \\}%
+%   \renewcommand*{\glossarysubentryfield}[6]{%
+%      &
+%      \glssubentryitem{##2}%
+%      \glstarget{##2}{\strut}##4 \\}%
+%   \renewcommand*{\glsgroupskip}{ & \\}%
+%   }
+%  }
+%  
+ 
+\renewcommand{\acrfullformat}[2]{#1~(#2)} %abbreviation not on a new line
+%\let\glsdisplayold\glsdisplay
+%\renewcommand{\glsdisplay}{gasgasdgasdfgewrgaerd\glsdisplayold}
+%\defglsdisplay[main]{adfasd#1}
+%\renewcommand*{\glsdisplayfirst}[4]{\textcolor{blue}{#1}#4}
+%\SetCustomDisplayStyle
+
+\renewcommand{\CustomAcronymFields}{%
+   name={\the\glslongtok},%
+   symbol={\the\glsshorttok},%
+   text={\the\glsshorttok},%
+   first={{\the\glslongtok}~(\the\glsshorttok)},%
+   plural={{\the\glsshorttok}\noexpand\acrpluralsuffix},%
+   firstplural={\the\glslongtok\noexpand\acrpluralsuffix~(\the\glsshorttok)},%
+   description={}
+ }
+%\renewcommand*{\SetCustomDisplayStyle}[1]{%
+% \defglsdisplayfirst[#1]{##1##4
+% }%
+% \defglsdisplay[#1]{~##1##4}%
+% }
+ 
+\SetCustomStyle
+\makeglossaries
+
+% 
+% \renewcommand*{\SetCustomDisplayStyle}[1]{%
+%   \defglsdisplayfirst[#1]{##1##4\protect\footnote{%
+%   \glsentrylong{\glslabel}: ##2%
+%   }}
+%   \defglsdisplay[#1]{##1##4}%
+% }
+% 
+% \SetCustomDisplayStyle
+
+
+% abbreviations:
+
+\newacronym[sort=macho]{macho}{MACHO}{massive astrophysical compact halo object} 
+\newacronym[sort=cmb]{cmb}{CMB}{Cosmic Microwave Background}
+
+\newacronym[sort=ckm]{ckm}{CKM}{Cabibbo--Kobayashi--Maskawa}
+\newacronym[sort=pmns]{pmns}{PMNS}{Pontecorvo--Maki--Nakagawa--Sakato}
+\newacronym[sort=gut,firstplural=Grand Unified Theories~(GUT)]{gut}{GUT}{Grand Unified Theory}
+
+
+\newacronym[sort=ued]{ued}{UED}{Universal Extra Dimensions}
+\newacronym[sort=ltp]{ltp}{LTP}{lightest T-odd particle}
+\newacronym[sort=lkp]{lkp}{LKP}{lightest Kaluza-Klein particle}
+%\newacronym[sort=ewpt]{expt}{EWPT}{electroweak precision test}
+
+
+\newcommand{\pythia}{\textsc{Pythia}\xspace}
+\newcommand{\herwig}{\textsc{Herwig}\xspace}
+\newcommand{\madgraph}{\textsc{MadGraph}\xspace}
+\newcommand{\powheg}{\textsc{Powheg}\xspace}
+\newcommand{\tauola}{\textsc{Tauola}\xspace}
+\newcommand{\prospino}{\textsc{Prospino}\xspace}
+
+\newacronym[sort=geant]{geant}{GEANT4}{GEometry ANd Tracking}
+
+
+\newacronym[sort=qed]{qed}{QED}{quantum electrodynamics}
+\newacronym[sort=qcd]{qcd}{QCD}{quantum chromodynamics}
+\newacronym[sort=as]{alphas}{\ensuremath{\alpha_{s}}}{strong coupling constant}
+
+\newacronym[sort=susy]{susy}{SUSY}{Supersymmetry}
+\newacronym[sort=lsp]{lsp}{LSP}{lightest supersymmetric particle}
+
+\newacronym[sort=mssm]{mssm}{MSSM}{Minimal Supersymmetric extension of the Standard Model}
+\newacronym[sort=cmssm]{cmssm}{cMSSM}{constrained MSSM}
+\newacronym[sort=sms,plural=SMS,firstplural=simplified model spectra~(SMS)]{sms}{SMS}{simplified model spectra}
+\newacronym[sort=mc]{mc}{MC}{Monte Carlo}
+\newacronym[sort=nlo]{nlo}{NLO}{next-to-leading order}
+
+\newcommand{\linac}{LINAC2}
+\newacronym[sort=psb]{psb}{PSB}{PS Booster}
+\newacronym[sort=ps]{ps}{PS}{Proton Synchrotron}
+\newacronym[sort=sps]{sps}{SPS}{Super Proton Synchrotron}
+
+\newacronym[sort=ibs]{ibs}{IBS}{intra beam scattering}
+
+\newacronym[sort=lhc]{lhc}{LHC}{Large Hadron Collider} \newcommand{\lhc}{\gls{lhc}\xspace}
+\newacronym[sort=hllhc]{hllhc}{HL-LHC}{High-Luminosity LHC}
+
+\newacronym[sort=ilc]{ilc}{ILC}{International Linear Collider}
+\newacronym[sort=clic]{clic}{CLIC}{Compact Linear Collider}
+
+\newacronym[sort=lep]{lep}{LEP}{Large Electron-Positron Collider}
+\newacronym[sort=alice]{alice}{ALICE}{A Large Ion Collider Experiment}
+\newacronym[sort=atlas]{atlas}{ATLAS}{A Toroidal LHC Apparatus}
+\newacronym[sort=cms]{cms}{CMS}{Compact Muon Solenoid}
+\newcommand{\lhcb}{LHCb}
+\newcommand{\lhcf}{LHCf}
+\newacronym[sort=moedal]{moedal}{MoEDAL}{Monopole  Exotics Detector at the LHC}
+\newacronym[sort=totem]{totem}{TOTEM}{Total tlastic and diffractive cross section measurement}
+
+\newacronym[sort=tib]{tib}{TIB}{Tracker Inner Barrel}
+\newacronym[sort=tid]{tid}{TID}{Tracker Inner Disk}
+\newacronym[sort=tibtid]{tibtid}{TIB/TID}{Tracker Inner Barrel and Disks}
+\newacronym[sort=tob]{tob}{TOB}{Tracker Outer Barrel}
+\newacronym[sort=tec]{tec}{TEC}{Tracker Endcap}
+
+\newacronym[sort=ecal]{ecal}{ECAL}{electromagnetic calorimeter}
+\newacronym[sort=eb]{eb}{EB}{ECAL barrel}
+\newacronym[sort=ee]{ee}{EE}{ECAL endcap}
+\newacronym[sort=es]{es}{ES}{ECAL preshower}
+\newacronym[sort=pbwo]{pbwo}{PbWO${}_4$}{lead tungaste}
+\newacronym[sort=apd]{apd}{APD}{avalanche photodiode}
+\newacronym[sort=vpd]{vpd}{VPD}{vacuum photodiode}
+
+\newacronym[sort=hcal]{hcal}{HCAL}{hadronic calorimeter}
+\newacronym[sort=hpd]{hpd}{HPD}{hybrid photodiode}
+\newacronym[sort=hb]{hb}{HB}{HCAL barrel}
+\newacronym[sort=he]{he}{HE}{HCAL endcap}
+\newacronym[sort=ho]{ho}{HO}{outer hadronic calorimeter}
+\newacronym[sort=hf]{hf}{HF}{forward calorimeter}
+\newacronym[sort=pmt]{pmt}{PMT}{photomultiplier tube}
+
+\newacronym[sort=fee]{fee}{FEE}{front-end electronic}
+
+\newacronym[sort=dt]{dt}{DT}{drift tube}
+\newacronym[sort=csc]{csc}{CSC}{cathod strip chamber}
+\newacronym[sort=rpc]{rpc}{RPC}{resistive plate chamber}
+\newcommand{\com}{center-of-mass\xspace}
+%\newacronym[sort=]{com}{\textit{c.~o.~m.}}{center-of-mass}
+
+\newacronym[sort=fom]{fom}{FoM}{figure of merit}
+
+\newacronym[sort=cern]{cern}{CERN}{European Organization for Nuclear Research - \textit{Organisation europ\'{e}enne pour la recherche nucl\'{e}aire} -}%European Organization for Nuclear Research}
+
+\newacronym[sort=pp]{pp}{pp}{proton-proton}
+\newacronym[sort=pbpb]{pbpb}{PbPb}{lead-lead}
+\newacronym[sort=p]{p}{\textit{p}}{proton}
+\newacronym[sort=pb]{pb}{Pb}{lead}
+\newcommand{\ppb}{pPb\xspace}
+
+\newacronym[sort=ip]{ip}{IP}{interaction point}
+
+\newacronym[sort=smp]{smp}{SMP}{stable (or pseudo-stable) massive particle}
+
+\newacronym[first=Level-1 (L1) Trigger, sort=l1t]{l1}{L1 Trigger}{Level-1 Trigger}
+\newacronym[sort=l1a]{l1a}{L1A}{level-1 accept}
+\newacronym[sort=ttc]{ttc}{TTC}{Timing, Trigger and Control}
+\newacronym[sort=tts]{tts}{TTS}{Trigger-Throttling System}
+\newacronym[sort=gtp]{gtp}{GTP}{Global Trigger Processor}
+
+\newacronym[sort=hlt]{hlt}{HLT}{High-Level Trigger}
+
+\newacronym[sort=daq]{daq}{DAQ}{Data Acquisition}
+
+\newacronym[sort=fpga]{fpga}{FPGA}{field-programmable gate array}
+\newacronym[sort=asics]{asic}{ASIC}{application-specific integrated circuit}
+\newacronym[sort=lut]{lut}{LUT}{look up table}
+
+\newacronym[sort=dqm]{dqm}{DQM}{Data Quality Monitoring}
+\newacronym[sort=gui]{gui}{GUI}{Graphical User Interface}
+
+\newacronym[sort=gsf]{gsf}{GSF}{Gaussian-Sum Filter}
+\newacronym[sort=mip]{mip}{mip}{minimum ionizing particle}
+
+\newacronym[sort=sm]{sm}{SM}{Standard Model of particle physics}
+
+\newacronym[sort=siscone]{siscone}{SISCone}{Seedless Infrared Safe Cone}
+
+\newacronym[sort=caloj,firstplural=Calorimeter jets (CALO jet)]{caloj}{CALO jet}{calorimeter jet}
+\newacronym[sort=jptj]{jptj}{JPT jet}{Jet-Plus-Track jet}
+\newacronym[sort=pfj]{pfj}{PF jet}{particle-flow jet}
+
+\newacronym[sort=jec]{jec}{JEC}{Jet Energy Calibration}
+\newacronym[sort=csv]{csv}{CSV}{Combined Secondary Vertex}
+\newacronym[sort=bsm]{bsm}{BSM}{Beyond the Standard Model}
+
+\newacronym[sort=tk]{tk}{TK}{Track Counting}
+\newacronym[sort=ssv]{ssv}{SSV}{Simple Secondary Vertex}
+
+\newacronym[sort=hps]{hps}{HPS}{Hadron Plus Strips}
+\newacronym[sort=tanc]{tanc}{TaNC}{Tau Neutral Classifier}
+
+\newacronym[sort=cr]{cr}{CR}{control region}
+\newacronym[sort=sr]{sr}{SR}{search region}
+
+\newacronym[sort=sf]{sf}{SF}{scale factor}
+
+\newacronym[sort=mva]{mva}{MVA}{multivariate analysis}
+
+\newacronym[sort=cl]{cl}{CL}{confidence level}
+
+%% mine
+\newacronym[sort=tev]{tev}{TeV}{Terra electron volt}
+
+
+%nomenclature:
+%\newglossaryentry{pixel}{
+%  name = pixel ,
+%  description = a semiconductor detector
+%}
+\newcommand{\nospace}{\!\!}
+%\newglossaryentry{pn}{
+%  name = $/u$,
+%  description = per nucleon
+%}
+
+\newcommand{\pn}{\nospace$/u$\xspace}
+
+%\newglossaryentry{pseudorap}{
+%  name = $\eta$,
+%  description = $-\ln [ \tan(\theta/2)]$
+%}
+
+%\newglossaryentry{pileup}{%
+%  name = pileup,%
+%  description = {multiple interactions happening during the same bunch crossing}%
+%}
+
+\newacronym[sort=pdf]{pdf}{PDF}{parton distribution function}
+
+%\newglossaryentry{lumisec}{
+% name ={luminosity section},
+% description = {fixed period of time set to $2^{20}$ LHC orbits, corresponding to $\myapprox 93\unit{s}$}
+%}
+
+\newacronym[sort=sipm]{sipm}{SiPM}{silicon photomultiplier}
+\newacronym[sort=tdc]{tdc}{TDC}{time-to-digital converter}
+
+
+%\newacronym[sort=met]{met}{\ETslash}{momentum imbalance in the transverse plane}
+
+%\newglossaryentry{rms}{
+%  name = RMS,
+%  description = root mean square
+%}
+
+\newcommand{\nexp}{{\ensuremath{N_{\mathrm{Exp}}}\xspace}}
+\newcommand{\xsec}{{\ensuremath{\sigma_{\mathrm{Exp}}}\xspace}}
+\newcommand{\km}{\ensuremath{\,\text{km}}\xspace}
+\newcommand{\MHzmm}{\ensuremath{\,\text{MHz/mm}^{2}}\xspace}
+\newcommand{\expSetup}{ExperimentalSetup}
+\newcommand{\hcalupgrade}{Upgrade}
+\newcommand{\reco}{Reconstruction}
+%%British vs American
+\newcommand{\aluminum}{aluminum}

@@ -1,0 +1,150 @@
+%& -output-directory=./build -aux-directory=./build
+\documentclass[11pt,notitlepage,twoside,BCOR=8.25mm,headsepline,numbers=noendperiod,DIV=14]{scrbook} %numbers=endperiod,titlepage,
+
+% PDF/A compliance?
+%\usepackage[a-1b]{pdfx} 
+
+
+%% Font setup
+\usepackage[default]{gillius}
+%\usepackage{glossaries}
+
+
+\usepackage{mathpazo}
+\usepackage{helvet}%      Choose default sans serif
+%\usepackage{gillius}%      Choose default sans serif
+\usepackage{sectsty}%     Change style of headings (should precede section redefinitions below)  
+\allsectionsfont{\sffamily}% Set sans serif for all headings
+%\allsectionsfont{\fontfamily{lmr}\selectfont}% Set sans serif for all headings
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Setup commands
+\input{Aux/SetupFra}
+%% images directorty
+\graphicspath{{figures/}}
+\usepackage[outdir=figures/]{epstopdf}
+%\epstopdfsetup{outdir=figures/}
+%% line numbers
+\usepackage{lineno}
+%\linenumbers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load Abbreviations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{Aux/Abbreviations_Artur.tex}
+%%%%%%END-ABBREVIATIONS%%%%%%%%%%
+
+%\usepackage{siunitx}
+
+% do not count starred chapter (in header)
+\renewcommand\chaptermark[1]{\markboth{#1}{}}
+%\renewcommand*{\chaptermarkformat}{}
+
+\usepackage[toctextentriesindented]{tocstyle}
+\usetocstyle{KOMAlike}
+\selecttocstyleoption{tocgraduated}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% MiniTOC
+  \dominitoc[n]  
+
+%% Title page
+%\input{Aux/TitlePage.tex}
+
+%\frontmatter 
+
+%\linenumbers
+%%% Abstract
+%\input{Aux/Abstract.tex}
+
+%% Contents  
+%\cleardoublepage
+%\setcounter{tocdepth}{1}  % set TOC depth (no subsecs)
+% Add Contents to PDF bookmarks
+%\pdfbookmark{\contentsname}{Contents}
+%\tableofcontents
+%  \mtcaddchapter
+
+%% Glossary
+%\cleardoublepage
+%  \glsaddall
+%\setglossarystyle{mystyle}
+%\setglossarystyle{mymcolalttree}
+%\renewcommand{\glsgroupskip}{}
+%\printglossary[type=\acronymtype,title=Abbreviations,toctitle=Abbreviations
+%,style=mymcolalttree
+%,style=mcolalttreehypergroup
+%]
+%\mtcfixglossary[chapter]
+
+
+%% Main matter
+  \mainmatter
+  %\part{Thesis overview}
+  %\input{Chapters/1Intro.tex}
+  %\part{Theory introduction}
+  %\input{Chapters/2Theory.tex}
+  %\part{Experimental setup}
+  %\input{Chapters/3_1LHC.tex}
+  %\input{Chapters/3_2ATLAS.tex}
+  %\input{Chapters/3_3Software.tex}
+  \input{Chapters/3_4MonteCarlo.tex}
+  %\input{Chapters/3_5DataSample.tex}
+  %\part{Measurment of cross-section}
+  %\input{Chapters/4_1EventSelection.tex}
+  %\input{Chapters/4_2MCCorrections.tex}
+  %\input{Chapters/4_3BackgroundEstimation.tex}
+  %\input{Chapters/4_4Systematics.tex}
+  %\input{Chapters/4_5ControlPlots.tex}
+  %\input{Chapters/4_6Results.tex}
+  %\part{PDF fits}
+  %\input{Chapters/5PDF.tex}
+
+%\input{Chapters/Intro.tex}
+%\input{Chapters/Theory.tex}
+%\input{Chapters/Experiment.tex}
+%\input{Chapters/HOUpgrade}
+%\input{Chapters/Reconstruction.tex}
+%\input{Chapters/Selection.tex}
+%\input{Chapters/BkgEstimation.tex}
+%\input{Chapters/Results.tex}
+%\input{Chapters/Summary.tex}
+
+% %%% Appendix
+%\input{Chapters/Appendixes}
+  
+%% List of Tables and Figures
+%\thispagestyle{empty}
+%\listoffigures
+%\listoftables
+%\newpage
+  
+%% Bibliography
+%\backmatter
+  
+%\hypersetup{colorlinks=true,linkcolor=red}
+%\cleardoublepage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Bibliography}
+%\bibliographystyle{lucas_unsrt}
+%\bibliographystyle{fra_hannes_lucas_unsrt}
+%\bibliographystyle{plain}
+%{\small
+%\bibliography{biblioThesis} }
+
+%\input{Aux/OathEpi.tex}
+%% Acknowledgements  
+%\input{Chapters/Acknowledgements.tex}
+
+\end{document}

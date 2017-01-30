@@ -1,0 +1,286 @@
+\addtokomafont{disposition}{\boldmath}
+
+% allow using fonts of any size
+%\usepackage{lmodern}
+
+%\usepackage{libertine}
+
+% additional characters for franch
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{bold-extra}
+
+%\usepackage[]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+%\usepackage[amssymb]{SIunits}
+%\usepackage{siunitx}
+
+\usepackage{xspace}
+\usepackage{wrapfig}
+
+\usepackage{upgreek}
+\usepackage{graphicx}
+\usepackage[section]{placeins}%automatic \FloatBarrier between sections
+\usepackage{placeins}
+
+\usepackage{feynmf}
+
+\usepackage{booktabs}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+%\usepackage[figuresright]{rotating}
+\usepackage{rotating}
+\usepackage{array}
+
+\usepackage{fp}
+
+\usepackage{cprotect}
+
+\usepackage{cite}
+%\bibliographystyle{fra_hannes_lucas_unsrt.bst}
+
+\usepackage{tabularx}
+%\usepackage{footnote}
+%\makesavenoteenv{tabular}
+%\makesavenoteenv{table}
+
+\usepackage{pdflscape}
+
+ %CHANGE for online version
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = false,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+urlcolor = black,
+citecolor = black] {hyperref}
+
+\usepackage{setspace}
+
+\usepackage{pennames-ital}
+\usepackage{ptdr-definitions}
+% Custom hyphentation
+\hyphenation{brems-strah-lung}
+\hyphenation{fi-gure}
+%% dummy text producer
+\usepackage{lipsum}
+
+%\linenumbers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fancy chapter heading
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[T1]{fontenc}
+%\usepackage{titlesec, blindtext, color}
+%\definecolor{gray75}{gray}{0.75}
+%\newcommand{\hsp}{\hspace{20pt}}
+%\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%END-CHAP-HEADING%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract environment for book
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\if@titlepage
+  \newenvironment{abstract}[1][Abstract]{%
+      \pagestyle{empty}
+      \null\vfil
+      \@beginparpenalty\@lowpenalty
+      \begin{center}%
+        \large \bfseries #1
+        \@endparpenalty\@M
+      \end{center}}%
+     {\par\vfil\null\thispagestyle{empty}}
+\else
+  \newenvironment{abstract}[1][Abstract]{%
+      \if@twocolumn
+        \section*{#1}%
+      \else
+	\pagestyle{empty}
+	\null\vfil
+	\@beginparpenalty\@lowpenalty
+        \small
+        \begin{center}%
+          {\large \bfseries #1\vspace{-.5em}\vspace{\z@}}%
+          \@endparpenalty\@M
+        \end{center}%
+        \quotation
+      \fi}
+      {\if@twocolumn\else\vfil\null\endquotation\thispagestyle{empty}\fi}
+\fi
+\makeatother
+%%%%%%END-ABSTRACT%%%%%%%%%%%%%%%
+%\listfiles
+
+%%%%% FANCY CHAPTER HEADING
+
+%% now change the chapter style
+%% load up the quotchap package
+%\RequirePackage[utopia]{quotchap}
+%\RequirePackage[palatino]{quotchap}
+% make the quotation appear next to the chapter number
+%\renewcommand\chapterheadstartvskip{\vspace*{-3.5\baselineskip}}
+%\renewcommand*\chapterheadendvskip{\vspace{1.2\baselineskip}}
+
+%%%% FNCYchap
+\usepackage[PetersLenny]{fncychap}
+%\ChTitleVar{\huge\bfseries\fontfamily{palatino}}
+\ChTitleVar{\huge\bfseries\rmfamily}
+%\ChTitleVar{\huge\fontfamily{palatino}}
+
+%%% CHANGE vspace in FNCYCHAP
+\makeatletter
+\def\@makechapterhead#1{%
+%	\vspace*{50\p@}%
+	\vspace*{10\p@}%
+	{\parindent \z@ \raggedright \normalfont
+		\ifnum \c@secnumdepth >\m@ne
+		\if@mainmatter%%%%% Fix for frontmatter, mainmatter, and backmatter 040920
+		\DOCH
+		\fi
+		\fi
+		\interlinepenalty\@M
+		\if@mainmatter%%%%% Fix for frontmatter, mainmatter, and backmatter 060424
+		\DOTI{#1}%
+		\else%
+		\DOTIS{#1}%
+		\fi
+	}}
+
+\def\@makeschapterhead#1{%
+%	\vspace*{50\p@}%
+%	\vspace*{5\p@}%
+	{\parindent \z@ \raggedright
+		\normalfont
+		\interlinepenalty\@M
+		\DOTIS{#1}
+%		\vskip 40\p@
+		\vskip 5\p@
+	}}	
+\makeatother
+
+%% package for toc at the
+%% beginning of chapters
+\usepackage[nohints]{minitoc}
+
+%\usepackage{titlesec}
+%\titleformat{\paragraph}[runin]{\normalfont\large\bfseries}{\theparagraph}{1em}{}
+%\titleformat{\chapter}[runin]{\normalfont\large\bfseries}{\thechapter}{1em}{}
+\let\oldParagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldParagraph{#1}\mbox{} \vspace{2mm} \\}
+
+\usepackage{tikz}
+\usepackage[percent]{overpic}
+\usetikzlibrary{shadows}
+
+%\setlength{\itemsep}{0pt}
+\usepackage[inline]{enumitem}[2011/09/28]
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{-0.38ex}{\tikz\node[drop shadow={
+                        top color=gray,
+                        bottom color=white,
+                        fill=gray,
+                        shadow scale=0.53,
+                        %opacity=0.2,
+                        shadow xshift=0pt,
+                        shadow yshift=0pt
+                        }]
+                {\rule{.75ex}{.4ex}};}}}
+%\renewcommand{\labelitemi}{\hspace{\labelsep}\localtextbulletone}
+\newcommand{\myitem}[1][{}]{\item\textbf{#1}}
+\newenvironment{mylist}
+	{\begin{itemize}[itemsep=0pt,topsep=4pt]}{\end{itemize}\vspace{.1\baselineskip}}
+
+%\setlength{\parindent}{15pt}
+%\renewcommand\descriptionlabel[1]{\hspace{\labelsep} \textbf{\labelitemi\enskip #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\oldMinitoc\minitoc
+\renewcommand{\minitoc}{\oldMinitoc\vspace{4mm}}
+
+\newcommand{\blankpage}{\newpage\thispagestyle{empty}\mbox{}\newpage}
+\newcommand{\myapprox}{\ensuremath{\sim}}
+%%%%%%END-COMMANDS%%%%%%%%%%%%%%%
+
+\frenchspacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Headings, footings, section titles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\setheadsepline{.8pt}
+
+%\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter.\ #1}}{}}
+\renewcommand*{\chaptermark}[1]{\markboth{\large{\thechapter\ #1}}{}}
+\renewcommand*{\sectionmark}[1]{\markright{\large{\thesection\ #1}}{}}
+
+% \setkomafont{chapter}{\normalfont\bfseries\fontsize{16}{21}\selectfont\scshape}
+% \setkomafont{section}{\normalfont\fontsize{13}{15.5}\selectfont}
+% \setkomafont{subsection}{\normalfont\slshape\fontsize{13}{15.5}\selectfont}
+% \setkomafont{paragraph}{\normalfont\slshape\fontsize{13}{15.5}\selectfont}
+% \setkomafont{subparagraph}{\normalfont\slshape\fontsize{13}{15.5}\selectfont}
+
+
+\usepackage{multirow}
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut
+\newcommand\B{\rule[-1.5ex]{0pt}{0pt}} % Bottom strut
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\usepackage{tikz}
+\definecolor{myRed}{RGB}{204, 0, 0}
+
+\usepackage{nicefrac}
+
+\usepackage{multicol}
+%\usepackage{glossary-mcols}
+\setlength{\columnsep}{25pt}
+
+
+\usepackage{caption}
+\usepackage{subcaption}
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
+
+% \makeatletter
+% \renewenvironment{thebibliography}[1]
+%      {\begin{multicols}{2}[\section*{\refname}]%
+%       \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+%       \list{\@biblabel{\@arabic\c@enumiv}}%
+%            {\settowidth\labelwidth{\@biblabel{#1}}%
+%             \leftmargin\labelwidth
+%             \advance\leftmargin\labelsep
+%             \@openbib@code
+%             \usecounter{enumiv}%
+%             \let\p@enumiv\@empty
+%             \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+%       \sloppy
+%       \clubpenalty4000
+%       \@clubpenalty \clubpenalty
+%       \widowpenalty4000%
+%       \sfcode`\.\@m}
+%      {\def\@noitemerr
+%        {\@latex@warning{Empty `thebibliography' environment}}%
+%       \endlist\end{multicols}}
+% \makeatother
+\widowpenalty=2000
+\clubpenalty=2000
+\displaywidowpenalty=300
+\raggedbottom
+
+\interlinepenalty = 10
+\binoppenalty=1000
+
+\DeclareMathSizes{10.95}{10.95}{7}{6}

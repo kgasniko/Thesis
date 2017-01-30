@@ -1,0 +1,274 @@
+% Some shorthand
+% turn off italics
+\newcommand {\etal}{\mbox{et al.}\xspace} %et al. - no preceding comma
+\newcommand {\ie}{\mbox{i.e.}\xspace}     %i.e.
+\newcommand {\eg}{\mbox{e.g.}\xspace}     %e.g.
+\newcommand {\etc}{\mbox{etc.}\xspace}     %etc.
+\newcommand {\vs}{\mbox{\sl vs.}\xspace}      %vs.
+\newcommand {\mdash}{\ensuremath{\mathrm{-}}} % for use within
+                                % formulas
+
+\newcommand{\cmsSymbolFace}{\ensuremath{\rm}} %needed to switch from rm to italic depending on the journal's wish
+%\ifthenelse{\boolean{cms@italic}}{\newcommand{\cmsSymbolFace}{\relax}}{\newcommand{\cmsSymbolFace}{\mathrm}}
+
+
+% Particle names which track the italic/non-italic face convention
+\newcommand{\zp}{\ensuremath{\cmsSymbolFace{Z}^\prime}\xspace} % plain Z'
+\newcommand{\JPsi}{\ensuremath{\cmsSymbolFace{J}\hspace{-.08em}/\hspace{-.14em}\psi}\xspace} % J/Psi (no mass)
+\newcommand{\Higgs}{\ensuremath{\cmsSymbolFace{H}}\xspace} % SM Higgs 
+\newcommand{\HO}{\ensuremath{\cmsSymbolFace{h}^0}\xspace} % MSSM h (with superscript 0)
+\newcommand{\Z}{\ensuremath{\cmsSymbolFace{Z}}\xspace} % plain Z (no superscript 0)
+\newcommand{\Zz}{\ensuremath{\cmsSymbolFace{Z}^0}\xspace} % plain Z (with superscript 0)
+\newcommand{\W}{\ensuremath{\cmsSymbolFace{W}}\xspace} % plain W (no superscript)
+\newcommand{\Wpm}{\ensuremath{\cmsSymbolFace{W}^{\pm}}\xspace} % plain W (with superscript pm)
+\newcommand{\Wmp}{\ensuremath{\cmsSymbolFace{W}^{\mp}}\xspace} % plain W (with superscript mp)
+\newcommand{\Wp}{\ensuremath{\cmsSymbolFace{W}^{+}}\xspace} % plain W (with superscript +)
+\newcommand{\Wm}{\ensuremath{\cmsSymbolFace{W}^{-}}\xspace} % plain W (with superscript -)
+\newcommand{\qqbar}{\ensuremath{\cmsSymbolFace{q}\overline{\cmsSymbolFace{q}}}\xspace} % q-qbar
+\newcommand{\bbbar}{\ensuremath{\cmsSymbolFace{b}\overline{\cmsSymbolFace{b}}}\xspace} % b-bbar
+\newcommand{\ttbar}{\ensuremath{\cmsSymbolFace{t}\overline{\cmsSymbolFace{t}}}\xspace} % t-tbar
+\newcommand{\Wjets}{\ensuremath{\cmsSymbolFace{W+jets}}\xspace} % plain W (no superscript)
+\newcommand{\ttH}{\ensuremath{\cmsSymbolFace{t}\overline{\cmsSymbolFace{t}}\cmsSymbolFace{H}}\xspace} % t-tbar
+\newcommand{\ttW}{\ensuremath{\cmsSymbolFace{t}\overline{\cmsSymbolFace{t}}\W}\xspace} % t-tbar
+\newcommand{\ttZ}{\ensuremath{\cmsSymbolFace{t}\overline{\cmsSymbolFace{t}}\Z}\xspace} % t-tbar
+
+\newcommand{\topq}{\ensuremath{\cmsSymbolFace{t}}\xspace} % t for t quark
+\newcommand{\botq}{\ensuremath{\cmsSymbolFace{b}}\xspace} % b for b quark
+\newcommand{\charm}{\ensuremath{\cmsSymbolFace{c}}\xspace} % c for c quark
+\newcommand{\strange}{\ensuremath{\cmsSymbolFace{s}}\xspace} % s for s quark
+\newcommand{\up}{\ensuremath{\cmsSymbolFace{u}}\xspace} % u for u quark
+\newcommand{\down}{\ensuremath{\cmsSymbolFace{d}}\xspace} % d for d quark
+\newcommand{\quark}{\ensuremath{\cmsSymbolFace{q}}\xspace} % generic quark
+\newcommand{\gluon}{\ensuremath{\cmsSymbolFace{g}}\xspace} % generic gluon
+\newcommand{\graviton}{\ensuremath{\cmsSymbolFace{G}}\xspace} % Graviton
+\newcommand{\aTop}{\ensuremath{\overline{\cmsSymbolFace{t}}}\xspace} % t for t anti-quark
+\newcommand{\aBot}{\ensuremath{\overline{\cmsSymbolFace{b}}}\xspace} % b for b anti-quark
+\newcommand{\aCharm}{\ensuremath{\overline{\cmsSymbolFace{c}}}\xspace} % c for c anti-quark
+\newcommand{\aStrange}{\ensuremath{\overline{\cmsSymbolFace{s}}}\xspace} % s for s anti-quark
+\newcommand{\aUp}{\ensuremath{\overline{\cmsSymbolFace{u}}}\xspace} % u for u anti-quark
+\newcommand{\aDown}{\ensuremath{\overline{\cmsSymbolFace{d}}}\xspace} % d for d anti-quark
+\newcommand{\aQuark}{\ensuremath{\overline{\cmsSymbolFace{q}}}\xspace} % generic anti-quark
+\newcommand{\gam}{\ensuremath{\gamma}\xspace} % gamma
+
+\newcommand{\gluino}{\ensuremath{\widetilde{\cmsSymbolFace{g}}}\xspace} % gluino
+\newcommand{\squark}{\ensuremath{\widetilde{\cmsSymbolFace{q}}}\xspace} % squark
+\newcommand{\gravitino}{\ensuremath{\widetilde{\cmsSymbolFace{G}}}\xspace} % gravitino
+\newcommand{\nino}{\ensuremath{\widetilde{\chi}}\xspace} % neutralino
+\newcommand{\ninozero}{\ensuremath{\widetilde{\chi}^0}\xspace} % neutralino with superscript 0
+\newcommand{\ninoone}{\ensuremath{\widetilde{\chi}^0_1}\xspace} % neutralino with superscript 0 and subscript 1
+\newcommand{\ninotwo}{\ensuremath{\widetilde{\chi}^0_2}\xspace} % neutralino with superscript 0 and subscript 2
+\newcommand{\ninothree}{\ensuremath{\widetilde{\chi}^0_3}\xspace} % neutralino with superscript 0 and subscript 3
+\newcommand{\ninofour}{\ensuremath{\widetilde{\chi}^0_4}\xspace} % neutralino with superscript 0 and subscript 4
+\newcommand{\chipm}{\ensuremath{\widetilde{\chi}^{\pm}}\xspace} % chargino with superscript pm
+\newcommand{\chip}{\ensuremath{\widetilde{\chi}^{+}}\xspace} % chargino with superscript p
+\newcommand{\chim}{\ensuremath{\widetilde{\chi}^{-}}\xspace} % chargino with superscript m
+\newcommand{\chipmone}{\ensuremath{\widetilde{\chi}^{\pm}_1}\xspace} % chargino with superscript pm and subscript 1
+\newcommand{\chipmtwo}{\ensuremath{\widetilde{\chi}^{\pm}_2}\xspace} % chargino with superscript pm and subscript 2
+\newcommand{\chipone}{\ensuremath{\widetilde{\chi}^{+}_1}\xspace} % chargino with superscript p and subscript 1
+\newcommand{\chimone}{\ensuremath{\widetilde{\chi}^{-}_1}\xspace} % chargino with superscript m and subscript 1
+\newcommand{\chiptwo}{\ensuremath{\widetilde{\chi}^{+}_2}\xspace} % chargino with superscript p and subscript 1
+\newcommand{\chimtwo}{\ensuremath{\widetilde{\chi}^{-}_2}\xspace} % chargino with superscript m and subscript 1
+
+\newcommand{\sleppm}{\ensuremath{\widetilde{\cmsSymbolFace{l}}^{\pm}}\xspace} % slepton with superscript pm
+\newcommand{\slepp}{\ensuremath{\widetilde{\cmsSymbolFace{l}}^{+}}\xspace} % slepton with superscript p
+\newcommand{\slepm}{\ensuremath{\widetilde{\cmsSymbolFace{l}}^{-}}\xspace} % slepton with superscript m
+
+\newcommand{\lep}{\ensuremath{\cmsSymbolFace{l}}\xspace} % non-ell lepton
+\newcommand{\alep}{\ensuremath{\overline{\cmsSymbolFace{l}}}\xspace} % non-ell anti-lepton
+\newcommand{\PGnl}{\ensuremath{\nu_\cmsSymbolFace{l}}\xspace} % lepton neutrino
+\newcommand{\PAGnl}{\ensuremath{\overline{\nu}_\cmsSymbolFace{l}}\xspace} % anti-lepton neutrino
+
+\newcommand{\sFer}{\ensuremath{\widetilde{\cmsSymbolFace{f}}}\xspace}
+\newcommand{\sQua}{\ensuremath{\widetilde{\cmsSymbolFace{q}}}\xspace}
+
+\newcommand{\sUp}{\ensuremath{\widetilde{\cmsSymbolFace{u}}}\xspace}
+\newcommand{\suL}{\ensuremath{\widetilde{\cmsSymbolFace{u}}_\cmsSymbolFace{L}}\xspace}
+\newcommand{\suR}{\ensuremath{\widetilde{\cmsSymbolFace{u}}_\cmsSymbolFace{R}}\xspace}
+\newcommand{\sDw}{\ensuremath{\widetilde{\cmsSymbolFace{d}}}\xspace}
+\newcommand{\sdL}{\ensuremath{\widetilde{\cmsSymbolFace{d}}_\cmsSymbolFace{L}}\xspace}
+\newcommand{\sdR}{\ensuremath{\widetilde{\cmsSymbolFace{d}}_\cmsSymbolFace{R}}\xspace}
+
+\newcommand{\sTop}{\ensuremath{\widetilde{\cmsSymbolFace{t}}}\xspace}
+\newcommand{\stL}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_{\cmsSymbolFace{L}}}\xspace}
+\newcommand{\stR}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_{\cmsSymbolFace{R}}}\xspace}
+\newcommand{\stone}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_1}\xspace}
+\newcommand{\sttwo}{\ensuremath{\widetilde{\cmsSymbolFace{t}}_2}\xspace}
+\newcommand{\sBot}{\ensuremath{\widetilde{\cmsSymbolFace{b}}}\xspace}
+\newcommand{\sbL}{\ensuremath{\widetilde{\cmsSymbolFace{b}}_{\cmsSymbolFace{L}}}\xspace}
+\newcommand{\sbR}{\ensuremath{\widetilde{\cmsSymbolFace{b}}_{\cmsSymbolFace{R}}}\xspace}
+\newcommand{\sbone}{\ensuremath{\widetilde{\cmsSymbolFace{b}}_1}\xspace}
+\newcommand{\sbtwo}{\ensuremath{\widetilde{\cmsSymbolFace{b}}_2}\xspace}
+
+\newcommand{\sLep}{\ensuremath{\widetilde{\cmsSymbolFace{l}}}\xspace}
+\newcommand{\sLepC}{\ensuremath{\widetilde{\cmsSymbolFace{l}}^{\cmsSymbolFace{C}}}\xspace}
+\newcommand{\sEl}{\ensuremath{\widetilde{\cmsSymbolFace{e}}}\xspace}
+\newcommand{\sElC}{\ensuremath{\widetilde{\cmsSymbolFace{e}}^\cmsSymbolFace{C}}\xspace}
+\newcommand{\seL}{\ensuremath{\widetilde{\cmsSymbolFace{e}}_\cmsSymbolFace{L}}\xspace}
+\newcommand{\seR}{\ensuremath{\widetilde{\cmsSymbolFace{e}}_\cmsSymbolFace{R}}\xspace}
+\newcommand{\snL}{\ensuremath{\widetilde{\nu}_{\rm L}}\xspace}
+\newcommand{\sMu}{\ensuremath{\widetilde{\mu}}\xspace}
+\newcommand{\sMuR}{\ensuremath{\widetilde{\mu}_{\rm R}}\xspace}
+\newcommand{\sMuL}{\ensuremath{\widetilde{\mu}_{\rm L}}\xspace}
+\newcommand{\sNu}{\ensuremath{\widetilde{\nu}}\xspace}
+\newcommand{\sTau}{\ensuremath{\widetilde{\tau}}\xspace}
+\newcommand{\sTauR}{\ensuremath{\widetilde{\cmsSymbolFace{\tau}}_{\cmsSymbolFace{R}}}\xspace}
+\newcommand{\sNuTau}{\ensuremath{\widetilde{\nu_{\tau}}}\xspace}
+
+
+\newcommand{\sHinouO}{\ensuremath{\widetilde{\cmsSymbolFace{H}}_u^0}\xspace}
+\newcommand{\sHinodO}{\ensuremath{\widetilde{\cmsSymbolFace{H}}_d^0}\xspace}
+\newcommand{\sHinoup}{\ensuremath{\widetilde{\cmsSymbolFace{H}}_u^+}\xspace}
+\newcommand{\sHinodm}{\ensuremath{\widetilde{\cmsSymbolFace{H}}_d^-}\xspace}
+\newcommand{\sHino}{\ensuremath{\widetilde{\cmsSymbolFace{H}}}\xspace}
+\newcommand{\sWO}{\ensuremath{\widetilde{\cmsSymbolFace{W}}^{0}}\xspace}
+\newcommand{\sWpm}{\ensuremath{\widetilde{\cmsSymbolFace{W}}^{\pm}}\xspace}
+\newcommand{\sWino}{\ensuremath{\widetilde{\cmsSymbolFace{W}}}\xspace}
+\newcommand{\Bz}{\ensuremath{\cmsSymbolFace{B}^{0}}\xspace}
+\newcommand{\sBz}{\ensuremath{\widetilde{\cmsSymbolFace{B}}^{0}}\xspace}
+\newcommand{\sBino}{\ensuremath{\widetilde{\cmsSymbolFace{B}}^{0}}\xspace}
+\newcommand{\sZino}{\ensuremath{\widetilde{\cmsSymbolFace{Z}}^{0}}\xspace}
+\newcommand{\sGam}{\ensuremath{\widetilde{\gamma}}\xspace}
+
+
+
+% Measurements and s...
+
+\newcommand{\de}{\ensuremath{^\circ}}
+\newcommand{\ten}[1]{\ensuremath{\times \text{10}^\text{#1}}}
+\newcommand{\unit}[1]{\ensuremath{\text{\,#1}}\xspace}
+\newcommand{\mum}{\ensuremath{\,\mu\text{m}}\xspace}
+\newcommand{\micron}{\ensuremath{\,\mu\text{m}}\xspace}
+\newcommand{\m}{\ensuremath{\,\text{m}}\xspace}
+\newcommand{\T}{\ensuremath{\,\text{T}}\xspace}
+\newcommand{\ns}{\ensuremath{\,\text{ns}}\xspace}
+\newcommand{\km}{\ensuremath{\,\text{km}}\xspace}
+\newcommand{\cm}{\ensuremath{\,\text{cm}}\xspace}
+\newcommand{\mm}{\ensuremath{\,\text{mm}}\xspace}
+\newcommand{\MHz}{\ensuremath{\,\text{MHz}}\xspace}
+\newcommand{\mus}{\ensuremath{\,\mu\text{s}}\xspace}
+\newcommand{\keV}{\ensuremath{\,\text{ke\h\space{-.08em}V}}\xspace}
+\newcommand{\MeV}{\ensuremath{\,\text{Me\hspace{-.08em}V}}\xspace}
+\newcommand{\MeVns}{\ensuremath{\text{Me\hspace{-.08em}V}}\xspace} % no leading thinspace
+\newcommand{\GeV}{\ensuremath{\,\text{Ge\hspace{-.08em}V}}\xspace}
+\newcommand{\GeVns}{\ensuremath{\text{Ge\hspace{-.08em}V}}\xspace} % no leading thinspace
+\newcommand{\gev}{\GeV}
+\newcommand{\TeV}{\ensuremath{\,\text{Te\hspace{-.08em}V}}\xspace}
+\newcommand{\TeVns}{\ensuremath{\text{Te\hspace{-.08em}V}}\xspace} % no leading thinspace
+\newcommand{\PeV}{\ensuremath{\,\text{Pe\hspace{-.08em}V}}\xspace}
+\newcommand{\keVc}{\ensuremath{{\,\text{ke\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\MeVc}{\ensuremath{{\,\text{Me\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\GeVc}{\ensuremath{{\,\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\GeVcns}{\ensuremath{{\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace} % no leading thinspace
+\newcommand{\TeVc}{\ensuremath{{\,\text{Te\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c}}\xspace}
+\newcommand{\keVcc}{\ensuremath{{\,\text{ke\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+\newcommand{\MeVcc}{\ensuremath{{\,\text{Me\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+\newcommand{\GeVcc}{\ensuremath{{\,\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+\newcommand{\GeVccns}{\ensuremath{{\text{Ge\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace} % no leading thinspace
+\newcommand{\TeVcc}{\ensuremath{{\,\text{Te\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^\text{2}}}\xspace}
+
+\newcommand{\pbinv} {\mbox{\ensuremath{\,\text{pb}^\text{$-$1}}}\xspace}
+%\newcommand{\fbinv} {\mbox{\ensuremath{\,\text{fb}^\text{$-$1}}}\xspace}
+%\newcommand{\fbinv} {\mbox{\,\text{fb}\ensuremath{^\text{-1}}}\xspace}
+\newcommand{\fbinv} {\mbox{\unit{fb$^{-1}$}}\xspace}
+\newcommand{\nbinv} {\mbox{\ensuremath{\,\text{nb}^\text{$-$1}}}\xspace}
+\newcommand{\mubinv} {\ensuremath{\,\mu\mathrm{b}^{-1}}\xspace}
+\newcommand{\percms}{\ensuremath{\,\text{cm}^\text{$-$2}\,\text{s}^\text{$-$1}}\xspace}
+\newcommand{\lumi}{\ensuremath{\mathcal{L}}\xspace}
+\newcommand{\Lumi}{\ensuremath{\mathcal{L}}\xspace}%both upper and lower
+
+% Physics symbols ...
+
+\newcommand{\PT}{\ensuremath{p_{\mathrm{T}}}\xspace}
+\newcommand{\pt}{\ensuremath{p_{\mathrm{T}}}\xspace}
+\newcommand{\ET}{\ensuremath{E_{\mathrm{T}}}\xspace}
+\newcommand{\HT}{\ensuremath{H_{\mathrm{T}}}\xspace}
+\newcommand{\et}{\ensuremath{E_{\mathrm{T}}}\xspace}
+\newcommand{\Em}{\ensuremath{E\hspace{-0.6em}/}\xspace}
+\newcommand{\Pm}{\ensuremath{p\hspace{-0.5em}/}\xspace}
+\newcommand{\PTm}{\ensuremath{{p}_\mathrm{T}\hspace{-1.02em}/\kern 0.5em}\xspace}
+\newcommand{\PTslash}{\PTm}
+\newcommand{\ETm}{\ensuremath{E_{\mathrm{T}}^{\text{miss}}}\xspace}
+\newcommand{\MET}{\ETm}
+\newcommand{\ETmiss}{\ETm}
+\newcommand{\HTm}{\ensuremath{H_{\mathrm{T}}^{\text{miss}}}\xspace}
+\newcommand{\MHT}{\HTm}
+\newcommand{\HET}{\HTm}
+\newcommand{\HTmiss}{\HTm}
+\newcommand{\ETslash}{\ensuremath{E_{\mathrm{T}}\hspace{-1.1em}/\kern0.45em}\xspace}
+\newcommand{\VEtmiss}{\ensuremath{{\vec E}_{\mathrm{T}}^{\text{miss}}}\xspace}
+\newcommand{\ptvec}{\ensuremath{{\vec p}_{\mathrm{T}}}\xspace}
+\newcommand{\ponevec}{\ensuremath{{\vec p_1}_{\mathrm{T}}}\xspace}
+\newcommand{\ptwovec}{\ensuremath{{\vec p_2}_{\mathrm{T}}}\xspace}
+\newcommand{\MTtW}{\ensuremath{m_{\mathrm{T2}}^{\text{\W}}}\xspace}
+\newcommand{\MTt}{\ensuremath{m_{\mathrm{T2}}}\xspace}
+\newcommand{\DP}{\ensuremath{\Delta \Phi}\xspace}
+\newcommand{\HTratio}{\ensuremath{H_{\mathrm{T}}^{\text{ratio}}}\xspace}
+\newcommand{\MT}{\ensuremath{m_{\mathrm{T}}}\xspace}
+\newcommand{\mT}{\MT}
+\newcommand{\meff}{\ensuremath{m_{\mathrm{eff}}}\xspace}
+\newcommand{\mCT}{\ensuremath{m_{\mathrm{CT}}}\xspace}
+\newcommand{\aT}{\ensuremath{\alpha_{\mathrm{T}}}\xspace}
+
+
+% Some software programs (alphabetized)
+\newcommand{\ACERMC} {\textsc{AcerMC}\xspace}
+\newcommand{\ALPGEN} {{\textsc{alpgen}}\xspace}
+\newcommand{\CALCHEP} {{\textsc{CalcHEP}}\xspace}
+\newcommand{\CHARYBDIS} {{\textsc{charybdis}}\xspace}
+\newcommand{\CMKIN} {\textsc{cmkin}\xspace}
+\newcommand{\CMSIM} {{\textsc{cmsim}}\xspace}
+\newcommand{\CMSSW} {{\textsc{cmssw}}\xspace}
+\newcommand{\COBRA} {{\textsc{cobra}}\xspace}
+\newcommand{\COCOA} {{\textsc{cocoa}}\xspace}
+\newcommand{\COMPHEP} {\textsc{CompHEP}\xspace}
+\newcommand{\EVTGEN} {{\textsc{evtgen}}\xspace}
+\newcommand{\FAMOS} {{\textsc{famos}}\xspace}
+\newcommand{\GARCON} {\textsc{garcon}\xspace}
+\newcommand{\GARFIELD} {{\textsc{garfield}}\xspace}
+\newcommand{\GEANE} {{\textsc{geane}}\xspace}
+\newcommand{\GEANTfour} {{\textsc{Geant4}}\xspace}
+\newcommand{\GEANTthree} {{\textsc{geant3}}\xspace}
+\newcommand{\GEANT} {{\textsc{geant}}\xspace}
+\newcommand{\HDECAY} {\textsc{hdecay}\xspace}
+\newcommand{\HERWIG} {{\textsc{herwig}}\xspace}
+\newcommand{\POWHEG} {{\textsc{powheg}}\xspace}
+\newcommand{\HIGLU} {{\textsc{higlu}}\xspace}
+\newcommand{\HIJING} {{\textsc{hijing}}\xspace}
+\newcommand{\IGUANA} {\textsc{iguana}\xspace}
+\newcommand{\ISAJET} {{\textsc{isajet}}\xspace}
+\newcommand{\ISAPYTHIA} {{\textsc{isapythia}}\xspace}
+\newcommand{\ISASUGRA} {{\textsc{isasugra}}\xspace}
+\newcommand{\ISASUSY} {{\textsc{isasusy}}\xspace}
+\newcommand{\ISAWIG} {{\textsc{isawig}}\xspace}
+\newcommand{\MADGRAPH} {\textsc{MadGraph}\xspace}
+\newcommand{\MCATNLO} {\textsc{mc@nlo}\xspace}
+\newcommand{\MCFM} {\textsc{mcfm}\xspace}
+\newcommand{\MILLEPEDE} {{\textsc{millepede}}\xspace}
+\newcommand{\ORCA} {{\textsc{orca}}\xspace}
+\newcommand{\OSCAR} {{\textsc{oscar}}\xspace}
+\newcommand{\PHOTOS} {\textsc{photos}\xspace}
+\newcommand{\PROSPINO} {\textsc{prospino}\xspace}
+\newcommand{\PYTHIA} {{\textsc{pythia}}\xspace}
+\newcommand{\SHERPA} {{\textsc{sherpa}}\xspace}
+\newcommand{\TAUOLA} {\textsc{tauola}\xspace}
+\newcommand{\TOPREX} {\textsc{TopReX}\xspace}
+\newcommand{\XDAQ} {{\textsc{xdaq}}\xspace}
+
+%  Experiments
+\newcommand{\DZERO}{D0\xspace}     %etc.
+\newcommand{\CMS} {{\textsc{cms}}\xspace}
+\newcommand{\ATLAS} {{\textsc{atlas}}\xspace}
+\newcommand{\LHCb} {{\textsc{LHC}b}\xspace}
+\newcommand{\ALICE} {{\textsc{alice}}\xspace}
+
+
+%%%%%%%%%
+% My abbs
+%%%%%%%%%
+
+% LHC related
+\newcommand{\RunI} {{\textsc{RunI}}\xspace}
+\newcommand{\RunII} {{\textsc{RunII}}\xspace}
+
+% Analysis
+\newcommand{\Rcs} {\ensuremath{R_{\mathrm{CS}}}\xspace}
