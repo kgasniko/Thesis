@@ -26,13 +26,38 @@ It is possible to use scale factors for 8 TeV 2012 data. The main difference bet
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth]{MCCorrections/sf.pdf}
-\caption{Comparition of electron efficiencies as calculated for 8TeV (blue points) and 2.76TeV (red points) for MC simulation. Efficiencies are shown as a function of pseudorapidity ($\eta$) for different electron $E_T$ bins. Both statistical and systematic uncertainties are shown.    \label{eff_comp}}
+\caption{Comparition of electron efficiencies as calculated for 8TeV (blue points) and 2.76TeV (red points) for MC simulation. Efficiencies are shown as a function of pseudorapidity ($\eta$) for different electron $E_T$ bins. Both statistical and systematic uncertainties are shown. }
+\label{eff_comp}
 \end{figure}
 
 Unfortunatelly, single muon trigger haven't been presented in a 2012 data, so muon trigger scale factor is calculated as a single number in order to minimize systematics contribution. 
-\section{Electron energy scale and EM calorimeter calibration}
+\section{Electron energy scale and resolution}
+Electrons clusters tend to shift in a reconstructed energy compared to a truth energy of initial electron. Correction of this shift is done on a both data and MC as a 3 step process:
+\begin{itemize}
+\item Electronic calibration, that transfers a raw signal from a readout to a cluster energy deposit.
+\item MC based calibration. It corrects effects of energy loss in the material in front of calorimeter and leakage into the hadronic calorimeter. This calibration is applied on both data and MC.
+\item Correction of calorimeter cell responce in data. This is allowing to get right responce in non-optimal HV-regions and exclude biases in a calorimeter electronics reconstruction.
+\end{itemize}
 
-\section{Electron energy resolution}
-\section{Muon momentum scale and resultion}
+Energy shift is parameterised, as:
+\begin{equation}
+E^{data}=E^{MC}(1+\alpha_i),
+\end{equation}
+where $E^{data}$ and $E^{MC}$ are the energies in data and simulation, respectivelly and $\alpha_i$ is a mean shift in a given bin i in $\eta$. 
+Electron resolution is desribed by a formula \ref{eq:EMResoultion}. It is assumed, that sampling and noise terms are moddeled well by MC and the main diiference is coming from a constant term. 
+The electron resoultion correction then can be written as:
+\begin{equation}
+\frac{\sigma_E}{E}^{Data}_{i}=\frac{\sigma_E}{E}^{MC}_{i} \oplus c_i
+\end{equation}
+where $c_i$ is $\eta$ dependent relative resolution correction. Parameters
+$\alpha_i$ and $c_i$ are obtained from $Z\to ee$ invariant mass distribution with pseudorapidity configuration $(\eta_i, \eta_j)$ using $\chi^2$ fit. Resulting energy scale is applied on a data, while resolution is corrected for MC.
+
+\section{Muon momentum correction}
+\begin{equation}
+\frac{\sigma_{ID}(p_T)}{p_T}=a_{ID}(\eta) \oplus b_{ID}(\eta) \cdot p_T
+\end{equation}
+\begin{equation}
+\frac{\sigma_{MS}(p_T)}{p_T}=a_{MS}(\eta, \phi) \oplus b_{MS} (\eta, \phi) \cdot p_T \oplus \frac{c(\eta, \phi)}{p_T}
+\end{equation}
 
 \section{Hadron recoil correction}

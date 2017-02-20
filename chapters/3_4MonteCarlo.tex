@@ -1,5 +1,5 @@
 
-\chapter{Monte Carlo}
+\chapter{Monte Carlo}\label{chap:MC}
 The Monte Carlo(MC) method was invented by scientists working on the atomic bomb in the 1940s. Its core idea is to use random samples of parameters or inputs to explore the behavior of a complex system or process.  Nowadays, MC are essential part of both theoretical and experimental particle physics research.
 This chapter gives an overview of ATLAS experiment simulation scheme, simulation methods and software used. Also, a techniques for fast simulation will be discussed. 
 %Also, to avoid statistical fluctuations in MC it is usually required to have 5-10 times more events, than expected in the data.
@@ -33,7 +33,7 @@ Independently happening multi-particle interactions are indicated by the violet 
 Parton showers are shown with curly lines.
 Hadronization yields hadrons as shown in light green, while the final state particle are dark green.
 }
-\label{fig:MC_ttH}
+c
 \end{figure}
 
 The outcome of the hard interaction could be simple scattering, their annihilation or a combination of two. In any case, the final state consist of a large multiplicity particles. The main goal of event generator is to provide a complete picture of this final states: description of the particle types and momentia on event-by-event basis. The factorisation theorem allows to make event generation in independent stages, which are dominated by different dynamics:
@@ -124,7 +124,7 @@ During a simulation, if an energy of particle falls below cut-off energy, partic
 When particle is removed and substituted by shower taken from corresponding eta and distance bin with the closest energy found. Energies of the hits in shower found are scaled to fully correspond to particle energy. Additionally, shower direction is changed to the direction of the shower.
 
 Frozen Showers have been used in Atlas Monte-Carlo production since run-1. This method is applicable for all LAr calorimeters in ATLAS, but currently it is enabled for simulation of forward calorimeters (FCAL), since it is showing the smallest differences, compared to the other fast simulation methods (e.g parametrisation). This is because of large of non-uniformly distributed sensitive material, which is giving different responce, than a dead material (Figure ~\ref{fig:FSProduction}). Resolution of a calorimeter can be written as:
-\begin{equation}
+\begin{equation}\label{eq:EMResoultion}
 \frac{\sigma}{E} \approx \frac{1}{\sqrt{E}}	\oplus \frac{1}{E} 	\oplus const,
 \end{equation}
 where symbol $\oplus$ indicates a quadratic sum. The first term is 'stocastic term', which is including intrinsic shower fluctuations, second takes into account readout noise effects and pile-up fluctuations. Constant term derives from non-uniformities in a detector, what are causing large fluctuation of the energy loss. Resolution of high-energy electrons is mostly dominated by this term. Example of this fluctuations is shown on a Figure ~\ref{fig:FSFluctuations}. It can be seen, that particles inside sensitive material are having more energetic showers, than particles in a dead material. Introducing additional spacial binning, that is defined as distance to the closest rod center is allowing to capture this structure. Dependency of summed energy of shower on the distance defined above is shown on a Figure ~\ref{fig:FSProduction}. Gap is marked by the red lines. Size of this differences between sensitive material and dead material is depending on a initial particle momentia (Figure ~\ref{fig:FSProduction2} a and b). For electrons with energy greater than 500 GeV they are almost negligible. This is why upper limit for frozen showers was set to 1000 MeV.
