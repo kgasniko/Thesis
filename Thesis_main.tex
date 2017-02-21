@@ -9,6 +9,7 @@
 \usepackage[default]{gillius}
 %\usepackage{glossaries}
 
+\usepackage{cite}
 \usepackage{lineno}
 \usepackage{mathpazo}
 \usepackage{helvet}%      Choose default sans serif
@@ -93,24 +94,24 @@
 \linenumbers
   \mainmatter
   %\part{Thesis overview}
-  %\input{Chapters/1Intro.tex}
-  %\part{Theory introduction}
-  %\input{Chapters/2Theory.tex}
-  %\part{Experimental setup}
-  %\input{Chapters/3_1LHC.tex}
-  %\input{Chapters/3_2ATLAS.tex}
-  %\input{Chapters/3_3Software.tex}
+  \input{chapters/1Intro.tex}
+  \part{Theory introduction}
+  \input{chapters/2Theory.tex}
+  \part{Experimental setup}
+  \input{chapters/3_1LHC.tex}
+  \input{chapters/3_2Atlas.tex}
+  \input{chapters/3_3Software.tex}
   \input{chapters/3_4MonteCarlo.tex}
-  %\input{Chapters/3_5DataSample.tex}
-  %\part{Measurment of cross-section}
+  \input{chapters/3_5DataSample.tex}
+  \part{Measurment of cross-section}
    \input{chapters/4_1EventSelection.tex}
   \input{chapters/4_2MCCorrections.tex}
-  %\input{Chapters/4_3BackgroundEstimation.tex}
-  %\input{Chapters/4_4Systematics.tex}
-  %\input{Chapters/4_5ControlPlots.tex}
-  %\input{Chapters/4_6Results.tex}
-  %\part{PDF fits}
-  %\input{Chapters/5PDF.tex}
+  \input{chapters/4_3BackgroundEstimation.tex}
+  \input{chapters/4_4Systematics.tex}
+  \input{chapters/4_5ControlPlots.tex}
+  \input{chapters/4_6Results.tex}
+  \part{PDF fits}
+  \input{chapters/5PDF.tex}
 
 %\input{Chapters/Intro.tex}
 %\input{Chapters/Theory.tex}
@@ -140,9 +141,9 @@
 %\addcontentsline{toc}{chapter}{Bibliography}
 %\bibliographystyle{lucas_unsrt}
 %\bibliographystyle{fra_hannes_lucas_unsrt}
-%\bibliographystyle{plain}
+\bibliographystyle{plain}
 %{\small
-%\bibliography{biblioThesis} }
+\bibliography{biblioThesis_Me}{} 
 
 %\input{Aux/OathEpi.tex}
 %% Acknowledgements  
