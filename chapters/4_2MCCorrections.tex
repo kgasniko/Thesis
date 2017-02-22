@@ -1,8 +1,7 @@
 \chapter{Monte Carlo corrections}
 Monte Carlo plays important role in cross-section measurement. It is constantly undergoing correction to data, in order to obtain a required precision. Part of this corrections have been described in a chapter \ref{chap:MC}. Unfortunatelly,  not everything can be taken into account during simulation itself. This leads to a differences between data and monte carlo, that needs to be accounted for. There are two possible methods to correct monte carlo without regenerating it. First on is to apply event weight, so what each mc event can contribute to non 1 entries in a histogram.This is called reweighting. Second one is to smear MC. It is using random number to alter reconstructed 4-vectors. 
 This chapter describes all additional corrections, what have been applied on MC in this analysis. All of this correction are introducing additional systematic error, that will be discussed in the chapter \ref{sec:}
-\section{Number of vertexes reweighting}
-The effect of multiple particle interactions per bunch crossing is accounted in MC. But there is sill remaining difference between simulation and collected data. This mismodelling can affect many distributions. One of the ways to correct this is to apply weight on number of vertexes. This variables have a connection between each other, because each pp interaction produces separate vertex. Fig ~\ref{ris:MC_Nvtx} shows a comparison of number of vertexes before and after reweighting.
+
 \section{Lepton efficiency corrections}
 
 Lepton detection efficiency at \atlas detector can be divided into three components:
@@ -39,7 +38,7 @@ Each of the scale factors calculated in a $p_{t}$ and $\eta$ bins and has an ass
 
 It is possible to use scale factors for 8 TeV 2012 data. The main difference between this data samples are center of mass energy and a pile-up conditions (10 in 2012 and less than 1 in 2013). This effects have been studied on a $Z\to ee$ sample. Fig. \ref{eff_comp} shows that all of the differences in a scale factors are negligible and fully covered by the statistical error. This justifies the usage of 8 TeV scalling factors with increased 
 
-Unfortunatelly, single muon trigger haven't been presented in a 2012 data, so muon trigger scale factor is calculated as a single number in order to minimize systematics contribution. 
+Unfortunatelly, single muon trigger haven't been presented in a 2012 data, so muon trigger scale factor needed to be derived from a 2.76 TeV data. Different configurations is calculated as a single number in order to minimize systematics contribution. 
 \section{Electron energy scale and resolution}
 Electrons clusters tend to shift in a reconstructed energy compared to a truth energy of initial electron. Correction of this shift is done on a both data and MC as a 3 step process:
 \begin{itemize}
@@ -100,5 +99,22 @@ p_T^{Cor,CB}= f\cdot p_T^{Cor,ID}+(1-f) \cdot p_T^{Cor,MS},
 \end{equation}
 where weight f is derived from mc. 
 
+\section{Number of vertexes reweighting}
+Additional particle interactions can affect many different distributions, including $E_T^{miss}$. Pile-up mismodelling usually accounted by correcting average number of interaction per bunch crossing to match a data. However, \atlas simulation is suited for an ordinary high pile-up runs, so this quantity is not modelled well in a case of 2.76 TeV analysis \ref{ris:Mu.png}. 
+
+Another way is to to apply weight on number of vertexes. This variables have a connection between each other, because each pp interaction produces separate vertex. Fig ~\ref{ris:MC_Nvtx} shows a comparison of number of vertexes before and after reweighting.
+
+This also allows to improve agreement for a $E_T^{miss}$ distribution.
 
 \section{Hadron recoil correction}
+Remaining differences between Data and MC in $E_T^{miss}$ are assumed to be due to a $\sum E_T$ mismodelling. This quantity is defined as a scalar sum of all active topo-clusters in the event:
+\begin{equation}
+\sum E_T = \sum\limits^N_{i=0}|\vec{E_T}|
+\end{equation}
+This variable is connected with a underlying event activity. 
+However, $\sum E_t$ is correlated with a $p_T^W$, what is assumed to be simulated well in a MC. Correction procedure should leave this quantity untouched. In order to do this, correction factors are derived separatelly in a different $p_T^W$ bins and flavours, since $p_T^W$ is reconstructed differently in this channels. Size of this bin is choosen, so what each bin is having around 600 events in a data. Due to a limited statistics, data is a proximated by a polinomial fit. Example of this fit is shown on a Figure \ref{fig:Fit}. After this, weights are obtained by a dividing resulting polinomia by a MC. Weights scale is corrected, so what number of events leaves unchanged in a MC:
+\begin{equation}
+\int \sum E_T^{MC} = \int \sum E_T^{MC} \cdot w,
+\end{equation}
+where $w$ are the weights. Total correction factors are shown on a Figure \ref{ris:recoilCor}
+The resulting $\sum E_T$ distribution shows good agreement with data, while $p_T^W$ leaves unchanged. This correction is also helping to improve $E_T^miss$ distribution.
