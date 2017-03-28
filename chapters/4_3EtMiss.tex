@@ -64,7 +64,7 @@ To avoid double counting of lepton energy losses in calorimeter, the clusters in
 
 
 
-where $\vec{v}$ is the unit vector along boson $p_{T}$ direction. Parallel component is sensitive to a bias relative to a truth \pt of the boson, while perpendicular component is 0 on average and affected just by a resolution effects.  
+where $\vec{v}$ is the unit vector along boson $p_{T}$ direction. Parallel component is sensitive to a bias relative to a truth \ptw of the boson, while perpendicular component is 0 on average and affected just by a resolution effects.  
 Momentum of Z boson can be preciselly determined by a measurement of its decay products. This is allowing to determine data driven hadron recoil corrections. Due to a low cross-section of Z production, this corrections are mostly statistically dominated.
 On another hand, it is also possible to use W boson decays for a not so systematicslly precise, but statistically better. 
 
@@ -84,9 +84,12 @@ This differences can be paramerised at the respect of the truth boson Pt as foll
 \begin{equation}
 ,
 \end{equation}
-where \upar is a projection to the direction of the truth boson pt, and \uperp is the projection on a perpendicular plane. On average \upar should be match absolute value of boson pt and thus this quantity is sensitive to a relative bias of hadron recoil reconstruction. On another hand \uperp comes from calorimeter resolution and should have 0 mean. This component is sensitive to a discrepancies in data/mc resolutions. 
+where \upar is a projection to the direction of the truth boson pt, and \uperp is the projection on a perpendicular plane. On average \upar should be match absolute value of boson pt and thus this quantity is sensitive to a relative bias of hadron recoil reconstruction. On another hand \uperp comes from calorimeter resolution and should have 0 mean. This component is sensitive to a discrepancies in data/mc resolutions.
+ 
 Standard procedure of calibrating hadron recoil uses Z boson, since its transverse momentum can be determined not only by a hadron recoil, but also from its decay products.  Zpt resolution coming from lepton reconstruction is around 10 GeV, while hadron recoi resolution is around 30 GeV, what is alowing to have a precise determination of a calibration constants. On another hand, size of the Z sample in 2.76 TeV data is small, so this constants will be statistically dominated.
+
 On another hand, in W decays hadron recoil corrections cannot be determined through boson pt directly, but this channel has a better statistics.  The  procedure is more complicated, because it should not change truth boson spectrum and not correct additionally boson pt mismodelling.
+
 At the end, the combination of 2 determination results have been used. This section describes a procedure of calibrating bias and resolution mismodelling in a hadron recoil, that was apapted for 2.76 TeV data. 
 
 \subsection{Underlying event mismodelling correction}
@@ -99,7 +102,7 @@ To leave boson pt spectrum untouched, correction factors are determined inside p
 \begin{equation}
 SF^{channel}=\frac{\sum E_T^{data} (p_T^{W, rec})}{\sum E_T^{MC, channel} (p_T^{W, rec})},
 \end{equation}
-where $\sum E_T^{data} (p_T^{W, rec})$ and $\sum E_T^{MC, channel} (p_T^{W, rec})$  are a \sumet distributions inside $p_T^{W, rec}$ for data and monte carlo respectively. Scale factors are determined separatelly for each signal process.  In order to increase statistics in data the combination of \wenu and \wmunu processes is used. Example of this correction factors for \wPlusenu is shown on a Fig. \ref{SFWplusenu}. 
+where $\sum E_T^{data} (p_T^{W, rec})$ and $\sum E_T^{MC, channel} (p_T^{W, rec})$  are a \sumet distributions inside $p_T^{W, rec}$ for data and monte carlo respectively. Scale factors are determined separatelly for each signal process.  In order to increase statistics in data the combination of \wenu and \wmunu processes is used. Example of this correction factors for \wplusenu is shown on a Fig. \ref{SFWplusenu}. 
 
 The distribution of \sumet after correction is shown on a Fig. \ref{sumetAfter}. Reconstructed and truth boson spectrum is staying untouched (Fig. ).  Systematic error coming from this method can be studied by parametrisation  of scale factors with polynomial order 2 inside each $p_T^{W, rec}$ bin.  
 Statistical uncertainty correction can be determined through the uncertainties of this approximations. Set of the scale factors with polynomial parametrisation have been produced. For each scale factor inside this set polinomial parameters have been varied inside its unsertanty (correlation between parameters have been taken into accound). 
@@ -116,13 +119,20 @@ As it was mentioned before, it is possible to use both Z and W boson sample for 
 \upar^{MC,cor}=\upar^{MC} \cdot SF_{HR,bias},
 \end{equation}
 and can be obtained by scanning the impact of the scaling factor on the Data to MC agreement of the distributions that are dominated by the recoil scale uncertainties. Since W boson has no second source of \ptw measurments, determination of the hadron recoil bias should use the distributions, that  are not sensitive to a truth \ptw spectrum.  One of the optimal choises is a \mtw distribution. Transverse mass distribution for a different scale choises is shown on a Fig. \ref{HadronRecoilScaleMtW}. Multijet background is not included, because it shape and number of events is depending on a hadron recoil scale and thus can introduce additional systematics.
+
 The first way to determine correction factor is using a difference in the mean of transverse mass in data and MC. Statistical error of this determination is an error of the mean in the data. The precision of this method is low, is it is mainly used as a cross-check. 
-Second way is calculating \chi2 for each correction factor. The ideal correction factor is determined by fitting \chi2 distribution by the function:
+
+Second way is calculating \chiD for each correction factor. The ideal correction factor is determined by fitting \chiD distribution by the function:
 \begin{equation}
-\chi2 = \frac{(x-sf_{best})^2}{\sigma_{sf}^2}+\chi^2_0,
+\chi^2 = \frac{(x-sf_{best})^2}{\sigma_{sf}^2}+\chi^2_0,
 \end{equation}
-where $sf_{best}$ is the best scale factor and $\sigma_{sf}$ is a statistical error of this parameter. Distribution of \chi2 and a fit in combined W channel is shown on a Fig. \ref{mtWChi2}.
-Because of the possible mismodelling of the tail \mtw distribution it is not included in a \chi2 calculation, leaving a free choise of the parameter of the cutoff.  It is also possible to exclude regions with high multijet background contamination by applying a tighter cut on a \mtw. This fit range is introducing one source of systematic error. Effect of the range on value determination is shown on a Fig. \ref{ScaleMtWRange}. Similarly to a W channel, scale correction in a Z sample can be determined from distribution $\frac{\upar}{\p_T^{ll}}$, shown on a Fig. \ref{uPAr}. Since there is no choise of the range and dependency on $P_T^{bos}$ modelling, there is just one source of uncertainty.  
+where $sf_{best}$ is the best scale factor and $\sigma_{sf}$ is a statistical error of this parameter. Distribution of \chiD and a fit in combined W channel is shown on a Fig. \ref{mtWChi2}.
+
+Because of the possible mismodelling of the tail \mtw distribution it is not included in a \chiD calculation, leaving a free choise of the parameter of the cutoff.  It is also possible to exclude regions with high multijet background contamination by applying a tighter cut on a \mtw. 
+This fit range is introducing one source of systematic error. Effect of the range on value determination is shown on a Fig. \ref{ScaleMtWRange}. 
+Similarly to a W channel, scale correction in a Z sample can be determined from distribution $\frac{\upar}{p_T^{ll}}$, shown on a Fig. \ref{uPAr}. 
+Since there is no choise of the range and dependency on $P_T^{bos}$ modelling, there is just one source of uncertainty.
+  
 Results on a hadron scale factros and it's errors are shown in a Table \ref{tab:SFHadronRecoil}. The results are consistent within 1 sigma. Overall effect on a Cw is shown on a Tab. ~\ref{tab:CWHadronRecoilScale}.
 
 

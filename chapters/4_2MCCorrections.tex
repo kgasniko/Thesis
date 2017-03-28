@@ -98,23 +98,3 @@ In a second step corrections are propagated to the combined momentum, using a we
 p_T^{Cor,CB}= f\cdot p_T^{Cor,ID}+(1-f) \cdot p_T^{Cor,MS},
 \end{equation}
 where weight f is derived from mc. 
-
-\section{Number of vertexes reweighting}
-
-
-Another way is to to apply weight on number of vertexes. This variables have a connection between each other, because each pp interaction produces separate vertex. Fig ~\ref{ris:MC_Nvtx} shows a comparison of number of vertexes before and after reweighting.
-
-This also allows to improve agreement for a $E_T^{miss}$ distribution.
-
-\section{Hadron recoil correction}
-Remaining differences between Data and MC in $E_T^{miss}$ are assumed to be due to a $\sum E_T$ mismodelling. This quantity is defined as a scalar sum of all active topo-clusters in the event:
-\begin{equation}
-\sum E_T = \sum\limits^N_{i=0}|\vec{E_T}|
-\end{equation}
-This variable is connected with a underlying event activity. 
-However, $\sum E_t$ is correlated with a $p_T^W$, what is assumed to be simulated well in a MC. Correction procedure should leave this quantity untouched. In order to do this, correction factors are derived separatelly in a different $p_T^W$ bins and flavours, since $p_T^W$ is reconstructed differently in this channels. Size of this bin is choosen, so what each bin is having around 600 events in a data. Due to a limited statistics, data is a proximated by a polinomial fit. Example of this fit is shown on a Figure \ref{fig:Fit}. After this, weights are obtained by a dividing resulting polinomia by a MC. Weights scale is corrected, so what number of events leaves unchanged in a MC:
-\begin{equation}
-\int \sum E_T^{MC} = \int \sum E_T^{MC} \cdot w,
-\end{equation}
-where $w$ are the weights. Total correction factors are shown on a Figure \ref{ris:recoilCor}
-The resulting $\sum E_T$ distribution shows good agreement with data, while $p_T^W$ leaves unchanged. This correction is also helping to improve $E_T^miss$ distribution.

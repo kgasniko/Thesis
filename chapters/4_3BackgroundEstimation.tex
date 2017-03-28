@@ -1,4 +1,5 @@
 \chapter{Background estimation}
+
 After the event selection described in a chapter \ref{chap:EventSelection} the background contribution is around \% for W and \% for Z analysis (which is with this statistics is  neglighable). Main backgrounds for W analysis are coming from:
 \begin{itemize}
 \item Processes with $\tau$ lepton, misidentified as a electron or muon + missing energy from neutrino
@@ -6,7 +7,32 @@ After the event selection described in a chapter \ref{chap:EventSelection} the b
 \item QCD processes. In electron channel this is mostly coming from jets faking electrons, while in a muon channel it consists mostly of a real muons produced in decays of heavy-flavor mesons. %The $E_T^{miss}$ distribution is peaking
 \end{itemize}
 Most of the backgrounds are estimated using MC. They are normalized using highest cross-section order available. The total list of simulated backgrounds and its cross-section is shown in a Table \ref{tab:Backgrounds}. QCD background is estimated using data driven method.
-\include{tables/Backgrounds}
+
+\begin{table}[h]
+    \caption{Background processes with their associated cross sections and uncertainties. The quoted cross sections are used to normalise estimates of expected number of events}
+	\label{tab:Backgrounds}
+	\begin{center}
+		\begin{tabular}{c | c | c}
+		\hline
+		\hline
+		Process & $\sigma \cdot BR$ [pb] & Order \\
+\hline
+$W^+ \to l \nu$ & \WPxsec(\WPxsecUncertanty) & NNLO \\ 
+$W^- \to l \nu$ & \WMxsec(\WMxsecUncertanty) & NNLO \\ 
+\hline
+$Z \to ll$ & \Zxsec(\ZxsecUncertanty) & NNLO \\
+\hline
+$t \bar{t}$ & \Ttxsec & LO \\
+$WW$ & \WWxsec & LO \\
+$ZZ$ & \ZZxsec & LO \\
+$WZ$ & \WZxsec & LO \\
+$DY \to ee$ & \DYxsec & LO\\
+$DY \to \mu\mu$ & \DYxsec & LO \\ 
+\hline
+\hline
+\end{tabular}
+\end{center}    
+\end{table}
 
 
 \section{QCD background estimation}
@@ -15,27 +41,38 @@ There is a small probability, that jet can fake W-boson decay with isolated lept
 
 Data driven method allows to have model independent predictions with small statistical uncertanty. This method is using \qcd enriched region, where signal events are supressed. This is usually done by reversing identification or isolation criteria. It is assumed, that shape of the qcd background is staying the same in the signal region. Normalization can  be derived in a control region through the template fit. 
 
-Possible weak point that could be coming from this background determination are:
-\begin{itemize}
-
-\end{itemize}
-
 This section describes method of QCD background determination, that have been used in 2.76 TeV data. 
 
 \section{Template selection}
 
 A study have been performed to determine appropriate template selection. Identification criteria are inversed in order to supress the signal events. Because of the origins of the QCD backgrounds, missing transverse energy \etmiss should be smaller in a QCD, that in a signal region. Releasing \etmiss cut is allowing to gain a bigger statistics for a QCD template.  The template sample can have a contributions from other backgrounds (mostly coming from \wlnu). In order to avoid double counting, they are substracted from a template. The total number of events in the template can be defined as:
 \begin{equation}
-N_{template} = N^{bkg enriched}_{data} - \sum_{j}^{MC} N_{MC_j}^{bkg enriched},
+N_{template} = N^{bkg\, enriched}_{data} - \sum_{j}^{MC} N_{MC_j}^{bkg\, enriched},
 \end{equation}
 where $N^{bkg enriched}_{data}$ and $N_{MC_j}^{bkg enriched}$ are number of the events in a background enriched sample in data and MC respectivelly. 
 
-For electron flavour, template is build by requiring the electron candidate to fail Medium isolation criteria, but to pass loose selection.  The resulting shape of the QCD background is shown on a Fig. ~\ref{QCD:ElecTemplate}. Events are selected to pass looser trigger <>, which requires on electron candidate that passing \pt > 10 GeV and loose ID criteria. 
+For electron flavour, template is build by requiring the electron candidate to fail Medium isolation criteria, but to pass loose selection.  The resulting shape of the QCD background is shown on a Fig. ~\ref{QCD:ElecTemplate}. Events are selected to pass looser trigger <>, which requires on electron candidate that passing \ptl > 10 GeV and loose ID criteria. 
 The total number of events in a templates is <somethig>.  The stability of the template can be studied by reversing different identification criteria. As it can be seen on a Fig. ~\ref{QCD:shapeVarElec}, ID criteria is almost not affecting shape of the QCD background. 
 
 It is impossible to use similar procedure in muon channel, since the resulting statistics of template is small (Fig ~\ref{QCD:MuonNotMedium}). Another way of defining QCD template is using the properties of the process, that is resulting in a fake muons. Fake muon are mostly coming from a heavy flavour decays. If a charged hadron comes through the HCAL, it can leave a track in MS and be identified as a muon. Most of the time there are multiple tracks in the ID. So the template muon is selected as a muon, that has track in the ID, but has no track in MS. Effect on the shape of this selection can be studied using smaller sample of $b\bar{b}$ and $c\bar{c}$ MC samples. Additionally, checks on a differences in a shape between signal and template region have been peroformed (Fig. ~\ref{}). This is totally justifies this choise of the template selection. Shape of the background should not depend on the charge of the analysis, so it was desided to use tempate, combined in a both channel. The resulting template is shown on a Fig. \ref{}. 
 Total number of events in a template <something>.
 
 \section{Methodology of the template sample normalization}
-As it was mentioned before, multijet events tend to have smaller \etmiss, than a signal. It was desided to use \etmiss distribution with the released \etmiss cut for a finding a template shape normalization. The normalisation is found through the \chi2 fit of the template and backgrounds to the data.
-Something from ROOFit. In order to eliminate systematics coming from a signal cross section uncertanty, the signal and MJ background left free without any constrains, while other EWK background are varied within 5\% unsertanty on their normalisation constants. 
+As it was mentioned before, multijet events tend to have smaller \etmiss, than a signal. It was desided to use \etmiss distribution with the released \etmiss cut for a finding a template shape normalization. The normalisation is found through the \chiD fit of the template and backgrounds to the data. The following composite model have been used for estimation:
+\begin{equation}
+M(\etmiss) = \sum_{i=1}^{N-1}f_iF_i(\etmiss) + (1- \sum_{i=1}^{N-1} f_i)\cdot F_{qcd}(\etmiss),
+\end{equation}
+where $F_i(\etmiss)$ and $ F_{qcd}(\etmiss)$ are the probability density functions of MC samples and QCD background template respectivelly. Fit parameters $f_i$ are the fractions of MC within fit region. In order to eliminate systematics, coming from cross-section uncertanty, with signal fractions are left freely and and background MC fractions are varied within 5\% uncertanty. 
+
+Normalisation scale for QCD events is calculated from obtained fit parameters as:
+\begin{equation}
+scale = \frac{(1-\sum f_i) \cdot N^{fit}_{Data}}{N_{template}},
+\end{equation}
+where $\sum f_i$ is a sum of all fractions in the fit, $N^{fit}_{Data}$ is a number of data events in a fit histogram and $N_{template}$ is a number of event in a template. The fit is performed separatelly for $W^{+}$ and $W^{-}$. Additionally, fit in uncharged $W$ channel is used as a cross-check of the fit. The results of the fitting procedure are shown on a Fig. . Total number of events and fit uncertanty are shown in a Tab. \ref{sometable}. The overall fraction of QCD events is lower, than in 7 TeV data <reference to a 7 TeV paper>, what is agreeing with expectations. 
+
+\section{Systematic Uncertanty from the Multi-jet Background Estimation}
+The uncertanty of multi-jet background can esimation can be divided into 3 main components:
+\begin{equation}
+\delta_{QCD} = \sqrt{ \delta_{fit\, unc}+\delta_{fit\, bias}+\delta_{template}}, 
+\end{equation}
+where $\delta_{fit\, unc}$ is the uncertanty for a scale from a \chiD fit. The second $\delta_{fit\, bias}$ is coming from an effect from arbirtrary choise of binning and fit range. This error is estimated by repeating fit for a different bin and range choises. Fird uncertanty is due to a potential bias in the template as a result of the template choise and a template statistics itself. 
