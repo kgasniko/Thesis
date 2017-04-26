@@ -1,0 +1,47 @@
+\chapter{Methodology of Cross-Section Measurement}
+
+The production of W and Z bosons is measured in a fiducial volume using the equation:
+\begin{equation}
+\sigma_{fid} = \frac{N-B}{C_{W/Z}L_{int}},
+\end{equation}
+where 
+\begin{itemize}
+\item N is the number of candidates measured in a data
+\item B is the number of background events
+\item $L_{int}$ is the integrated luminosity corresponding to a run selections and trigger requirements
+\item Efficiency correction factor $C_{W}$. 
+\end{itemize}
+
+The efficiency scale factor $C_{W}$ is calculated from MC and defined as :
+\begin{equation}
+C_{W/Z}=\frac{N_{MC, rec}}{N_{MC,gen, cut}}, 
+\end{equation}
+where $N_{MC, rec}$ are sums of weights of events after simulation, reconstruction and selection, $N_{MC,gen, cut}$ - are taken on the generator level after fiducial cuts.
+
+The total W and Z cross-sections are calculated as:
+\begin{equation}
+\sigma_{tot}=\sigma_{W/Z} \cdot BR(W/Z\to l\nu/ll)= \frac{\sigma_{fid}}{A_{W/Z}}= \frac{N-B}{A_{W/Z}C_{W/Z}L_{int}},
+\end{equation}
+where the acceptance $A_{W/Z}$ is used to extrapolate the cross-section measurment in the fiducial volume to the full kinematic region. It is derived from MC and affected only by the theoretical uncertainties. It is obtained as follows:
+\begin{equation}
+A_{W/Z}=\frac{N_{MC,gen, cut}}{N_{MC,gen,all}},
+\end{equation}
+where $N_{MC,gen,all}$ are the sum of weights of all generated MC events
+
+\section{Fiducial volume definition}
+In order to combine results  fiducial region is defined commonly for a different flavors of the analysis:
+\begin{equation}
+W \to l \nu: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, p_T^{\nu} <20 GeV, \, M_T^W > 40 GeV
+\end{equation}
+\begin{equation}
+Z \to ll: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, \, 66 GeV <m_{ll} < 116 GeV
+\end{equation}
+
+Additionally, for a future combination, 13 TeV analysis fiducial phase space have been used:
+
+\begin{equation}
+W \to l \nu: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, p_T^{\nu} <20 GeV, \, M_T^W > 40 GeV
+\end{equation}
+\begin{equation}
+Z \to ll: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, \, 66 GeV <m_{ll} < 116 GeV
+\end{equation}

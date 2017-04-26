@@ -1,6 +1,7 @@
 \chapter{Missing Transverse Energy reconstruction and correction}
-Atlas detector has almost 4$\pi$ coverage. This is allowing to calculate imbalance of energies inside calorimeter, especially transversal part of it called \etmiss.  Neutrino from a $W \to l\nu$ decay is leaving detector, without interacting with it, that is causing large energy imbalance in a detector. 
+Atlas detector has almost 4$\pi$ coverage. This is allowing to calculate imbalance of energies inside calorimeter, especially transversal part of it called \etmiss.  Neutrino from a $W \to l\nu$ decay is leaving detector, without interacting with it, that is causing large energy imbalance in a detector. This chapter discuss <>
 
+\section{Standard Missing Transverse Energy reconstruction}
 Standard reconstruction of \etmiss at \atlas experiment uses transverse energy deposits in the calorimeter, energy losses in cryostat and reconstructed muons for a calculation:
 \begin{equation}
 E_{x(y)}^{miss} = E_{x(y)}^{miss, calo} +  E_{x(y)}^{miss, cryo} +  E_{x(y)}^{miss, muon}.
@@ -10,7 +11,8 @@ Calorimeter term is using information from reconstructed physics objects for cal
 E_{x(y)}^{miss} = E_{x(y)}^{miss, e} + E_{x(y)}^{miss \gamma} + E_{x(y)}^{miss, \tau} + E_{x(y)}^{miss, jets} + E_{x(y)}^{miss,SoftTerm} + E_{x(y)}^{miss, \mu}.
 \end{equation}
 where each term is calculated as the negative sum of the calibrated reconstructed objects, projected onto the x and y directions. Each jet with energy $P_T$>20 GeV is corrected for a pile-up and a jet energy scale is applied. Soft term is calculated from topoclusters and tracks, that are not assosiated with high-pt objects. To avoid double counting muon energy loss is in calorimeter is  subtracted from \etmiss.  The \etmiss muon term is calculated from the momenta of muons measured in a range of pseudorapidity. Since pileup gives a significant effect on a \etmiss performance several methods of pileup suppression are used
-\begin{figure}[b]
+
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/WenuRefFinal.pdf} \\ a)}
 \end{minipage}
@@ -21,23 +23,24 @@ where each term is calculated as the negative sum of the calibrated reconstructe
 \caption{Data and MC comparison for \etmiss calculated by standard \atlas algorithm for a)\wenu b)\wmunu events}
 \label{ris:EtMissRefFinal}
 \end{figure}
+
 This procedure was optimised for 8 TeV runs  and using a calibration constants from it. This can cause problems with 2.76 TeV low pileup run. As a examine showed this is not optimal procedure in this case. Control plots for W production in electron and muon channels are shown on a  Fig. \ref{ris:EtMissRefFinal}. Where a big discrepancies in a muon and electron channel, that cannot be accounted to multijet background. 
 
-\begin{figure}[t]
+\begin{figure}[!tbp]
 \begin{center}
 \begin{minipage}[h]{0.49\linewidth}
 \includegraphics[width=1\textwidth]{HadronRecoil/ReplacementCluster.pdf}
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\includegraphics[width=1\textwidth]{HadronRecoil/RecoHRParPerp.pdf}}
+\includegraphics[width=1\textwidth]{HadronRecoil/RecoHRParPerp.pdf}
 \end{minipage}
 \caption{a) Definition of different zones in the calculation of the cluster-based hadronic recoil. \label{ris:subsCone}, b) Parallel and perpendicular projection of the hadronic recoil with the respect to the transverse momentum of the vector boson \label{ris:HadrRecoilTruthPt}}
 \end{center}
 \end{figure}
 
 
-\section{Hadron Recoil Calculation}
+\section{Reconstruction of Missing Transverse Energy from hadron recoil}
 Second way of calculating \etmiss was developed specifically for a W and Z decays by W mass measurements group. This procedure is using this fact, that a transverse momentum of a W-boson has to be balanced with initial (quark-gluon) state radiation, because initial sum of transverse momentum is zero:
 \begin{equation}
 \vec{P_{T}^{W}} = \vec{P_T^{lep}}+\vec{P_T^{\nu}}= \sum{\vec{P_{T}^{ISRquarks,gluon}}}, 
@@ -58,7 +61,7 @@ while a scalar sum of all transverse energies is corresponding to the hadronic a
 To avoid double counting of lepton energy losses in calorimeter, the clusters inside cone with radius dR = 0.2 are excluded from this calculation.To compensate soft activity inside this cone, clusters are then compensated by replacement cone (Fig. \ref{ris:subsCone}). This cone is defined as cone at the same pesudorapidity, but different $\phi$. It should be far from any other lepton and hadron recoil direction. Each cone is then rotated to a direction of the original lepton direction. This definition is not taking into account jet reconstruction aspects.   This is allowing to get a better data MC agreement (Fig. \ref{ris:HadrRecoilEtMiss}).
 
 
-\begin{figure}[b]
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/W_Boson_etMiss.pdf} \\ a)}
 \end{minipage}
@@ -67,22 +70,24 @@ To avoid double counting of lepton energy losses in calorimeter, the clusters in
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/Wmu_Boson_etMiss.pdf} \\ b)}
 \end{minipage}
 \caption{Data and MC comparison for \etmiss calculated from hadron recoil for a)\wenu b)\wmunu events}
-\label{ris:EtMissRefFinal}
+\label{ris:HadrRecoilEtMiss}
 \end{figure}
 
 
 
-\section{Hadron Recoil calibration}
+\section{Hadron Recoil calibration}\label{sec:HadrCalib}
 \etmiss affects significantly on a W boson measurement, so its important to have good understanding of sources of a possible differences in a hadron recoil reconstruction in a data and monte carlo. 
 
 The hadron recoil algorithm performance can be studied in MC through the projection of $\vec{HR}$ on the direction of the transverce momentum of the vector boson, as shown on Fig. \ref{ris:HadrRecoilTruthPt}. This projection can be divided into perpendicular \uperp and a parallel \upar component as follows:
 \begin{equation}
 \upar=\vec{v_{xy}}\cdot\vec{HR}
+\end{equation}
+\begin{equation}
 \uperp=v_x\cdot HR_y - v_xy \cdot HR_x,
 \end{equation}
 where $\vec{v_xy}$ is a transverse component of vector boson direction and $v_x$ and $v_y$ are the projections on x and y plane respectivelly. In ideal case this $\upar=p_T^{bos}$ and $\uperp = 0$. However calorimeter resolution is causing relativelly wide distributions for this projections (Fig. \ref{somethig}). Parallel component \upar is sensitive to a possible bias in the hadron recoil, while perpendicular \uperp can be used for a determination of resolution discrepancies. The mean and width of this distributions can depend on a different variables, such as mean number of interactions in event, hadronic activity, boson $P_{T}^{bos}$ etc. Typical resolution of measured hadron recoil is <something>
 
-\begin{figure}[t]
+\begin{figure}[!tbp]
 \centering
 \includegraphics[width=0.5\textwidth]{HadronRecoil/W_Event_Mu.pdf}
 \caption{Pileup}
@@ -96,57 +101,74 @@ It is convinient to use Z boson decays for a hadron recoil calibration, since it
 The combined Z and W boson determination procedure have been used. This section describes a procedure of calibrating bias and resolution mismodelling in a hadron recoil, that was apapted for 2.76 TeV data. 
 
 \subsection{Hadron recoil resolution correction}
-There are two possible ways of correcting hadron recoil resolution in a 2.76 TeV data. 
 
-Event activity plays an important role in a \etmiss reconstruction. Since \sumet and hadron recoil resolution values are correlated, the possible mismodelling of event activity can lead to a differences between data and monte carlo (Fig. \ref{sumet}). It could be corrected by reweigting \sumet distribution to match a data (blue arrow on a Fig.). Remaining differences can be corrected on a second step. On another hand it is also possible to neglect second order effects on \etmiss from \sumet distribution and directly correct difference between data and MC (red arrow on a Fig).
+
+Event activity plays an important role in a \etmiss reconstruction. Since \sumet and hadron recoil resolution values are correlated, the possible mismodelling of event activity can lead to a differences between data and monte carlo \etmiss resolution (Fig. \ref{ris:sumetCor}). There are two possible ways of resolution correction in a 2.76 TeV data. It could be corrected by reweigting \sumet distribution to match a data. Remaining differences can be corrected on a second step. On another hand it is also possible to neglect second order effects on \etmiss from \sumet distribution and directly correct difference between data and MC. 
+
+\begin{figure}[!tbp]
+\begin{center}
+
+\begin{minipage}[h]{0.7\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/sumet.png}}
+\end{minipage}
+
+\end{center}
+\caption{Schematic view of the correction procedure: this figure illustrates the resolution of \uperp as a function of \sumet. The dotted curve represents data resolution ($\sigma_{data}$), solid black is a nominal MC ($\sigma_{MC}$). Blue line from point 1 to point 2 corresponds to a \sumet correction. Red line from point 1 to point 2' corresponds to a direct correction of resolution mismodelling }
+
+\label{ris:sumetCor}
+\end{figure}
+
+
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/UncorrSumet/W_EtMiss_CorRecoilSumet.pdf} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/UncorrSumet/Wmu_EtMiss_CorRecoilSumet.pdf} \\ b)}
+\end{minipage}
+\caption{Distribution of \sumet from a) \wenu and b) \wmunu events before correction}
+\label{HadrRecoil:UncorrSumet}
+\vfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CorrSumet/W_EtMiss_CorRecoilSumet.pdf} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CorrSumet/Wmu_EtMiss_CorRecoilSumet.pdf} \\ b)}
+\end{minipage}
+\caption{Distribution of \sumet from a) \wenu and b) \wmunu events after correction}
+\label{HadrRecoil:CorrSumet}
+\end{figure}
 
 \subsubsection{Sumet distribution correction}
 
 Distribution of \sumet  events are shown on a Fig. \ref{HadrRecoil:UncorrSumet}. There is a clear sign of shift in this distribution in a both channels. Unfortunatelly, size of the Z sample is not sufficient for correcting this discrepancies. 
-The determination of sumet reweighting constants uses W boson decays. This procedure should leave the truth boson Pt spectrum untouched. In order to do so, the correction factor are derived inside pt bins as follows:
+The determination of sumet reweighting constants uses W boson decays. Since \sumet and \ptw are correlated correction factors are derived inside $p_T^{W, rec}$  as follows:
 \begin{equation}
-SF^{channel}=\frac{\sum E_T^{data,\, selection} }{\sum E_T^{MC,\, no\, cuts} },
+SF^{channel}=\frac{\sum E_T^{data, \, selection} }{\sum E_T^{MC,\, no\, cuts} },
 \end{equation}
-where $\sum E_T^{data,\, selection} $ and $\sum E_T^{MC,\, no\, cuts}$ is a \sumet distribution inside $p_T^{W, rec}$ bin without any cuts. Oppositely, in MC $\sum E_T^{MC,\, no\, cuts} $ is taken without any cuts. Scale factors are determined separatelly for each signal process for a W boson decays.  In order to increase statistics in data the combination of \wenu and \wmunu processes is used.  In order to have a smother correction and not try to account data fluctuation ratio inside each bin can be parameterised by a polynomial degree   2 inside each $p_T^{W, rec}$ bin (Fig. \ref{something}).  Total SF obtained by this procedure are shown on a Fig. \ref{something}. The distribution of \sumet after correction is shown on a Fig. \ref{HadrRecoil:CorrSumet}. Reconstructed boson pt spectrum is leaving almost untouched, while this procedure still intoduses some shift in a truth boson pt spectrum(Fig. \ref{HadrRecoil:PtSpectrum} ). Effect on the resoultion of \uperp is shown on a Fig. \ref{something}.
-
-\begin{figure}[h]
-\begin{minipage}[h]{0.40\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/UncorrSumet/W_EtMiss_CorRecoilSumet.pdf} \\ a)}
+where $\sum E_T^{data,\, selection} $ and $\sum E_T^{MC,\, no\, cuts}$ is a \sumet distribution inside $p_T^{W, rec}$ bin without any cuts.  Because of the small data statistics combination of  \wenu and \wmunu processes is used. Oppositely, in MC $\sum E_T^{MC,\, no\, cuts} $ is taken without any cuts. Scale factors are determined separately for each signal process for a W boson decays. Example of correction factors for a different $p_T^{W, rec}$ bins are shown on a Fig.\ref{ris:SumEtCorPtW} Ratio inside each bin can be parameterised by a polynomial degree 2 inside each $p_T^{W, rec}$ bin.  Total SF obtained by this procedure are shown on a Fig. \ref{SFWplusenu}. The distribution of \sumet after correction is shown on a Fig. \ref{HadrRecoil:CorrSumet}. Reconstructed boson pt spectrum is leaving almost untouched, while this procedure still intoduses some shift in a truth boson pt spectrum(Fig. \ref{HadrRecoil:PtSpectrum} ). Effect on the resoultion of \uperp is shown on a Fig. \ref{something}.
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/2.pdf} \\ a)}
 \end{minipage}
 \hfill
-\begin{minipage}[h]{0.40\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/UncorrSumet/Wmu_EtMiss_CorRecoilSumet.pdf} \\ b)}
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/10.pdf} \\ b)}
 \end{minipage}
-\label{HadrRecoil:UncorrSumet}
-\vfill
-\begin{minipage}[h]{0.40\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CorrSumet/W_EtMiss_CorRecoilSumet.pdf} \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.40\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CorrSumet/Wmu_EtMiss_CorRecoilSumet.pdf} \\ b)}
-\end{minipage}
-\caption{}
-\label{HadrRecoil:CorrSumet}
+\caption{Distribution of \sumet for different $p_T^{W, rec}$ bins}
+\label{ris:SumEtCorPtW}
 \end{figure}
 
-
-\begin{figure}[t]
+\begin{figure}[!tbp]
 \centering
 \includegraphics[width=0.7\textwidth]{HadronRecoil/SF_EP.pdf}
 \caption{Correction factors for \wenu}
 \label{SFWplusenu}
 \end{figure}
 
-Statistical error of this fluctuations can be estimated from polynomial parameters obtained from fit using bootstrap method. Inside each bin parameters are varied within its fit uncertanty as:
-\begin{equation}
-fit parameters new = fit parameters + gaus^{2D}(cov.matrix),
-\end{equation}
-where $fit parameters$  is a vector of best fit parameters and $gaus^{3D}$ is a 3D gaus, that takes covariance matrix from fit results. This method is allowing to take into account correlations between parameters. This procedure is repeated 25 times for each bin, that gives us set of 25 scale factors, that are later used for error determination.
-
-Sytematical error can be studied by applying lower order of approximation on a SF or not applying it at all. The overall effect on a \cw for a different methods is shown in a Tab. \ref{SumetCW}. Results are dominated by a systematics error. Hoever, there is a difference in a sign of the effect for a different flavours of the analysis. This cannot be explained from a physical point of view, so it was decided not to use this corrections in a final analysis.
- 
-\begin{figure}[h]
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/Wplusenu.pdf} \\ a)}
 \end{minipage}
@@ -158,10 +180,39 @@ Sytematical error can be studied by applying lower order of approximation on a S
 \label{HadrRecoil:PtSpectrum}
 \end{figure}
 
-\subsubsection{Resolution correction using Z events}
-Another way to check resolution effects is to use \uperp and \upar-$\p_T^{Z}$ distributions in a Z events. This correction assumes, that any resolution mismodelling reflects discrepancies in the \sumet distribution, while mismodelling of resolution at a given \sumet is a subleading. There is a clear difference in a rms of this distributions between data and MC, that cannot be accounted as a statistical error in data. Difference in resolutions is consistent for \uperp and $\upar- \p_T^{Z}$ distributions, but depends on a flavour of the analysis.  The resoultion mismodelling is corrected by adding up a gaus to each component of a hadron recoil:
+Statistical error of this fluctuations can be estimated from polynomial  obtained from fit using bootstrap method. Inside each bin parameters are varied within its fit uncertanty as:
+\begin{equation}
+fit\, parameters_{new} = fit\, parameters + gaus^{2D}(cov.matrix),
+\end{equation}
+where $fit\, parameters$  is a vector of best fit parameters and $gaus^{3D}$ is a 3D gaus, that takes covariance matrix from fit results. This method is allowing to take into account correlations between parameters. This procedure is repeated 25 times for each bin, that gives us set of 25 scale factors, that are later used for error determination.
 
-\begin{figure}[h]
+Sytematical error can be studied by applying lower order of approximation on a SF or not applying it at all. The overall effect on a \cw for a different methods is shown in a Tab. \ref{SumetCW}. Results are dominated by a systematics error. However, there is a difference in a sign of the effect for a different flavors of the analysis. This cannot be explained from a physical point of view, so it was decided not to use this corrections in a final analysis.
+
+ \begin{table}
+ \caption{Effect of \sumet correction on a $C_{W}$ for a different channels and methods}
+\label{SumetCW}
+\begin{center}
+\begin{tabular}{c | c |  c |  c   }
+\hline
+Channel & $\delta C_W$ & $\delta C_W$ & $\delta C_W$ \\
+& polynomial order 2 & polynomial order 1 & Toy MC \\
+\hline
+\hline
+$W^{+} \to e^{+}\nu$ & 0.39\%  & 0.31\% & 0.03\% \\
+$W^{-} \to e^{-}\nu$ & 0.33\%  & 0.22\% & 0.03\% \\
+$W^{+} \to \mu^{+}\nu$ & -0.20\%  & -0.28\% & 0.03\% \\
+$W^{-} \to \mu^{-}\nu$ & -0.21\%  & -0.27\% & 0.03\% \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+
+
+\subsubsection{Resolution correction using Z events}
+Another way to check resolution effects is to use \uperp and \upar  $ - p_T^{Z}$ distributions in a Z events. This correction assumes, that any resolution mismodelling reflects discrepancies in the \sumet distribution, while difference in resolution at a given \sumet is a subleading. There is a clear difference in a rms of this distributions between data and MC, that cannot be accounted as a statistical error in data. Difference in resolutions is consistent for \uperp and \upar $- p_T^{Z}$ distributions, but depends on a flavor of the analysis.  The resolution is corrected by smearing with a Gaussian distribution each component of a hadron recoil:
+
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.40\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/UParERMS.pdf} \\ a)}
 \end{minipage}
@@ -191,15 +242,17 @@ Another way to check resolution effects is to use \uperp and \upar-$\p_T^{Z}$ di
 
 \begin{equation}
 \upar' = \upar+Gaus(0, d\sigma)
+\end{equation}
+\begin{equation}
 \uperp' = \uperp + Gaus(0, d\sigma),
 \end{equation}
-where dSigma is a difference in a resoultions calculated as:
+where $d\sigma$ is a difference in a resoultions calculated as:
 \begin{equation}
 d\sigma=\sqrt{\sigma_{data}^2-\sigma_{MC}^2}
 \end{equation}
 Systematic error of this $d\sigma$ is taken as an statistical error for $\sigma_{data}$. Overall effect on a \cw depending on a $d\sigma$ is shown on a Fig. \ref{ris:CwSmear}.
-Due to a random nature of this correction, effect is not stable for a small $d\sigma$. Stability of this correction can be tested by repeating this procedure several times with different random seed number. Overall effect on a \cw and corresponding systematical and statistical error are summarized in Tab. \ref{something}. The effect of stability of the correction is a subleading. 
-\begin{figure}[h]
+Due to a random nature of this correction, effect is not stable for a small $d\sigma$. Stability of this correction can be tested by repeating this procedure several times with different random seed number. Due to a not stable nature of this correction the overall systematics coming from resolution mismodelling is assumed to be 0.2\% for each W channel.
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/CWElectronSmearing.pdf} \\ a)}
 \end{minipage}
@@ -211,9 +264,28 @@ Due to a random nature of this correction, effect is not stable for a small $d\s
 \label{ris:CwSmear}
 \end{figure}
 
+
 \subsection{Hadron recoil bias correction}
 
-\begin{figure}[!htb]
+\begin{table}[!tbp]
+\caption{}
+\label{tab:SFHadronRecoil}
+\begin{center}
+\begin{tabular}{| l | c | c |}
+\hline
+Method & SF & error \\
+\hline
+\hline
+Mean $M_T^{W}$ & 1.10 & 0.2\\
+$M_T^{W}$ \chiD & 1.01 & 0.07 \\
+\upar \chiD & 1.00 & 0.014 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\begin{figure}[!tbp]
 \minipage{0.32\textwidth}
   \center{\includegraphics[width=\linewidth]{HadronRecoil/MtWEScale0.pdf} a)}
 \endminipage\hfill
@@ -223,6 +295,8 @@ Due to a random nature of this correction, effect is not stable for a small $d\s
 \minipage{0.32\textwidth}%
    \center{\includegraphics[width=\linewidth]{HadronRecoil/MtWEScale24.pdf} c)}
 \endminipage
+\caption{}
+\label{HadronRecoilScaleMtW}
 \vfill
 \minipage{0.32\textwidth}
   \center{\includegraphics[width=\linewidth]{HadronRecoil/UParEScale5.pdf} a)}
@@ -233,7 +307,7 @@ Due to a random nature of this correction, effect is not stable for a small $d\s
 \minipage{0.32\textwidth}%
    \center{\includegraphics[width=\linewidth]{HadronRecoil/UParEScale21.pdf} c)}
 \endminipage
-\caption{Trigger scale factors for a) $\mu$ b) $\mu^{+}$  c) $\mu^{-}$}
+\caption{}
 \label{fig:MuSF}
 \end{figure}
 As it was mentioned before, it is possible to use both Z and W boson sample for hadron recoil bias determination. Correction factor $SF_{HR,bias}$ is applied as:
@@ -241,7 +315,7 @@ As it was mentioned before, it is possible to use both Z and W boson sample for 
 \upar^{MC,cor}=\upar^{MC} \cdot SF_{HR,bias},
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/MeanAll.pdf} \\ a)}
 \end{minipage}
@@ -249,6 +323,7 @@ As it was mentioned before, it is possible to use both Z and W boson sample for 
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/MeanCombined.pdf} \\ b)}
 \end{minipage}
+\caption{}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/chi2AllChannelsMtw.pdf} \\ a)}
@@ -257,7 +332,18 @@ As it was mentioned before, it is possible to use both Z and W boson sample for 
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/chi2TotalMtw.pdf} \\ b)}
 \end{minipage}
-\vfill
+\caption{}
+\label{mtWChi2}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.7\textwidth]{HadronRecoil/RangeEffect.pdf}
+\caption{}
+\label{ScaleMtWRange}
+\end{figure}
+
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/chi2Upar.pdf} \\ a)}
 \end{minipage}
@@ -266,7 +352,7 @@ As it was mentioned before, it is possible to use both Z and W boson sample for 
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/chi2UparTot.pdf} \\ b)}
 \end{minipage}
 \caption{Effect on a \cw for a different $d\sigma$ for a) \wenu b)\wmunu channel}
-\label{ris:Cw}
+\label{uPAr}
 \end{figure}
 and can be obtained by scanning the impact of the scaling factor on the Data to MC agreement of the distributions that are dominated by the recoil scale uncertainties. Since W boson has no second source of \ptw measurments, determination of the hadron recoil bias should use the distributions, that  are not sensitive to a truth \ptw spectrum.  One of the optimal choises is a \mtw distribution. Transverse mass distribution for a different scale choises is shown on a Fig. \ref{HadronRecoilScaleMtW}. Multijet background is not included, because it shape and number of events is depending on a hadron recoil scale and thus can introduce additional systematics.
 
@@ -278,14 +364,15 @@ Second way is calculating \chiD for each correction factor. The ideal correction
 \end{equation}
 where $sf_{best}$ is the best scale factor and $\sigma_{sf}$ is a statistical error of this parameter. Distribution of \chiD and a fit in combined W channel is shown on a Fig. \ref{mtWChi2}.
 
-Because of the possible mismodelling of the tail \mtw distribution it is not included in a \chiD calculation, leaving a free choise of the parameter of the cutoff.  It is also possible to exclude regions with high multijet background contamination by applying a tighter cut on a \mtw. 
-This fit range is introducing one source of systematic error. Effect of the range on value determination is shown on a Fig. \ref{ScaleMtWRange}. 
+Because of the possible mismodelling of the tail \mtw distribution it is not included in a \chiD calculation, leaving a free choice of the parameter of the cutoff.  It is also possible to exclude regions with high multijet background contamination by applying a tighter cut on a \mtw. 
+This fit range is introducing one source of systematic error. Effect of the range on value determination is shown on a Fig. \ref{ScaleMtWRange}.
+ 
 Similarly to a W channel, scale correction in a Z sample can be determined from distribution $\frac{\upar}{p_T^{ll}}$, shown on a Fig. \ref{uPAr}. 
-Since there is no choise of the range and dependency on $P_T^{bos}$ modelling, there is just one source of uncertainty.
+Since there is no choise of the range and dependency on $P_T^{bos}$ modeling, there is just one source of uncertainty.
   
 Results on a hadron scale factros and it's errors are shown in a Table \ref{tab:SFHadronRecoil}. The results are consistent within 1 sigma. 
 
-\begin{figure}[h]
+\begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/CWElectron.pdf} \\ a)}
 \end{minipage}
@@ -297,19 +384,3 @@ Results on a hadron scale factros and it's errors are shown in a Table \ref{tab:
 \label{ris:Cw}
 \end{figure}
 
-\begin{table}
-\begin{center}
-\begin{tabular}{| l | c | c |}
-\hline
-Method & SF & error \\
-\hline
-\hline
-Mean $M_T^{W}$ & 1.10 & 0.2\\
-$M_T^{W}$ \chiD & 1.01 & 0.07 \\
-\upar \chiD & 1.00 & 0.014 \\
-\hline
-Total & 1.010 & 0.013 \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}

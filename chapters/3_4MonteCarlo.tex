@@ -1,27 +1,27 @@
 
-\chapter{Monte Carlo}\label{chap:MC}
-The Monte Carlo(MC) method was invented by scientists working on the atomic bomb in the 1940s. Its core idea is to use random samples of parameters or inputs to explore the behavior of a complex system or process.  Nowadays, MC are essential part of both theoretical and experimental particle physics research.
+\chapter{Monte Carlo simulation}\label{chap:MC}
+The Monte Carlo (MC) method was invented by scientists working on the atomic bomb in the 1940s. Its core idea is to use random samples of parameters or inputs to explore the behavior of a complex system or process.  Nowadays, MC experiments are essential part of research in both theoretical and experimental particle physics.
 This chapter gives an overview of ATLAS experiment simulation scheme, simulation methods and software used. Also, a techniques for fast simulation will be discussed. 
 
-\section{Monte Carlo simulation at ATLAS experiment}
+\section{\atlas chain of MC production}
 
 \begin{figure}[h]
 \center{
 \includegraphics[width=0.6\textwidth]{MC/MC_production_chain2.pdf}
-\caption{Diagram of the ATLAS MC production chain}
+\caption{Diagram of the \atlas MC production chain}
 \label{fig:MC_gen}}
 \end{figure}
 
-MC is allowing to make different analysis, such as compare data with predictions, study detector or selection algorithms performance. All of this applications are requiring MC precision. Simulation software expects to use precise physics models for sampling and have large enough statistics, to exclude statistical uncertainties (usually 5 times more, than expected in a data). ATLAS simulation software is integrated into Athena and usually used during large production of events. Simulation chain is generally divided into 4 main steps (Figure ~\ref{fig:MC_gen}):
+Monte Carlo method allows to perform different analysis, generate predictions for comparisons with data, study detector or selection algorithms performance. All of these applications require accurate MC predictions. Simulation software expects to use precise physics models for sampling and have large enough statistics, to exclude statistical uncertainties (usually 5 times more, than expected in a data). \atlas simulation software is integrated into Athena framework and usually used during large production of events. Simulation chain is generally divided into 4 main steps (Figure ~\ref{fig:MC_gen}):
 \begin{description}
-\item[Event generation]Simulation of hard interaction and a resulting high-energy particles parameters. This step is independent of ATLAS detector geometry.
-\item[Simulation]Simulation of energy depositions ("hits") done by final state particles in ATLAS detector.
+\item[Event generation]Simulation of hard interaction and a resulting high-energy particles parameters. This step is independent of \atlas detector geometry.
+\item[Simulation]Simulation of energy depositions ("hits") which are produced by a final state particles.
 \item[Digitalization] Simulation of detector responce using "hits" information:  first, inputs to the read out drivers (ROD's), called "digits" are constructed, then, ROD functionality is emulated. Detector noise effects are added at this stage. 
 \item[Reconstruction] Production of the Analysis Object Data (AOD) files, which are containing sufficient information for physics analysis. This stage is identical for both data and MC
 \end{description}
-This is scheme allows to use computing resources more efficiently, than with a single-step simulation, and simplifies software validation, since it is possible to reuse files from previous stages. In the following sections event generation and simulation will be described in more details
+Additionally, the pileup effects are added to MC by overlaying simulation of the hard interactions with simulation of soft inelastic scatterings. This is scheme allows to use computing resources more efficiently, than with a single-step simulation, and simplifies software validation, since it is possible to reuse files from previous stages. In the following sections event generation and simulation will be described in more details.
 
-\subsection{Event generators}
+\section{Event generators}
 
 \begin{figure}[h]
 \begin{center}
@@ -34,205 +34,45 @@ Hadronization yields hadrons as shown in light green, while the final state part
 }
 \end{figure}
 
-The outcome of the hard interaction could be simple scattering of the hadron elementary constituents, their annihilation into new resonances or a combination of two. In any case, the final state has a large particles multiplicity. The main goal of event generator is to provide a complete picture of this final states: description of the particle types and momentia on event-by-event basis. The factorisation theorem \cite{Factorisation} allows to make event generation in independent stages, which are dominated by different dynamics:
+The outcome of the hard interaction could be simple scattering of the hadron elementary constituents, their annihilation into new resonances or a combination of two. This can lead to a final state with a large particles multiplicity. The main goal of event generator is to provide a complete picture of this final states: description of the particle types and momentia on event-by-event basis. The factorisation theorem \cite{Factorisation} allows to make event generation in independent stages, which are dominated by different dynamics. Schematic plan of simulation of ttbar event is shown in Figure \ref{fig:MC_ttH}:
+
 \begin{description}
 
-\item[Modelling of hard subprocess] Hard subprocess is happening at the smallest scales of times and distance, where all of the colliding partons are considered free. Process of interest is simulated by selecting production channels and calculating corresponding matrix elements (ME) in the desired level of accuracy in pertrubation theory . Most of the generators have leading order or next to leading order ME in $\alpha_s$. 
-\item[Parton showering] Quarks and gluons from hard process can radiate secondary quarks and gluons, resulting on the dozens of additional partons associated with the event. This process calculated as step-by-step evolution of momentum transfer scales from highest (hard subprocess), to the lowest (around 1 GeV). 
-There is a possiblity of double counting between showers and hard subprocess. This can be avoided using matching approach, for which higher order corrections to ME are integrated with parton showers, or merging strategy, there jet resolution scale is used as an threshold between matrix elements and parton showers. 
+\item[Modelling of hard subprocess] Hard subprocess happens at the smallest times and distances, where the colliding partons are considered free. Process of interest is simulated by selecting production channels and calculating corresponding matrix elements (ME) in the desired level of accuracy in pertrubation theory . Most of the generators have leading order or next to leading order ME in $\alpha_s$. 
+\item[Parton showering] Quarks and gluons from hard process can radiate secondary quarks and gluons, resulting in the dozens of additional partons associated with the event. This process is calculated as step-by-step evolution of momentum transfer scales from highest (hard subprocess), to the lowest (around 1 GeV). 
+There is a possiblity of double counting between showers and hard subprocess. This can be avoided using matching approaches, for which higher order corrections to ME are integrated with parton showers, or merging strategy, there jet resolution scale is used as an threshold between matrix elements and parton showers. 
 \item[Hadronisation] Final stable color-neutral particles, what can be detected in experiment, are formed during hadronisation. This occures at larger nonpertrubative scales and  usually implemented using different phenomenological models.
 \item[Modelling underlying event] Parallel to the main process other collisions of partons can occur, called underlying event. These additional interaction can produce partons which contribute to the final state. This is one of the least understood aspect of hadronic collisions. 
 
 \end{description}
 
-Schematic plan of simulation of ttbar event is shown in Figure \ref{fig:MC_ttH}. The hard scattering itself is shown as a red blob with the solid and dashed lines indicating the resulting particles, which themselves decay further. 
-Underlying event is indicated by the violet blob. 
-Parton showers are shown with curly lines.
-Hadronization yields hadrons as shown in light green, while the final state particles are dark green.
 
 The current analysis uses samples generated with the following generators:
 \begin{itemize}[align=left]
 \item[Powheg \cite{Powheg}] Powheg is generator with NLO ME \cite{PowhegNLO}, that can be interfaced with other generator(such as Pythia or Herwig) for higher precision of showering.
 \item[Pythia \cite{Pythia6}] Pythia is a general purpose generator for hadronic, hadron-lepton and leptonic collisions. It can model initial and final state showers, hadronisation and decays, underlying event (via multi parton interactions). Pythia contains library with around 240 processes with LO ME. It uses Lund String model \cite{LundString} for hadronisation.
 \item[Herwig \cite{Herwig}] Herwig is a LO general purpose event generator for simulation lepton-lepton, hadron-lepton and hadron-hadron collisitons. The main difference between Pythia and Herwig is that it is uses angular ordering in the parton showers and also models the hadronisation step based on the cluster fragmentation
-\item[Sherpa \cite{Sherpa}] Sherpa is a generator with tree level of matrix elements, featuring its own implementation of parton shower and hadronisation models.
-\item[Photos \cite{Photos}] Precision tool for QED radiative corrections in W and Z decays.
+\item[Sherpa \cite{Sherpa}] Sherpa is a event generator, that uses tree-level leading order matrix element for a hard scattering and featuring its own implementation of parton shower and hadronisation models.
+\item[Photos \cite{Photos}] Program used for generation ofd QED radiative corrections in W and Z decays.
 \item[Tauola \cite{taluola}] Generator, used to describe leptonic ans semi-leptonic $\tau$-decays.
 \end{itemize}
 
-\subsection{Simulation in Geant4}
+\section{Simulation in Geant4}
 
-After event generation, simulation software obtains hardware response for final state particles. The main method used by ATLAS, referred to as \textit{Full Simulation}, makes use of the Geant4\cite{Geant4}. It is C++ based toolkit for the simulation of the passage of particles through matter. It is used in a wide range of experiments in high energy and nuclear physics.
+After event generation, simulation software obtains hardware response for final state particles. The main method used by \atlas experiment, referred to as \textit{Full Simulation}, makes use of the Geant4\cite{Geant4}. It is C++ based toolkit for the simulation of the passage of particles through matter. It is used in a wide range of experiments in high energy and nuclear physics.
 
 Geant4 can simulate complex detector structures with sensitive detector material and corresponding infrastructure. It can also calculate basic properties of materials, like radiation and interaction length. For detector Geant4 stores "hits" information  - snapshots of physical interactions. 
-In Geant4 events and particles are simulated separately and each particle is moved step by step. Size of this step is chosen to preserve both CPU performance and required precision. Physics is treated as a set of discrete processes. They could be handled either at rest, along step or after it. Geant4 package has different models and approximations for hadronic and electromagnetic processes. Some of them are not approximate, but computationally fast. It allows to choose set of the models, called physics list, depending on particular requirements. There are several reference physics lists, that are validated for each new release of Geant4 software. \atlas experiment is using one of this lists.
+In Geant4 events and particles are simulated separately and each particle is moved in steps. Size of each step is chosen to preserve both CPU performance and required precision. 
 
-It is necessary to have mass MC production for each data taking, what is taking most of the resources. Uncertainties of some of Run-I analyses are dominated by available MC statistics. 
+Physics interactions are treated as a set of discrete processes. They could be handled either at rest, along step or after it. Geant4 package has different models and approximations for hadronic and electromagnetic processes. Some of them are approximate and computationally fast. It allows to choose set of the models, called physics list, depending on particular requirements. There are several reference physics lists, that are validated for each new release of Geant4 software. \atlas experiment uses one of this lists.
 
-It is possible to improve in CPU usage by tuning physics list or working on a magnetic field parametrisation. Also there are long term developments for multi-threading and vectorisation of the code. 
+Most of the computing resources are taken by a mass MC production, required for each data taking periods. Uncertainties of some of Run-I analyses are dominated by available MC statistics. It is possible to improve in CPU usage by tuning physics list or replacing a complex magnetic field maps by a parametrisation. Also there are long-term developments for multi-threading and vectorisation of the code. 
+
 Yet, Run-2 has a higher pileup and luminosity, so even more MC events are needed. This means that fast and accurate simulation approach is essential. During simulation largest time is spend on calorimeters. This is the motivation for development of fast calorimetry techniques.  
 
-There are two main methods used in ATLAS:
+There are two main methods used at \atlas:
 \begin{itemize}
 \item Parametrisation of calorimeter cells responce. Spacial energy responce is simulated using longitudial and lateral energy profiles.
-\item Frozen Showers. This technique will be described more detailed in the following section
+\item Frozen Showers. This technique will be described more detailed in Chap. \ref{chap:FS}
 \end{itemize}
 
-
-\subsection{Frozen Showers}
-Main principle of this method is described by its name. It is using pre-simulated "frozen" showers generated in full simulation and stored in a library. Particles below minimum energy
-thresholds are killed and replaced with with these showers. All of the other particles are simulated using full simulation. This process is schematically shown in a Figure ~\ref{fig:MC_FS_method}.
-\begin{figure}[t]
-\center{
-\includegraphics[width=1.0\textwidth]{MC/MC_FS_method.png}
-\caption{Diagram showing the shower substitution of the low-energy particle, during the high-energy particle simulation.}
-\label{fig:MC_FS_method}}
-\end{figure}
-
-The library itself organized as follows: the header contains basic simulation parameters, like Geant4, geometry and \atlas software release version and physics list used. Showers are stored in a bins of positional  variables (see sec. \ref{sec:FSProd}), while energy remain unbinned. Each shower stores lateral and transverse size and information about energy, time and positions of the hits.
-
-\subsubsection{Production use of Frozen Showers}\label{sec:FSProd}
-
-\begin{figure}[t]
-\center{\includegraphics[width=0.5\linewidth]{MC/xySumE.png} }
-\caption{Average energy response in a calorimeter vs x,y for electrons with energy less than 1 GeV }
-\label{fig:FSFluctuations}
-\end{figure}
-
-
-\begin{figure}[t]
-\center{\includegraphics[width=1.\linewidth]{MC/fullBinningScatter.png} }
-\caption{Energy response for electrons in a calorimeter for all electrons in a library}
-\label{fig:FSProduction}
-\end{figure}
-
-\begin{figure}[t]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{MC/fullBinningScatterSmall.png} \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{MC/fullBinningScatterBig.png} \\ b)}
-\end{minipage}
-\caption{Energy response for electrons in a calorimeter for  a) electrons with energy less than 100 MeV b) electrons with energy bigger, than 100 MeV}
-\label{fig:FSProduction2}
-\end{figure}
-
-
-During simulation, if an energy of a particle falls below cut-off energy, the particle algorithm examines resulting shower containment. It checks  that particle is far from the edges of calorimeter, so what shower will be by 90\% inside calorimeter. This dependes also on a energy of particle, because shower sizes are growing with energy.
-When particle is removed and substituted by shower taken from corresponding eta and distance bin with the closest energy found. Energies of the hits in shower found are scaled to fully correspond to particle energy. Additionally, shower direction is changed to the direction of the particle.
-
-Frozen Showers have been used in \atlas Monte-Carlo production since run-1. This method is applicable for all LAr calorimeters in \atlas, but currently it is enabled for simulation of forward calorimeters (FCAL), since it is showing the smallest differences, compared to the other fast simulation methods (e.g parametrisation). This is because of large of non-uniformly distributed sensitive material, which is giving different responce, than a dead material (Figure ~\ref{fig:FSProduction}). Resolution of a calorimeter can be written as:
-\begin{equation}\label{eq:EMResoultion}
-\frac{\sigma}{E} \approx \frac{1}{\sqrt{E}}	\oplus \frac{1}{E} 	\oplus const,
-\end{equation}
-where symbol $\oplus$ indicates a quadratic sum. The first term is 'stocastic term', which includes intrinsic shower fluctuations, second takes into account readout noise effects and pile-up fluctuations. Constant term derives from non-uniformities in a detector, what are causing large fluctuation of the energy loss. Resolution of high-energy electrons is mostly dominated by this term. Example of these fluctuations is shown on a Figure ~\ref{fig:FSFluctuations}. Cirles are corresponding to a LAr gaps inside FCAL. It can be seen, that particles inside sensitive material are having more energetic showers, than particles in a dead material. It is possible to capture this structure by introducing  distance to a closest rod center:
-\begin{equation}
-D = min(\sqrt{dx^2+dy^2}, \sqrt{(step_x-dx)^2+dy^2}, \sqrt{(step_x/2-dx)^2-(step_y-dy)^2}), 
-\end{equation}
-where dx and dy are the distances to a rod center in a x and y plane respectivelly. They are calculated as:
-\begin{equation}
-dy = y-n[]
-\end{equation}
-
-Dependency of summed energy of shower on the distance defined above is shown on a Figure ~\ref{fig:FSProduction}. Gap is marked by the red lines. Size of this differences between sensitive material and dead material depends on a initial particle momentia (Figure ~\ref{fig:FSProduction2} a and b). For electrons with energy greater than 500 GeV they are almost negligible. Additionally, at higher energies gain in a CPU time is moderade, while library becomes bigger. This is reason for an upper limit to be set at 1000 MeV
-\begin{figure}
-\center{
-\includegraphics[width=0.8\textwidth]{MC/FSEnergy.pdf}
-\caption{Distribution of shower energy used in production of 1000 GeV electrons.}
-\label{fig:FSEnergy}}
-\end{figure}
-
-Performance of frozen showers is also depending on a lower limit of a method. 
-Distribution of shower energies, used for production of high-energetic electron (1000 GeV in that case), is shown on a Figure ~. More than 50\% of them are having energy less than 20 MeV. Studies have showed, that Frozen showers are slower, than a standard Geant4 simulation for showers with energy 3 MeV. This is happening due to library non-binned structure for energy. This makes search of closest energy shower in a library slower, than simulation of shower with zero or one hit in a sensitive detector. 
-
-\subsubsection{Generation of Frozen Showers library}
-
-\begin{table}
-\centering
-\begin{tabular}{l|r}
-\hline
-\hline
-\multicolumn{2}{c}{The general frozen showers parameters} \\
-\hline
-Detectors used            & FCAL1, FCAL2, FCAL3 \\
-Type of the particle      & photons, electrons, neutrons \\
-Energy range              &  $E_{\gamma}<10$~MeV,  $E_{e}<1000$~MeV,  $T_n<100$~MeV \\
-Containment requirement   & $\Delta E_{shower} > 98\%$\\
-\hline
-\multicolumn{2}{c}{The library post-processing parameters} \\
-\hline
-Generation clustering cutoff & $(\Delta R_{cluster})^{2} < 25$ mm\\
-Generation truncation cutoff & $R_{hit}^{2} < 50000$ mm, $\Delta E_{shower} < 1\%$\\
-\hline
-\hline
-\end{tabular}
-\caption{Main parameters used for the frozen shower libraries in FCAL }
-\label{tab:MC_FS_params}
-\end{table}
-
-In a Frozen Shower method there are separate libraries for each particle and subdetector used. Showers should cover fully energy and pseudorapidity region and be able to describe data, that is needed during simulation. This is why 2 stages simulation approach have been used. The first stage takes initial particle parameters from a physical processes (ttbar or a single electron). 
-
-The first stage is to take initial particle parameters, that later will be used in a library from a physical process. This is done using simulation of some process (e.g. ttbar or single electron). Every time, when particle becomes eligible for Frozen Showers, it parameters are saved in a HepMC format. Particles inside calorimeter tend to cluster tightly around initial track, so random truncation of initial particles is used to obtain better detector coverage. On the second stage, this primary particles are propagated through the calorimeter using standart Atlas simulation infrastructure. Resulted shower parameters are saved in a library. This procedure allows to take into account sampling fluctuations and charge-collection effects on a hit information automatically. Additionally, in order to save disc space as well as a memory consumption, hit information is compressed. This compression is done in a two steps, hit merging and truncation:
-\begin{itemize}
-\item if the distance between any two hits is smaller, than a given parameter $R_{min}$, then hits are merged into one deposit at the energy weighted center of them. This process is done iterativelly.
-\item hits whose energies are below the fraction f of the total energy sum of all hits, are truncated. The energy of remaining hits is rescaled back to preserve the total deposited energy.
-\end{itemize}
-
-Unfortunately, for a Frozen Showers, generated for Run-1 monte-carlo, additional tuning of electron libraries was needed. This was done using reconstructed energy of electrons. Frozen Showers tend to underestimate fluctuations of energy loss, that is leading to a smaller electron resolution for a high energies. Correction is done by enlarging bin, corresponding to a gap position. Also, correction of the mean shift is done by scaling energy response of all showers. After this frozen showers are showing good agreement with full simulation. This procedure needs to be done every time, when something is changing in software. Because tuning is done manually, lots of a manpower is needed for each Monte Carlo mass production campaign.
-
-
-
-\begin{figure}[h]
-\center{
-\includegraphics[width=0.7\textwidth]{MC/fs.png}
-\caption{Electron resolution for full simulation, tuned and untuned frozen showers}
-\label{fig:FS_resolution}}
-\end{figure}
-
-\subsubsection{Distance binning problem}
-As it was mentioned before, process of library generation can be comlicated and take a lot of the time because of the needed tuning. In this subchapter possible ways to improve frozen showers performance have been studied. 
-\begin{figure}
-\center{
-\includegraphics[width=0.8\textwidth]{MC/FSEtaMomVsEnergy.pdf}
-\caption{Distribution of showers used in production of 1000 GeV electrons on shower energy vs $\eta_{momentum}$ plane.}
-\label{fig:EtaMomVsEnergy}}
-\end{figure}
-
-As it was mentioned before, that there are two type of material used in a FCAL. Showers within them are giving different response, what is affecting overall reconstructed electron energy resolution.  At the first generations distance bin have been corresponding to LAr gap or dead material positions. During tuning bin with LAr was enlarged to gain a better agreement with full simulation. So, one of the basic ideas to improve frozen showers performance is to change a size of LAr gap in a library generation. 
-
-It was decided to treat showers, that have been born near LAr gap and crossed it on a radiation length, in a same way with showers in sensitive material gap, and call them sensitive material showers. Oppositely, showers, that haven't crossed LAr gap, are called dead showers. This model leads to a bigger gap width by a definition. One of the possible ways to find this bin position automatically is to use machine learning tools. 
-
-Machine Learning is a set of algorithms, what allows computers to learn and give a predictions without being specifically programmed. This is a modern field of computer science, that is wildly used in a different fields like computer vision, natural language processing, data science etc. There are two main types of machine learning algorithms: supervised, where example of desired output is given by the "teacher" and the goal is to learn a general rule, that maps inputs to outputs and unsupervised learning, then there are no labels given to algorithm, and algorithms is discovering hidden patterns in data. Initial data parameters of interest, that are used in algorithm to learn are called features. It is important to have right proper set of features and good training sample. 
-
-From a geometrical point of view, one of the main parameter is a direction of the shower. Eta momentum distribution is showed on a Figure ~\ref{fig:EtaMomVsEnergy} . Most of the showers are collinear to an electron direction. Because of this it was decided to use as a training sample simulation results for electrons with energies less than 1 GeV and momentum uniformly distributed between eta 3.0 and 4.0. This allowing to study equally low and high energy showers equally.
-
-\begin{figure}[h]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{MC/firstClassifier.png} \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{MC/secondClassifier.png} \\ b)}
-\end{minipage}
-\caption{Results of machine learning for a) first classifier b) second classifier. Cyan dots are corresponding to sensitive material showers, red - dead material showers}
-\label{fig:Class}
-\end{figure}
-
-
-From out definition of 2 classes of showers, it is simple to construct a pre-labelled training sample. This is done by reducing initial sample and taking showers near rod center and inside liquid argon gap. Output of this classifier, that was trained on with sample with shower features, such as energy response and number of hits, than can be used to expand our labels to a full distance range. Than it can be used as an input to a second classifier, which will separate two types of showers using particle parameters, such as energy and distance to a rod center. For a first step decision trees have showed good classification efficiency (around 97\%). For a second classifier support vector machines have been used. This method is trying to reconstruct a hyperplane, that is dividing two classes. Outputs of both of this classifiers are shown on a figure . New gap position is determined using borders of hyperplane. This procedure is giving expected from the initial model results. Gap is wider, than and original one. It is also getting bigger with bigger energy, because of the radiation length growth. 
-Validation results for two different eta bins are shown on figure ~ a) and b). In a bin this new binning is performing better, than original one without any additional tuning. Unfortunately this is not true for all of the bins, as we can see on a figure ~ b). This eta bin have showed worst performance for a new binning, but it is performing still better, than original binning without tuning.
-
-\begin{figure}[h]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{MC/rms3p95.pdf} \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{MC/rms3p5.pdf} \\ b)}
-\end{minipage}
-\caption{Resolution of reconstructed electrons for full simulation, new libraries with ML binning and old tuned libraries with original binning for a) eta =3.95 b)eta=3.5 }
-\label{fig:Class}
-\end{figure}
-
-This binning was used in a production of new libraries for Monte Carlo in a Run-2. It is planned to use more precise training sample for a future iterations of this procedure for improving performance of outlying eta bins.
