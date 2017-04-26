@@ -1,0 +1,41 @@
+\newcommand{\rot}{\rotatebox{90}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{landscape}
+\begin{table}[p]
+\caption{}
+\label{tab:Unc}
+\begin{center}
+\begin{tabular}{l | c  || c | c || c | c || c | c ||  }
+Source of uncertainty & Method & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{Z} / C_{Z} (\%) $ & $\delta C_{Z} / C_{Z} (\%) $\\
+ &  & $W^{+}\to e\nu$ & $W^{-}\to e\nu$ & $W^{+}\to \mu\nu$ & $W^{+}\to \mu\nu$ & $Z\to ee$ & $Z\to \mu\mu$ \\
+\hline
+Electron reconstruction & Toy MC &  \RecEffToyWplusenu  & \RecEffToyWminenu & - & - & \RecEffToyZee  & - \\
+Electron identification  & Toy MC &  \IDEffToyWplusenu  & \IDEffToyWminenu &  - & -  & \IDEffToyZee  &  - \\
+Electron trigger efficiency & Toy MC &  \TrigToyWplusenu  & \TrigToyWminenu & - & -  & \TrigToyZee  & - \\ 
+Muon reco+id & Toy MC &  -  & - & \muIDEffToyWplusmunu & \muIDEffToyWminmunu   & - & \muIDEffToyZmumu \\
+Muon trigger  & Offset&  -  & - & \muTrigWplusmunu & \muTrigWminmunu & - & \muTrigZmumu \\
+Electron energy scale & Offset &  &  & - & - &  & -\\
+\tab - Statistical error & Offset &  &  & - & - &  & -\\
+\tab - Bias in method  & Offset &  &  & - & - &  & -\\
+\tab - Scale uncertainty &  Offset&  &  & -  & - &  & -\\
+\tab - Presampler energy scale & Offset &  &  &-  & - &  &- \\
+\tab - Material knowledge &  Offset &  &  & - & - &  &- \\
+Electron energy resolution & Offset &\SmearWplusenu  & \SmearWminenu & - & - & \SmearZee  &- \\
+Muon energy scale & Offset & - & - & \MuSmearingScaleWplusmunu & \MuSmearingScaleWplusmunu & - & \MuSmearingScaleZmumu \\
+Muon energy resolution total & Offset &- & - & Wplusmunu & Wminmunu & - & Zmumu\\ 
+\tab - Muon ID energy scale & Offset & - & - & \MuSmearingMSWplusmunu & \MuSmearingMSWminmunu & - & \MuSmearingMSZmumu\\ 
+\tab - Muon MS energy scale & Offset & - & - & \MuSmearingIDWplusmunu & \MuSmearingIDWminmunu & - & \MuSmearingIDZmumu\\ 
+Hadron recoil scale & Offset &  &  &  &   & - & -\\
+Hadron recoil resolution & Offset &  &  &  &  & - & - \\
+Background &  &  &  &  &  &  & \\
+\hline
+PDF error & &  &  &  &  &  & \\
+\hline
+Statistics & &  &  &  &  &  & \\
+\hline
+Total& &  &  &  &  &  & \\
+\end{tabular}
+\end{center}
+\end{table}
+\end{landscape}
