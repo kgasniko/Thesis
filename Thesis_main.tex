@@ -37,6 +37,26 @@
 % Load Abbreviations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{Aux/Abbreviations_Artur.tex}
+\input{SystematicsTexFormat/Wplusenu/Wplusenu_Results.tex}
+\input{SystematicsTexFormat/Wplusmunu/Wplusmunu_Results.tex}
+\input{SystematicsTexFormat/Wminenu/Wminenu_Results.tex}
+\input{SystematicsTexFormat/Wminmunu/Wminmunu_Results.tex}
+\input{SystematicsTexFormat/Zee/Zee_Results.tex}
+\input{SystematicsTexFormat/Zmumu/Zmumu_Results.tex}
+
+\input{SystematicsTexFormat/Wplusenu/SystValues.tex}
+\input{SystematicsTexFormat/Wplusmunu/SystValues.tex}
+\input{SystematicsTexFormat/Wminenu/SystValues.tex}
+\input{SystematicsTexFormat/Wminmunu/SystValues.tex}
+\input{SystematicsTexFormat/Zee/SystValues.tex}
+\input{SystematicsTexFormat/Zmumu/SystValues.tex}
+
+%\input{SystematicsTexFormat/Wplusenu}
+%\input{SystematicsTexFormat/Wplusmunu}
+%\input{SystematicsTexFormat/Wminenu}
+%\input{SystematicsTexFormat/Wminmunu}
+%\input{SystematicsTexFormat/Zee}
+%\input{SystematicsTexFormat/Zmumu}
 %%%%%%END-ABBREVIATIONS%%%%%%%%%%
 
 %\usepackage{siunitx}
@@ -75,7 +95,7 @@
 %\setcounter{tocdepth}{1}  % set TOC depth (no subsecs)
 % Add Contents to PDF bookmarks
 %\pdfbookmark{\contentsname}{Contents}
-%\tableofcontents
+\tableofcontents
 %  \mtcaddchapter
 
 %% Glossary
@@ -94,7 +114,7 @@
 %% Main matter
 \linenumbers
   \mainmatter
-  %\part{Thesis overview}
+  \part{Thesis overview}
   \input{chapters/1Intro.tex}
   \part{Theory introduction}
   \input{chapters/2Theory.tex}
@@ -103,16 +123,18 @@
   \input{chapters/3_2Atlas.tex}
   \input{chapters/3_3Software.tex}
   \input{chapters/3_4MonteCarlo.tex}
+  \input{chapters/3_5FrozenShowers.tex}
   \input{chapters/3_5DataSample.tex}
-  \part{Measurment of cross-section}
-   \input{chapters/4_1EventSelection.tex}
+  \part{The Measurement}
+  \input{chapters/4_1EventSelection.tex}
   \input{chapters/4_2MCCorrections.tex}
   \input{chapters/4_3EtMiss.tex}
   \input{chapters/4_3BackgroundEstimation.tex}
-  \input{chapters/4_4Systematics.tex}
   \input{chapters/4_5ControlPlots.tex}
+  \input{chapters/4_5Methodology.tex}
+  \input{chapters/4_4Systematics.tex}
   \input{chapters/4_6Results.tex}
-  \part{PDF fits}
+  %\part{PDF fits}
   \input{chapters/5PDF.tex}
 
 %\input{Chapters/Intro.tex}
