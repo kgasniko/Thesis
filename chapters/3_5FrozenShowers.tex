@@ -1,14 +1,23 @@
 \chapter{Frozen Showers}\label{chap:FS}
 
-As it was mentioned in a previous chapter, fast simulation techniques are the essential part of Monte-Carlo production at \atlas experiment. Typical time for a simulation of 1 $t\bar{t}$ event is around 1 minute, and most of the time is spend on a simulation of particle interaction in calorimeters. This is a main motivation of development of fast calorimetry techniques. 
-Frozen showers is currently the main fast calorimeter simulation approach used at \atlas experiment. In this chapter we will discuss main principles and current developments in optimization of this method.
+As it was mentioned in a previous chapter, fast simulation techniques are the essential part of Monte-Carlo production at \atlas experiment. Typical time for a simulation of $t\bar{t}$ event is around 1 minute, and most of the time is spend on a simulation of particle interaction in calorimeters. This motivates a development of fast calorimetry techniques. 
 
-Frozen shower method uses pre-simulated "frozen" showers instead of the full simulation. This is allowing to reduce time spend on a simulation of a large amount of low energy sub showers. Typical number of frozen showers used in a simulation of 1 ttbar event is. This method is allowing to have a 25\% speedup. 
+Frozen showers is currently the main fast calorimeter simulation approach used at \atlas experiment. In this chapter we will discuss main principles,difficulties and current developments in this method.
 
-This method requiring in advance generation of a libraries for each detector and particle used in this method. Later, during fast simulation, if a particle energy falls below a cutoff it is replaced by a shower from a library. Main parameters used in \atlas simulation are summarized in a Tab. ~\ref{tab:MC_FS_params}. 
+Frozen shower method uses pre-simulated "frozen" showers instead of the full simulation. This is allowing to reduce time spend on a simulation of a large amount of low energy sub showers. This method is allowing to have a 25\% speedup in simulation. It is required to have an  in advance generation of a libraries for each detector and particle used in this method. Each shower from a library stores it's lateral and transverse size and list of the all energy depositions inside sensitive material (hits) with information about their energy, position and time. During a simulation, if energy of secondary electron falls below cutoff energy it is replaced by a shower from a library, as shown on a Fig. ~\ref{fig:MC_FS_method}. Main parameters used in \atlas simulation are summarized in a Tab. ~\ref{tab:MC_FS_params}.
 
-\begin{table}[b]
-\caption{Main parameters used for the frozen shower libraries in FCAL }
+
+\begin{figure}[!bp]
+\center{
+\includegraphics[width=0.6\textwidth]{MC/FSMethod2.png}
+\caption{Diagram showing the shower substitution of the low-energy particle, during the high-energy particle simulation. Some of the showers from a particles, substituted by frozen showers method marked by a red squares}
+\label{fig:MC_FS_method}
+}
+\end{figure}
+
+
+\begin{table}[!tbp]
+\caption{Main parameters used for the frozen shower libraries}
 \label{tab:MC_FS_params}
 \centering
 \begin{tabular}{l|r}
@@ -19,25 +28,35 @@ This method requiring in advance generation of a libraries for each detector and
 Detectors used            & FCAL1, FCAL2\\
 Type of the particle      & photons, electrons, neutrons \\
 Energy range              &  $E_{\gamma}<10$~MeV,  $E_{e}<1000$~MeV,  $T_n<100$~MeV \\
-Containment requirement   & $\Delta E_{shower} > 98\%$\\
-\hline
-\multicolumn{2}{c}{The library post-processing parameters} \\
-\hline
-Generation clustering cutoff & $(\Delta R_{cluster})^{2} < 25$ mm\\
-Generation truncation cutoff & $R_{hit}^{2} < 50000$ mm, $\Delta E_{shower} < 1\%$\\
-\hline
 \hline
 \end{tabular}
 
 \end{table}
 
-\section{Problem description}
 
-\begin{figure}[!b]
-\center{\includegraphics[width=0.5\linewidth]{MC/xySumE.png} }
-\caption{Shower energy response histogram in the x vs y plane for electrons, generated with uniformly distributed x and y and energy less than 1 GeV. Light circles are corresponding to a showers, started inside a LAr gaps with on average higher energy response, while the dark parts are corresponding to dead material respectively with smaller sum of the "hits" energy. }
+\section{Problem description}\label{sec:FSproblem}
+
+%\begin{figure}[!b]
+%\center{\includegraphics[width=0.5\linewidth]{MC/xySumE.png} }
+%\caption{Shower energy response histogram in the x vs y plane for electrons, generated with uniformly distributed x and y and energy less than 1 GeV. Light circles are corresponding to a showers, started inside a LAr gaps with on average higher energy response, while the dark parts are corresponding to dead material respectively with smaller sum of the "hits" energy. }
+%\label{fig:FSFluctuations}
+%\end{figure}
+
+
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.9\linewidth]{MC/xySumE.png} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.9\linewidth]{MC/DistanceCalculation.png} \\b)}
+\end{minipage}
+\caption{ a) Shower energy response histogram in the x vs y plane for electrons, generated with uniformly distributed x and y and energy less than 1 GeV. Light circles are corresponding to a showers, started inside a LAr gaps with on average higher energy response, while the dark parts are corresponding to dead material respectively with smaller sum of the "hits" energy.
+b) Distance to a closest rod center scheme, where $d_{rod} = min( d(1,e), d(2, e), d(3, e))$. Rod centers and liquid argon gaps are shown by black and red circles respectivelly.}
+%\caption{Distribution a) electron energies and b) mean number of hits in a shower vs energy of electron for electrons with energy less than 1 GeV coming from initial electron with energy 1 TeV. }
 \label{fig:FSFluctuations}
 \end{figure}
+
 
 Fast simulation of forward calorimeters (FCAL) is a complicated task due to its complex structure. As it was mentioned in a Sec. ~\ref{sec:forwardCalo} FCAL consists of hexagonal absorber cells with anode tube and cathod rod in the cell center and liquid argon in the gap between rod and tube. In order to simulate resolution of high energetic electrons, good fast simulation technique should take this feature of large amount of non-uniformly distributed sensitive material.
 
@@ -51,7 +70,23 @@ Fluctuations due to a detector design are visible in a simulation of small energ
 \begin{equation}
 E^{shower}=\sum E_i^{hits},
 \end{equation}
-where $E_i^{hits}$ is an energy of i-th shower deposit inside sensitive material. Periodic structure resembles the calorimeter design, where light circles are corresponding to gaps with liquid argon. It could be reduced to a 1-d problem by introducing distance to a closest rod center. Fig. ~\ref{fig:FSProduction} presents a distribution showers for electrons with energy below 1 GeV coming from initial electrons with energy 1 TeV in the distance to a closest rod center vs shower energy plane. Liquid argon gap is marked by a red lines. There is a clear difference in a showers energies between electrons born in a sensitive and dead material. Difference in a shower properties are also visible for number of hits  (Fig. ~\ref{fig:ShowerProp} a) and standard deviation energy of hits in shower (Fig. ~\ref{fig:ShowerProp} b) distributions. Size of this differences depends on a electron energies and higher for a smaller energies (Fig. ~\ref{fig:FSProduction2} a) and less significant for a higher energies (Fig. ~\ref{fig:FSProduction2} b).  In order to simulate resolution of electrons appropriately , frozen showers method should simulate this distributions close to the nominal. 
+where $E_i^{hits}$ is an energy of i-th shower deposit inside sensitive material. Periodic structure resembles the calorimeter design, where light circles are corresponding to gaps with liquid argon. It could be reduced to a 1-d problem by introducing $d_{rod}$ distance to a closest rod center. 
+
+Typical electron substituted by a frozen showers coming from a simulation of high energy electrons have a relativelly small energy (Fig. ~\ref{fig:TrackEnergy} a)). Mean number of depositions in a sensitive material in a "frozen" shower is around 5 and this value rises with electron energy (Fig. ~\ref{fig:TrackEnergy} b).  Fig. ~\ref{fig:FSProduction} presents a distribution showers for electrons with energy below 1 GeV coming from initial electrons with energy 1 TeV in the distance to a closest rod center vs shower energy plane. Liquid argon gap is marked by a red lines. There is a clear difference in a showers energies between electrons born in a sensitive and dead material. Difference in a shower properties are also visible for number of hits  (Fig. ~\ref{fig:ShowerProp} a) and standard deviation energy of hits in shower (Fig. ~\ref{fig:ShowerProp} b) distributions. Size of this differences depends on a electron energies and higher for a smaller energies (Fig. ~\ref{fig:FSProduction2} a) and less significant for a higher energies (Fig. ~\ref{fig:FSProduction2} b).  This fact combined with energy distribution states an importance of proper simulation non-uniformities for showers coming from a small energy electrons.
+
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.0\linewidth]{MC/FSEnergy.pdf}  \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.0\linewidth]{MC/nHitsMean.pdf} \\ b)}
+\end{minipage}
+\caption{Distribution a) electron energies and b) mean number of hits in a shower vs energy of electron for electrons with energy less than 1 GeV coming from initial electron with energy 1 TeV. }
+\label{fig:TrackEnergy}
+\end{figure}
+
+
 
 \begin{figure}[!tbp]
 \center{\includegraphics[width=1.\linewidth]{MC/fullBinningScatter.png} }
@@ -83,67 +118,135 @@ where $E_i^{hits}$ is an energy of i-th shower deposit inside sensitive material
 \label{fig:FSProduction2}
 \end{figure}
 
-\section{Frozen showers generation and use in a Monte-Carlo production}
+On another hand, use of the frozen showers in a small energy region can be suboptimal because of the small number of energy depositions in a shower. For electrons with energy less than 30 MeV 90\% of the showers has zero depositions and just 0.5\% of showers are having more than 1 hits (Fig. ~\ref{fig:fracHits}). Below this energy single energy spot model have showed better performance in simulation.
 
-Frozen showers is the main method used in \atlas experiment for a fast simulation of physics inside calorimeter. It replaces a full simulation of a shower with a "frozen" shower from a library. This method consists of 2 stages: library generation and a production use. Because most of the time is spend on a simulation of electromagnetic showers inside froward calorimeters due to their complex structure (Sec. \ref{FCAL}) and a large particle multiplicity, frozen showers are used in simulation of FCAL1 and FCAL2. Main parameters of a frozen shower libraries are summarized in Tab. \ref{tab:MC_FS_params}.
-
-%< Energy have been optimised for something >
-
- The library itself organized as follows: the header contains basic simulation parameters, like Geant4, geometry and \atlas software release version and physics list used. Showers are stored in a bins of positional  variables (see sec. \ref{sec:FSProd}), while energy remain unbinned. Each shower stores lateral and transverse size and information about energy, time and positions of the hits.
- 
-During simulation, if an energy of a particle falls below cut-off energy, the particle algorithm examines resulting shower containment. It checks  that particle is far from the edges of calorimeter, so what shower will be by 90\% inside calorimeter. This dependes also on a energy of particle, because shower sizes are growing with energy.
-When particle is removed and substituted by shower taken from corresponding eta and distance bin with the closest energy found. Energies of the hits in shower found are scaled to fully correspond to particle energy. Additionally, shower direction is changed to the direction of the particle.
-
-Frozen Showers have been used in \atlas Monte-Carlo production since run-1. This method is applicable for all LAr calorimeters in \atlas, but currently it is enabled for simulation of forward calorimeters (FCAL). 
- 
-It uses "frozen" showers generated using full simulation.  This showers are stored in a  Particles below minimum energy
-thresholds are killed and replaced with with these showers. All of the other particles are simulated using full simulation. This process is schematically shown in a Figure ~\ref{fig:MC_FS_method}.
-
-
-\begin{figure}[!b]
-\center{
-\includegraphics[width=1.0\textwidth]{MC/MC_FS_method.png}
-\caption{Diagram showing the shower substitution of the low-energy particle, during the high-energy particle simulation.}
-\label{fig:MC_FS_method}}
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/fracHits2.pdf} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/fracHits.pdf} \\ b)}
+\end{minipage}
+\caption{Distribution of fraction of showers with a)at least 1 b) at least 2 depositions inside sensitive material depending on a initial electron energy. Red line denotes 30 MeV lower limit for a frozen showers method.}
+\label{fig:fracHits}
 \end{figure}
 
 
+\section{Generation and use in simulation}
+
+As it was mentioned in introduction frozen showers method consist of the 2 stages: generation of libraries and use in simulation. Generation needs to be repeated for each significant change in a physics processes description in Geant4 or in a description of detector. Showers are stored in a library in pseudorapidity and distance to a closest rod center bins, while energy remains unbinned. Distance binning was introduced to describe fluctuations from Sec. \ref{sec:FSproblem}. Position of the liquid argon gap bin is corresponding to a real gap position. 
+
+In order to have proper energy distribution for a generation of library particles coming from a simulation of physical process (usually $t\bar{t}$ or high energy electrons) are used. For each particle eligible for frozen showers use parameters are saved in a HepMC (reference) format for a later use. On a second stage, these particles are propagated through the calorimeter using standard \atlas simulation infrastructure. Each hit is saved as a shower inside library in a corresponding pseudorapidity and distance bin. 
+
+Additionally, in order to save disc space as well as a memory consumption, hit information is compressed. This compression is done in a two steps: 
+\begin{description}
+\item [Hit merging] if the distance between any two hits is smaller, than a given parameter $R_{min}$, then hits are merged into one deposit at the energy weighted center of them. This process is done iterativelly.
+\item [Truncation] hits whose energies are below the fraction f of the total energy sum of all hits, are truncated. The energy of remaining hits is rescaled back to preserve the total deposited energy.
+\end{description}
+
+During simulation, if an energy of a particle falls below cut-off energy, the particle algorithm examines resulting shower containment. It checks  that particle is far from the edges of calorimeter, so what shower will be by 90\% inside calorimeter. This depends also on a energy of particle, because shower sizes are growing with energy. The algorithm searches for a shower with the closes energy in a corresponding pseudorapidity and distance bin. Shower is a rotated in a direction of particle. In order to correct differences in energy, each hit in a shower is scaled as:
+\begin{equation}
+E_{hit}^{new}=E_{hit}\cdot \frac{E_{part}}{E_{part,lib}},
+\end{equation}
+where $E_{hit}$ is the energy of the hit, $E_{part}$ is the energy of the particle and $E_{part,lib}$ is the energy of the particle from a library. Then particle is removed and substituted by a resulting shower. Later, reconstruction algorithm uses hits from a frozen shower as a usuall energy depositions in a sensitive material. 
 
 \begin{figure}[!tbp]
 \center{
-\includegraphics[width=0.8\textwidth]{MC/FSEnergy.pdf}
-\caption{Distribution of shower energy used in production of 1000 GeV electrons.}
-\label{fig:FSEnergy}}
-\end{figure}
-
-Performance of frozen showers is also depending on a lower limit of a method. 
-Distribution of shower energies, used for production of high-energetic electron (1000 GeV in that case), is shown on a Figure ~. More than 50\% of them are having energy less than 20 MeV. Studies have showed, that Frozen showers are slower, than a standard Geant4 simulation for showers with energy 3 MeV. This is happening due to library non-binned structure for energy. This makes search of closest energy shower in a library slower, than simulation of shower with zero or one hit in a sensitive detector. 
-
-
-
-In a Frozen Shower method there are separate libraries for each particle and subdetector used. Showers should cover fully energy and pseudorapidity region and be able to describe data, that is needed during simulation. This is why 2 stages simulation approach have been used. The first stage takes initial particle parameters from a physical processes (ttbar or a single electron). 
-
-The first stage is to take initial particle parameters, that later will be used in a library from a physical process. This is done using simulation of some process (e.g. ttbar or single electron). Every time, when particle becomes eligible for Frozen Showers, it parameters are saved in a HepMC format. Particles inside calorimeter tend to cluster tightly around initial track, so random truncation of initial particles is used to obtain better detector coverage. On the second stage, this primary particles are propagated through the calorimeter using standart \atlas simulation infrastructure. Resulted shower parameters are saved in a library. This procedure allows to take into account sampling fluctuations and charge-collection effects on a hit information automatically. Additionally, in order to save disc space as well as a memory consumption, hit information is compressed. This compression is done in a two steps, hit merging and truncation:
-\begin{itemize}
-\item if the distance between any two hits is smaller, than a given parameter $R_{min}$, then hits are merged into one deposit at the energy weighted center of them. This process is done iterativelly.
-\item hits whose energies are below the fraction f of the total energy sum of all hits, are truncated. The energy of remaining hits is rescaled back to preserve the total deposited energy.
-\end{itemize}
-
-Unfortunately, for a Frozen Showers, generated for Run-1 monte-carlo, additional tuning of electron libraries was needed. This was done using reconstructed energy of electrons. Frozen Showers tend to underestimate fluctuations of energy loss, that is leading to a smaller electron resolution for a high energies. Correction is done by enlarging bin, corresponding to a gap position. Also, correction of the mean shift is done by scaling energy response of all showers. After this frozen showers are showing good agreement with full simulation. This procedure needs to be done every time, when something is changing in software. Because tuning is done manually, lots of a manpower is needed for each Monte Carlo mass production campaign.
-
-
-
-\begin{figure}[!tbp]
-\center{
-\includegraphics[width=0.7\textwidth]{MC/fs.png}
-\caption{Electron resolution for full simulation, tuned and untuned frozen showers}
+\includegraphics[width=0.8\textwidth]{MC/fs.png}
+\caption{Electron resolution for full simulation, tuned and untuned frozen showers. Electrons simulated with frozen showers libraries before tuning (star points) have twice smaller resolution, than an electrons from full simulation (circles). Tuning (black dots) is allowing to gain better agreement with full simulation.}
 \label{fig:FS_resolution}}
 \end{figure}
-\section{Library generation}
-\section{Use of Frozen Showers in MC production}
 
-\section{Tuning of Frozen Showers libraries}
-As it was mentioned before, process of library generation can be comlicated and take a lot of the time because of the needed tuning. In this subchapter possible ways to improve frozen showers performance have been studied. 
+\begin{figure}[!tbp]
+\center{
+\includegraphics[width=0.8\textwidth]{MC/oldTuning.png}
+\caption{Position of gap bins for different $\eta$ bins in old libraries after tuning. Dots are corresponding to a limits of each bin. Red lines are denoting original position of bins, that are corresponding to a position of a liquid argon gap in the calorimeter.}
+\label{fig:FSOldTuning}}
+\end{figure}
+
+\subsection{Libraries tuning}
+
+Frozen showers method gives a good agreement with a full simulation for a shower shape variables(Sec. \ref{sec:FSValidation}), however resolution of the reconstructed electrons is around 2 times smaller(Fig. ~\ref{fig:FS_resolution}), than in a full simulation. It can be interpreted as a lack of the showers from liquid argon gap in a simulation. Most of this effect is coming from an electron libraries. This means that this libraries are requiring additional reconstruction-based tuning after generation.
+
+Usual tuning consists of 2-step manual procedure:
+\begin{description}
+\item [Changing bin width] On this stage width of the liquid argon bin is enlarged. This is causing larger size of the fluctuations, that leads to a higher resolution and a mean energy of reconstucted electrons
+\item [Shower energy scaling] In order to correct introduced shift in a mean energy shower energy is reduced by rescaling all of the hits in a shower.
+\end{description}
+ It is repeated iterativelly in each pseudorapidity bin separately till the desired agreement is obtained. The resulting bin positions are shown on a Fig.  ~\ref{fig:FSOldTuning}. This method allows to have a relatively good agreement with full simulation (black dots on Fig. ~\ref{fig:FS_resolution}). However, it is necessary to repeat this procedure for each new libraries generation and requires significant tuning effort, that makes it not optimal. 
+
+\section{Machine learning based bin finding procedure}
+
+Since frozen showers are planned to be used in Run-2 Monte-Carlo production, there is a need for a more automatic procedure of library generation with proper electrons resolution. One of the possible ways is to choose different position of liquid argon bin during libraries generation using machine learning tools. In this section automatic bin finding procedure will be discussed.
+\subsection{Machine Learning} 
+
+Machine learning is a set of algorithms, what allows computers to learn and give a predictions without being specifically programmed. This is a modern field of computer science, that is wildly used in a different fields like computer vision, natural language processing, data science etc. There are two main types of machine learning algorithms: supervised, where example of desired output is given by the "teacher" and the goal is to learn a general rule, that maps inputs to outputs and unsupervised learning, then there are no labels given to algorithm, and algorithms is discovering hidden patterns in data. Initial data parameters of interest, that are used in algorithm to learn are called features. 
+
+Machine learning algorithms can be used for solving a classification problem, where each event should be identified to one of the specified classes. Since the first introduction of the machine learning classifiyng algorithms called perceptron by a Rosenblatt <ref> many different algrothims have been invented. In this analysis decision trees and support vector machines have been used.
+
+\subsubsection{Binary decision trees}
+
+Binary decision trees are one of the most commonly used machine learning algorithms for a classification problems in a particle physics. Schematic representation of this algorithm is shown on a Fig. ~\ref{fig:MLAlgo} a. Each node is corresponding to the one of the internal input variables and connected to two branches, that are split in the respect to the a variable. The first node is called a root node. Depth of the tree is a number of edges from the node to the tree's root node. Leaf node represents classification or decision.
+ For each node the best feature is selected and it's cut value are obtained by calculating each possible variation in the feature set and then ranking them. One of the main advantages of the decision trees is a simplicity of visualization and interpretation. 
+
+\subsubsection{Support vector machines}
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/DecisionTree.png} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/SVM.png} \\ b)}
+\end{minipage}
+\caption{Schematic representation of machine learning algorithms, used in the analysis for a classification. Green figures are representing first class of the events, whereas violet ones belong to a second class.  
+a) Representation of a binary decision tree structure: red circles are corresponding to a node, that are split in the respect to the one of the features. Squares represent leafs, where all of the events are classified to a certain class. Depth of the tree is calculated as a number of edges from the node to the trees first node. 
+b) Representation of the SVM algorithm. Dividing hyperplane is shown by a solid line. The dashed lines represent the maximum margin boundaries}
+\label{fig:MLAlgo}
+\end{figure}
+
+Support vector machines (SVM) is a supervised machine learning algorithm which can be used for classification problems. In this algorithm each event is represented in a p-dimensional parameter space. Classification is performed by finding a the hyper-plane that differentiate the two classes with the largest separation (Fig. ~\ref{fig:MLAlgo} b). The hyperplane can be written as the set of points $\vec {x}$ in a parameter space satisfying:
+\begin{equation}
+\vec{w}\cdot \vec{x} - b = 0,
+\end{equation}
+where $\vec{w}$ is the normal vector to the hyperplane and the parameter $\frac {b}{\|{\vec {w}}\|}$ determines the offset of the hyperplane from the origin along the normal vector $\vec {w}$. The margin hyperplanes are described by equations:
+\begin{eqnarray}
+\vec{w}\cdot \vec{x} - b = 1, \\
+\vec{w}\cdot \vec{x} - b = -1,
+\end{eqnarray}
+where $\frac{2}{\|\vec{w}\|}$ is the distance between these 2 hyperplanes, so planes with the maximum margin between should have the minimum $\|\vec{w}\|$. 
+
+Because we want to prevent each point to fall into the margin, we following constrain should be satisfied: 
+\begin{eqnarray}
+\vec{w}\cdot \vec{x} - b \geqslant 1 \textrm{ where } y_i = 1,\\
+\vec{w}\cdot \vec{x} - b \leqslant -1 \textrm{ where } y_i = -1,
+\end{eqnarray}
+These equations can be rewritten as:
+\begin{equation}
+y_i(\vec{w}\cdot \vec{x} - b ) \geqslant 1
+\end{equation}
+
+It is also possible to construct a non-linear classifier by replacing dot-product with a differen \textit{kernel} function. In this thesis, a radial basis function (RBF) kernel is used:
+\begin{equation}
+K_{rbf}(\vec{x}_i, \vec{x}_j) = e^{-\gamma | \vec{x}_i - \vec{x}_j|^2} \, \gamma >0,
+\end{equation}
+where parameter $\gamma$ adjusts the width of the kernel.
+
+
+
+\subsection{Model description}
+
+\begin{figure}
+\center{
+\includegraphics[width=0.5\textwidth]{MC/Model2.png}
+\caption{Schematic representation of the model. Electron 1 is created in a liquid argon gap. Electron 2 is created near liquid argon gap and crosses it. This causing a smearing of sensitive material showers distribution. Electrons created in a sensitive material tend to create more energetic showers, than electrons from a dead material. However, electrons, shown on this scheme, may give similar shower and therefore be not distinguishable.}
+\label{fig:Model}}
+\end{figure}
+
+
+As it was mentioned in a previous sections, modules in FCAL are consisting of different types of material and showers started inside dead material are usually having smaller energies, than a sensitive material once. However, electron, created in a dead material, can cross a liquid argon gap and give a hit there (Fig. \ref{fig:Model}). It was decided to treat this electrons together with electrons created in sensitive material, and call a caused showers as a sensitive material showers. Oppositely, showers that did not crossed a liquid argon gap, are called a dead material showers. This model leads to a bigger gap width by a definition.
+
+
 \begin{figure}
 \center{
 \includegraphics[width=0.8\textwidth]{MC/FSEtaMomVsEnergy.pdf}
@@ -151,11 +254,23 @@ As it was mentioned before, process of library generation can be comlicated and 
 \label{fig:EtaMomVsEnergy}}
 \end{figure}
 
-As it was mentioned before, that there are two type of material used in a FCAL. Showers within them are giving different response, what is affecting overall reconstructed electron energy resolution.  At the first generations distance bin have been corresponding to LAr gap or dead material positions. During tuning bin with LAr was enlarged to gain a better agreement with full simulation. So, one of the basic ideas to improve frozen showers performance is to change a size of LAr gap in a library generation. 
+
+\begin{figure}
+\center{
+\includegraphics[width=0.8\textwidth]{MC/FirstClassifierData.png}
+\caption{Schematic representation of preselected data for a first classifier in x vs y plane and distance plane. Electrons, created near rod center and on the borders of the module have low probablity to cross the sensitive material, while oppositely all of the electrons created inside liquid argon gap are sensitive material showers.}
+\label{fig:Model}}
+\end{figure}
+\subsection{Interpretation of results}
+.
+As it was mentioned before, that there are two type of material used in a FCAL. Showers within them are giving different response, what is affecting overall reconstructed electron energy resolution.
+
+
+  At the first generations distance bin have been corresponding to LAr gap or dead material positions. During tuning bin with LAr was enlarged to gain a better agreement with full simulation. So, one of the basic ideas to improve frozen showers performance is to change a size of LAr gap in a library generation. 
 
 It was decided to treat showers, that have been born near LAr gap and crossed it on a radiation length, in a same way with showers in sensitive material gap, and call them sensitive material showers. Oppositely, showers, that haven't crossed LAr gap, are called dead showers. This model leads to a bigger gap width by a definition. One of the possible ways to find this bin position automatically is to use machine learning tools. 
 
-Machine Learning is a set of algorithms, what allows computers to learn and give a predictions without being specifically programmed. This is a modern field of computer science, that is wildly used in a different fields like computer vision, natural language processing, data science etc. There are two main types of machine learning algorithms: supervised, where example of desired output is given by the "teacher" and the goal is to learn a general rule, that maps inputs to outputs and unsupervised learning, then there are no labels given to algorithm, and algorithms is discovering hidden patterns in data. Initial data parameters of interest, that are used in algorithm to learn are called features. It is important to have right proper set of features and good training sample. 
+Machine Learning
 
 From a geometrical point of view, one of the main parameter is a direction of the shower. Eta momentum distribution is showed on a Figure ~\ref{fig:EtaMomVsEnergy} . Most of the showers are collinear to an electron direction. Because of this it was decided to use as a training sample simulation results for electrons with energies less than 1 GeV and momentum uniformly distributed between eta 3.0 and 4.0. This allowing to study equally low and high energy showers equally.
 
@@ -189,5 +304,5 @@ Validation results for two different eta bins are shown on figure ~ a) and b). I
 
 This binning was used in a production of new libraries for Monte Carlo in a Run-2. It is planned to use more precise training sample for a future iterations of this procedure for improving performance of outlying eta bins.
 
-\section{Validation of the new libraries}
-\section{Plans for a future}
+\section{Validation of the new libraries}\label{sec:FSValidation}
+\section{Plans for a future developments}

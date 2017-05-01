@@ -1,5 +1,5 @@
 \begin{table}[h]
-    \caption{Analysis selection}
+    \caption{Selection criteria}
     \label{tab:eventSelection}
     \begin{center}
     \begin{tabular}{ c | c}
@@ -15,20 +15,20 @@
         \hline
         Electron Selection & Muon Selection\\
         \hline
-
-        $P_T>20GeV$ & $P_T>20GeV$\\
-        $|\eta|<2.47$ & $|\eta|<2.5$\\
-        excluding 1.37<$|\eta|$<1.52 & \\
+		 EF\_e15\_loose1 &EF\_mu10 \\
+        \ptl > 20GeV & \ptl > 20GeV\\
+        \etall < 2.47 & \etall < 2.5\\
+        excluding 1.37 < \etall < 1.52 & \\
         OQ cut & staco reconstruction chain \\
         Medium electron identification & Medium muon identification \\
-        PtCone20 < 0.1 & PtCone20<0.1 \\
+        \ptcone < 0.1 & \ptcone < 0.1 \\
 
         \hline
         \hline
         W boson selection & Z boson selection \\
         \hline
-        EtMiss > 25 GeV &  \\
-        $M_T$ > 45 GeV & 66 < $M_{ee}$ < 116 GeV\\
+        \etmiss > 25 GeV &  \\
+        \mtw > 40 GeV & 66 < $M^Z$ < 116 GeV\\
         \hline
         \hline
     \end{tabular}

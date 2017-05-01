@@ -1,10 +1,10 @@
-\chapter{Monte Carlo corrections}
-Monte Carlo plays important role in cross-section measurement. It is constantly undergoing correction to data, in order to obtain a required precision. Part of this corrections have been described in a chapter \ref{chap:MC}. Unfortunatelly,  not everything can be taken into account during simulation itself. This leads to a differences between data and monte carlo, that needs to be accounted for. There are two possible methods to correct monte carlo without regenerating it. First on is to apply event weight, so what each mc event can contribute to non 1 entries in a histogram.This is called reweighting. Second one is to smear MC. It is using random number to alter reconstructed 4-vectors. 
-This chapter describes all additional corrections, what have been applied on MC in this analysis. All of this correction are introducing additional systematic error, that will be discussed in the chapter \ref{sec:}
+\chapter{Monte Carlo corrections}\label{chap:MCCor}
+Monte Carlo plays important role in the cross-section measurement. It is constantly being improved, in order to obtain a better precision in data description. Part of these corrections have been described in Chap. \ref{chap:MC}. Unfortunately, not everything can be taken into account during simulation itself. This leads to differences between data and Monte Carlo, that need to be accounted for. There are two possible methods to correct Monte Carlo without regenerating it. First one is to apply event weights, so that each MC event can contribute by a non one entry to a histogram. This procedure called event reweighting. Second one is MC smearing. It uses random numbers to alter the reconstructed 4-vectors. 
+This chapter describes all additional corrections, that have been applied on MC samples in this analysis. All of these correction are introducing additional systematic error, that will be discussed in the Chap. \ref{chap:Unc}.
 
 \section{Lepton efficiency corrections}
 
-Lepton detection efficiency at \atlas detector can be divided into three components:
+The efficiency of lepton detection at \atlas detector can be divided into three components:
 \begin{itemize}
 \item The reconstruction efficiency $\epsilon_{rec}$ is a probability to reconstruct lepton as a lepton of this flavor.
 \item The identification efficiency $\epsilon_{id \mid rec}$ is the probability that a reconstructed lepton survives  identification requirements. 
@@ -14,14 +14,15 @@ The full efficiency for a single lepton can be written as:
 \begin{equation}
 \epsilon_{total}=\epsilon_{rec} \times \epsilon_{id \mid rec} \times \epsilon_{trig \mid rec,id}
 \end{equation}
-All of this efficiencies are measured using Tag and Probe method in $Z\to ll$ decays. This is allowing to insure, that all of the reconstructed lepton candidates are coming from an actual leptons. One of the leptons from Z boson, called "probe", is initially selected with all of the cuts, minus one under study. Second one, called "probe" satisfies more tighter selection with additional cut, such as, for example, trigger matching.
+All these efficiencies are measured using tag-and-probe method in $Z\to ll$ decays.  One of the leptons from Z boson, called "probe", is initially selected with all of the cuts, except the one under study. Second one, called "probe", satisfies more tighter selection with some additional cut, e.g. trigger matching.
 
-Reconstruction efficiency is assosiated with algorithm used to perform reconstruction. This is causing difference between electrons and muons efficiencies. In electron case it is a probability to reconstruct an elec tron with an electromagnetic calorimeter as an electron.  Muon reconstruction efficiency is given by:
+The reconstruction efficiency is associated with the algorithm used in the event reconstruction process. This is causing differences between electrons and muons efficiencies. In the electron case the reconstruction efficiency is depicted as a probability to reconstruct an electron which has deposited its energy in electromagnetic calorimeter cluster as an electron candidate.  
+
+Muon reconstruction efficiency is given by:
 \begin{equation}
 \epsilon_{reco,muon} = \epsilon_{reco,muon|ID} \cdot \epsilon_{ID} \approx \epsilon_{reco,muon|ID} \cdot \epsilon_{ID|MS},
 \end{equation}
-where $\epsilon_{reco,muon|ID}$ is a conditional probability that muon reconstructed in ID is also reconstructed using MS as as a combined muon, and  $\epsilon_{ID}$ is a probability that muon is reconstructed as an ID track. This quantity cannot be measured directly and therefore is replaced by $\epsilon_{ID|MS}$, that can be measured by tag-and-probe method. 
-uncertainty in this analysis. 
+where $\epsilon_{reco,muon|ID}$ is a conditional probability that muon reconstructed in ID is also reconstructed using MS as a combined muon, and  $\epsilon_{ID}$ is a probability that muon is reconstructed as an ID track. This quantity $\epsilon_{ID}$ cannot be measured directly  in a data and therefore is replaced by $\epsilon_{ID|MS}$ - probability that muon reconstructed in MS is also reconstructed in ID, that can be measured by the tag-and-probe method. 
 
 \begin{figure}[t]
 \centering
@@ -34,20 +35,20 @@ Simulation samples are corrected to match data efficiencies by a scale-factor :
 SF_{reco,id,trig}=\frac{\epsilon^{data}_{reco,id,trig}}{\epsilon^{MC}_{reco,id,trig}}
 \end{equation}
 
-Each of the scale factors calculated in a $p_{t}$ and $\eta$ bins and has an associated statistical and systematical uncertainty component. Statistical component is connected to a size of $Z\to ll$, which is in our case is around 500 event per each lepton flavor. This means that precise calculation of scaling factors based on this data is difficult.
+The scale factors are calculated in a \ptl and $\eta^{l}$ bins and have associated statistical and systematic uncertainty components. The statistical component is connected to a size of $Z\to ll$, which is in our case is around 500 event per each lepton flavor. This makes statistical error the dominant one and means that precise calculation of scaling factors based on this data is difficult.
 
-It is possible to use scale factors for 8 TeV 2012 data. The main difference between this data samples are center of mass energy and a pile-up conditions (10 in 2012 and less than 1 in 2013). This effects have been studied on a $Z\to ee$ sample. Fig. \ref{eff_comp} shows that all of the differences in a scale factors are negligible and fully covered by the statistical error. This justifies the usage of 8 TeV scalling factors with increased 
+It is possible however to use scale factors for 8 TeV 2012 data. The main difference between these data samples are center of mass energy and the pile-up conditions (10 in 2012 and less than 1 in 2013). This effects have been studied on a $Z\to ee$ sample. Fig. \ref{eff_comp} shows the scale factors for different \ptl ranges as a function of $\eta^{l}$. The differences in the scale factors are negligible and fully covered by the statistical errors. This justifies the usage of 8 TeV scaling factors with increased uncertainty (that is considered to be fully statistical) in the analysis at 2.76 TeV. 
 
 \subsection{Muon Trigger SF}
-Unfortunatelly, single muon trigger haven't been presented in a 2012 data, so muon trigger scale factor needed to be derived from a 2.76 TeV data. Size of the Z sample is not enough to make scale factors both in $P_{T}^{\mu}$ and $\eta$ bins. 
+Unfortunatelly, single muon trigger haven't been present in the 2012 data, so muon trigger scale factor had to be derived from the 2.76 TeV data. The size of the Z sample is not big enough to make tje scale factors in \ptl and $\eta^{l}$ bins. 
 
-Since the $P_{T}^{\mu}$ cut is significantly higher, than trigger threshold, $P_{T}^{\mu}$ dependency on the efficiency can be considered flat. On another hand, $\eta$ dependence of the scale factor can give a significant difference. Binning in on $\eta$ is chosen from a detector point of view. And there it goes. Muon trajectory is bend in the different directions in a magnetic field, that can lead to a small differences in a trigger efficiencies.  Possible charge dependency of the scale factors have been also studied. 
+Since the $P_{T}^{\mu}$ cut is significantly higher, than the trigger threshold, efficiency $P_{T}^{\mu}$ dependency can be considered flat. On the another hand, $\eta$ dependence are expected. Binning in $\eta$ is motivated by a detector construction. Muon trajectory is bend in a magnetic field. That can lead to small differences in a trigger efficiencies for different muon charges. Possible charge dependency of the scale factors have been also studied. 
 
-Trigger efficiencies for data and MC in $\eta$ bins are shown on a Fig. \ref{fig:MuSF}. Total scale factors are presented in a Tab. \ref{tab:MuonSF}. Scale factors for $\mu^{+}$ and $\mu^{-}$ are more, than 3$\sigma$ away from each other, that is a clear sign of a charge dependency. 
+Trigger efficiencies for data and MC in $\eta$ bins are shown in a Fig. \ref{fig:MuSF}. Total scale factors are presented in Tab. \ref{tab:MuSF}. Scale factors for $\mu^{+}$ and $\mu^{-}$ are more than 3$\sigma$ away from each other, that is a clear indicator of a charge dependency. 
 
-Effect of applying scale factors on 
+Effect of applying different scale factors on muon for W analysis is shown on Fig. ~\ref{fig:SFBined1} - ~\ref{fig:SFBined3}. Best agreement with data is achieved by applying single bin scale factor. This motivates a choice of single bin charge dependent scale factor for this analysis. 
 
-\begin{table}[h]
+\begin{table}[!tbp]
     \caption{Muon trigger scale factors}
 	\label{tab:MuonSF}
 	\begin{center}
@@ -65,56 +66,88 @@ Effect of applying scale factors on
 		\end{center}
 \end{table}
 
-\begin{figure}[!htb]
+\begin{figure}[!tbp]
 \minipage{0.32\textwidth}
-  \center{\includegraphics[width=\linewidth]{MCCorrections/m.pdf} a)}
+  \center{\includegraphics[width=\linewidth]{MCCorrections/m.pdf} \\ a)}
 \endminipage\hfill
 \minipage{0.32\textwidth}
-   \center{\includegraphics[width=\linewidth]{MCCorrections/mP.pdf} b)}
+   \center{\includegraphics[width=\linewidth]{MCCorrections/mP.pdf} \\ b)}
 \endminipage\hfill
 \minipage{0.32\textwidth}%
-   \center{\includegraphics[width=\linewidth]{MCCorrections/mM.pdf}c)}
+   \center{\includegraphics[width=\linewidth]{MCCorrections/mM.pdf} \\ c)}
 \endminipage
-\caption{Trigger scale factors for a) $\mu$ b) $\mu^{+}$  c) $\mu^{-}$}
+\caption{Trigger scale efficiencies distribution for a) $\mu$ b) $\mu^{+}$  c) $\mu^{-}$ as a function of pseudorapidity}
 \label{fig:MuSF}
 \end{figure}
 
+\begin{figure}[!tbp]
+\minipage{0.5\textwidth}
+  \center{\includegraphics[width=\linewidth]{MCCorrections/BinnedCharged/Wmu_Boson_lepEtaFine.pdf} \\ a)}
+\endminipage\hfill
+\minipage{0.5\textwidth}
+  \center{\includegraphics[width=\linewidth]{MCCorrections/OneBinCharged/Wmu_Boson_lepEtaFine.pdf} \\ b)}
+\endminipage\hfill
+\caption{Muon pseudorapidity distribution from the $W\to \mu \nu$ selection with a) binned  b) not binned charge dependent trigger scale factor applied}
+\label{fig:SFBined1}
+\end{figure}
+
+\begin{figure}[!tbp]
+\minipage{0.5\textwidth}
+  \center{\includegraphics[width=\linewidth]{MCCorrections/BinnedCharged/Wmu_Plus_lepEtaFine.pdf} \\ a)}
+\endminipage\hfill
+\minipage{0.5\textwidth}
+  \center{\includegraphics[width=\linewidth]{MCCorrections/OneBinCharged/Wmu_Plus_lepEtaFine.pdf} \\ b)}
+\endminipage\hfill
+\caption{Muon pseudorapidity distribution from the $W\to \mu^+ \nu$ selection with a) binned  b) not binned charge dependent trigger scale factor applied}
+\label{fig:SFBined2}
+\end{figure}
+
+\begin{figure}[!tbp]
+\minipage{0.5\textwidth}
+  \center{\includegraphics[width=\linewidth]{MCCorrections/BinnedCharged/Wmu_Minus_lepEtaFine.pdf} \\ a)}
+\endminipage\hfill
+\minipage{0.5\textwidth}
+  \center{\includegraphics[width=\linewidth]{MCCorrections/OneBinCharged/Wmu_Minus_lepEtaFine.pdf} \\ b)}
+\endminipage\hfill
+\caption{Muon pseudorapidity distribution from the $W\to \mu^- \nu$ selection with a) binned  b) not binned charge dependent trigger scale factor applied}
+\label{fig:SFBined3}
+\end{figure}
+
 \section{Electron energy scale and resolution}\label{sec:elecScale}
-Electrons clusters tend to shift in a reconstructed energy compared to a truth energy of initial electron. Correction of this shift is done on a both data and MC as a 3 step process:
+The reconstructed electron clusters energy tend to be shifted in comparison to the true energy of the initial electron. The correction of this shift is done in both data and MC as a 3 step procedure:
 \begin{itemize}
 \item Electronic calibration, that transfers a raw signal from a readout to a cluster energy deposit.
-\item MC based calibration. It corrects effects of energy loss in the material in front of calorimeter and leakage into the hadronic calorimeter. This calibration is applied on both data and MC.
-\item Correction of calorimeter cell responce in data. This is allowing to get right responce in non-optimal HV-regions and exclude biases in a calorimeter electronics reconstruction.
+\item MC based calibration. It corrects the effects of the energy loss in the material in front of the calorimeter and the leakage into the hadronic calorimeter. This calibration is applied on both data and MC.
+\item Correction of the calorimeter cell responce in the data. This allows to get the right response in non-optimal HV-regions and to exclude biases in the calorimeter electronics reconstruction.
 \end{itemize}
 
-Energy shift is parameterised, as:
+The energy shift is parameterised, as:
 \begin{equation}
 E^{data}=E^{MC}(1+\alpha_i),
 \end{equation}
-where $E^{data}$ and $E^{MC}$ are the energies in data and simulation, respectivelly and $\alpha_i$ is a mean shift in a given bin i in $\eta$. Effect of this miscalibration on a reconstructed mass of Z boson is:
+where $E^{data}$ and $E^{MC}$ are the energies in data and simulation, respectivelly and $\alpha_i$ is a mean shift in a given bin i in $\eta$. The effect of this miscalibration on a reconstructed mass of Z boson neglecting second order terms is:
 \begin{equation}
-m_{i,j}^{data}=m_{i,j}^{MC}(1+\alpha_{i,j}), \quad \alpha_{i,j} \sim \frac{\alpha_i+\alpha_j}{2}
+m_{i,j}^{data}=m_{i,j}^{MC}(1+\alpha_{i,j}), \quad \alpha_{i,j} \sim \frac{\alpha_i+\alpha_j}{2}, 
 \end{equation}
-neglecting second order terms. $m_{i,j}^{data}$ and $m_{i,j}^{MC}$ are reconstructed mass of Z boson in a $i$ and $j$ bins of $\eta$ for data and MC respectivelly. 
+where $m_{i,j}^{data}$ and $m_{i,j}^{MC}$ are reconstructed mass of Z boson in a $i$ and $j$ bins in $\eta$ for data and MC respectively. 
 
-There is also a need to correct difference in a electron resolution. It can be desribed by a formula \ref{eq:EMResoultion}. It is assumed, that sampling and noise terms are moddeled well by MC and the main diiference is coming from a constant term. 
-So, the electron resoultion correction then can be written as:
+It is also needed to correct the difference in the electron resolution. It can be desribed by Eq. \ref{eq:EMResoultion}. It is assumed, that sampling and noise terms are well modeled by MC and the main diiference is coming from a constant term. 
+So, the electron resolution correction can be written as:
 \begin{equation}
 \frac{\sigma_E}{E}^{Data}_{i}=\frac{\sigma_E}{E}^{MC}_{i} \oplus c_i
 \end{equation}
-where $c_i$ is $\eta$ dependent relative resolution correction. Similarly to a energy scale correction it is possible to derive resolution correction factor by a comparing $m_{i,j}^{data}$ and $m_{i,j}^{MC}$ distribution. 
+where $c_i$ is an $\eta$ dependent relative resolution correction. Similarly to an energy scale correction it is possible to derive resolution correction factor by a comparison  of $m_{i,j}^{data}$ and $m_{i,j}^{MC}$ distributions. 
 
-Correction values of $\alpha_i$ and $c_i$ are obtained via $\chi^2$ fit on a invariant mass electrons for data and MC. Resulting energy scale is applied on a data, while resolution is corrected for MC. The resulting scale is validated on a $J/\psi \to ee$ and $Z\to ee \gamma$
+$\alpha_i$ and $c_i$ correction values are obtained via the $\chi^2$ fit on a invariant mass electrons for data and MC. The resulting energy scale is applied on a data, while the resolution is corrected in MC. The resulting scale is validated using a $J/\psi \to ee$ and $Z\to ee \gamma$ samples.
 
 \section{Muon momentum correction}
-Muon momentum resolution is depending on a $\eta$, $\phi$ and $p_T$ of the muon \cite{AtlasExperiment}. There is an impirical formula to describe it inside the detector (ID or MS):
+The muon momentum resolution depends on a $\eta$, $\phi$ and $p_T$ of the muon \cite{AtlasExperiment}. There is an empirical formula to describe it inside the detector (ID or MS):
 \begin{equation}\label{eq:MuonResolution}
-\frac{\sigma_{Det}(p_T)}{p_T}=\frac{r^{Det}_0(\eta, \phi)}{p_T} \oplus r^{Det}_1 (\eta, \phi)  \oplus r^{Det}_2(\eta, \phi) \cdot p_T
+\frac{\sigma_{Det}(p_T)}{p_T}=\frac{r^{Det}_0(\eta, \phi)}{p_T} \oplus r^{Det}_1 (\eta, \phi)  \oplus r^{Det}_2(\eta, \phi) \cdot p_T.
 \end{equation}
+The first term origins from the fluctuations of the energy loss in the transversed material. The second $r^{Det}_1$ term is coming from the magnetic field inhomogenities and the local displacements. Third term $r^{Det}_2$ describes the intrinsic resolution effects. 
 
-The first term origins from fluctuations of energy loss in transversed material. Second $r^{Det}_1$ is coming from magnetic field inhomogenities and local displacements. Third term $r^{Det}_2$ describes intrinsic resolution effects. 
-
-Similarly to electrons, overall energy scale shift between data and MC parameterised as:
+Similarly to electrons, the overall energy scale shift between data and MC is parameterised as:
 \begin{equation}
 p_T^{data}=p_T^{MC}+s_0^{Det}(\eta, \phi)+s_1^{Det}(\eta, \phi) \cdot p_T^{MC},
 \end{equation}
@@ -124,17 +157,17 @@ This leads to a total correction formula:
 \begin{equation}
 p^{Cor,Det}_T=\frac{p_{T}^{MC,Det}+\sum\limits_{n=0}^1 s_n^{Det}(\eta, \phi)(p_T^{MC,Det})^n}{1+\sum\limits_{m=0}^2 \Delta r_m^{Det}(\eta, \phi)(p_T^{MC,Det})^{m-1} g_m},
 \end{equation}
-where $g_m$ are normally distributed random variables with mean 0 and width 1. Because small amount of material between interaction point and the ID, $\Delta r^{ID}_0(\eta, \phi)$ and $s_0^{ID}(\eta, \phi)$ are set to 0. Missallignment effect for an MS is corrected on a simulation level by adding a random smearing to an allignment constants. This is allowing to set $\Delta r^{MS}_2(\eta, \phi)$ to 0 during a fit. 
+where $g_m$ are normally distributed random variables with mean 0 and width 1. Due to small amount of material between interaction point and the ID, $\Delta r^{ID}_0(\eta, \phi)$ and $s_0^{ID}(\eta, \phi)$ are set to 0. Missallignment effect of the MS is corrected on a simulation level by adding a random smearing to the alignment constants. This allows to set $\Delta r^{MS}_2(\eta, \phi)$ to 0 during a fit. 
 
-The correction factors are extracted using $Z \to \mu \mu$ candidates events with requirement on a two combined muons. For correction invariant mass distribution $m_{\mu\mu}^ID$ and $m_{\mu\mu}^{MS}$ are considered individually within a specific $\eta - \phi$ region of fit. Combined muon parameters are used to obtain angles $\eta$ $\phi$. 
-The correction extraction is performed first for an ID and then for MS with addition of the fit variable:
+The correction factors are extracted using events with $Z \to \mu \mu$ candidates fulfilling the requirement of two combined muons. For the correction invariant mass distributions $m_{\mu\mu}^ID$ and $m_{\mu\mu}^{MS}$ are considered individually within a specific $\eta - \phi$ region of fit. Combined muon parameters are used to obtain angles $\eta$ and $\phi$. 
+The correction extraction is performed first for the ID and then for the MS with addition of the fit variable:
 \begin{equation}
 \rho = \frac{p_T^{MS}-p_T^{ID}}{p_T^{ID}},
 \end{equation}
-which represents $p_T$ imbalance in ID and MS. 
+which represents the $p_T$ imbalance between ID and MS. 
 
 In a second step corrections are propagated to the combined momentum, using a weight average:
 \begin{equation}
 p_T^{Cor,CB}= f\cdot p_T^{Cor,ID}+(1-f) \cdot p_T^{Cor,MS},
 \end{equation}
-where weight f is derived from mc. 
+where the weight f is derived from the MC. 

@@ -1,98 +1,23 @@
-\chapter{Missing Transverse Energy reconstruction and correction}
-Atlas detector has almost 4$\pi$ coverage. This is allowing to calculate imbalance of energies inside calorimeter, especially transversal part of it called \etmiss.  Neutrino from a $W \to l\nu$ decay is leaving detector, without interacting with it, that is causing large energy imbalance in a detector. This chapter discuss <>
+\chapter{Hadron recoil calibration}\label{sec:HadrCalib}
+\etmiss affects significantly the W boson measurement, so it is important to have a solid understanding  of possible of sources differences in the hadron recoil reconstruction in data and Monte Carlo. 
 
-\section{Standard Missing Transverse Energy reconstruction}
-Standard reconstruction of \etmiss at \atlas experiment uses transverse energy deposits in the calorimeter, energy losses in cryostat and reconstructed muons for a calculation:
-\begin{equation}
-E_{x(y)}^{miss} = E_{x(y)}^{miss, calo} +  E_{x(y)}^{miss, cryo} +  E_{x(y)}^{miss, muon}.
-\end{equation}
-Calorimeter term is using information from reconstructed physics objects for calibration of cell responce. The total transverse energy in calorimeter is defined as:
-\begin{equation}
-E_{x(y)}^{miss} = E_{x(y)}^{miss, e} + E_{x(y)}^{miss \gamma} + E_{x(y)}^{miss, \tau} + E_{x(y)}^{miss, jets} + E_{x(y)}^{miss,SoftTerm} + E_{x(y)}^{miss, \mu}.
-\end{equation}
-where each term is calculated as the negative sum of the calibrated reconstructed objects, projected onto the x and y directions. Each jet with energy $P_T$>20 GeV is corrected for a pile-up and a jet energy scale is applied. Soft term is calculated from topoclusters and tracks, that are not assosiated with high-pt objects. To avoid double counting muon energy loss is in calorimeter is  subtracted from \etmiss.  The \etmiss muon term is calculated from the momenta of muons measured in a range of pseudorapidity. Since pileup gives a significant effect on a \etmiss performance several methods of pileup suppression are used
+\begin{figure}
 
-\begin{figure}[!tbp]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/WenuRefFinal.pdf} \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/WmunuRefFinal.pdf} \\ b)}
-\end{minipage}
-\caption{Data and MC comparison for \etmiss calculated by standard \atlas algorithm for a)\wenu b)\wmunu events}
-\label{ris:EtMissRefFinal}
-\end{figure}
-
-This procedure was optimised for 8 TeV runs  and using a calibration constants from it. This can cause problems with 2.76 TeV low pileup run. As a examine showed this is not optimal procedure in this case. Control plots for W production in electron and muon channels are shown on a  Fig. \ref{ris:EtMissRefFinal}. Where a big discrepancies in a muon and electron channel, that cannot be accounted to multijet background. 
-
-\begin{figure}[!tbp]
-\begin{center}
-\begin{minipage}[h]{0.49\linewidth}
-\includegraphics[width=1\textwidth]{HadronRecoil/ReplacementCluster.pdf}
-\end{minipage}
-\hfill
 \begin{minipage}[h]{0.49\linewidth}
 \includegraphics[width=1\textwidth]{HadronRecoil/RecoHRParPerp.pdf}
 \end{minipage}
-\caption{a) Definition of different zones in the calculation of the cluster-based hadronic recoil. \label{ris:subsCone}, b) Parallel and perpendicular projection of the hadronic recoil with the respect to the transverse momentum of the vector boson \label{ris:HadrRecoilTruthPt}}
-\end{center}
+
 \end{figure}
 
-
-\section{Reconstruction of Missing Transverse Energy from hadron recoil}
-Second way of calculating \etmiss was developed specifically for a W and Z decays by W mass measurements group. This procedure is using this fact, that a transverse momentum of a W-boson has to be balanced with initial (quark-gluon) state radiation, because initial sum of transverse momentum is zero:
-\begin{equation}
-\vec{P_{T}^{W}} = \vec{P_T^{lep}}+\vec{P_T^{\nu}}= \sum{\vec{P_{T}^{ISRquarks,gluon}}}, 
-\end{equation}
-where $\sum{\vec{P_{T}^{ISRquarks,gluon}}}$ is a transverse momentum of partons from initial state radiation, also called hadronic recoil (HR). Therefore, \etmiss can be determined as:
-\begin{equation}
-E_{T}^{miss} = P_T^{\nu} =  - HR + p_T^{l}
-\end{equation} 
-
-This procedure assumes, that recoil is arises from one single leading jet, and the rest  is coming from a soft hadronic activity. This hadron recoil is computed as a vector sum of calorimeter clusters:
-\begin{equation}
-HR= \sum_{i=0}^{N_{topo}}\vec{p_T^{topo}}
-\end{equation}
-while a scalar sum of all transverse energies is corresponding to the hadronic activity of the event:
-\begin{equation}\label{eq:sumet}
-\sum E_T =\sum_{i=0}^{N_{topo}} E_T^{topo}
-\end{equation}
-To avoid double counting of lepton energy losses in calorimeter, the clusters inside cone with radius dR = 0.2 are excluded from this calculation.To compensate soft activity inside this cone, clusters are then compensated by replacement cone (Fig. \ref{ris:subsCone}). This cone is defined as cone at the same pesudorapidity, but different $\phi$. It should be far from any other lepton and hadron recoil direction. Each cone is then rotated to a direction of the original lepton direction. This definition is not taking into account jet reconstruction aspects.   This is allowing to get a better data MC agreement (Fig. \ref{ris:HadrRecoilEtMiss}).
-
-
-\begin{figure}[!tbp]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/W_Boson_etMiss.pdf} \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/Wmu_Boson_etMiss.pdf} \\ b)}
-\end{minipage}
-\caption{Data and MC comparison for \etmiss calculated from hadron recoil for a)\wenu b)\wmunu events}
-\label{ris:HadrRecoilEtMiss}
-\end{figure}
-
-
-
-\section{Hadron Recoil calibration}\label{sec:HadrCalib}
-\etmiss affects significantly on a W boson measurement, so its important to have good understanding of sources of a possible differences in a hadron recoil reconstruction in a data and monte carlo. 
-
-The hadron recoil algorithm performance can be studied in MC through the projection of $\vec{HR}$ on the direction of the transverce momentum of the vector boson, as shown on Fig. \ref{ris:HadrRecoilTruthPt}. This projection can be divided into perpendicular \uperp and a parallel \upar component as follows:
+The hadron recoil algorithm performance can be studied in MC through the projection of $\vec{HR}$ on the direction of the transverse momentum of the vector boson, as shown in Fig. \ref{ris:HadrRecoilTruthPt}. This projection can be divided into perpendicular \uperp and parallel \upar component as follows:
 \begin{equation}
 \upar=\vec{v_{xy}}\cdot\vec{HR}
 \end{equation}
 \begin{equation}
-\uperp=v_x\cdot HR_y - v_xy \cdot HR_x,
+\uperp=v_x\cdot HR_y - v_y \cdot HR_x,
 \end{equation}
-where $\vec{v_xy}$ is a transverse component of vector boson direction and $v_x$ and $v_y$ are the projections on x and y plane respectivelly. In ideal case this $\upar=p_T^{bos}$ and $\uperp = 0$. However calorimeter resolution is causing relativelly wide distributions for this projections (Fig. \ref{somethig}). Parallel component \upar is sensitive to a possible bias in the hadron recoil, while perpendicular \uperp can be used for a determination of resolution discrepancies. The mean and width of this distributions can depend on a different variables, such as mean number of interactions in event, hadronic activity, boson $P_{T}^{bos}$ etc. Typical resolution of measured hadron recoil is <something>
+where $\vec{v_{xy}}$ is a unitary vector along the transverse component of a vector boson momentum and $v_x$ and $v_y$ are its projections on x and y axis respectively. In the case of the true kinematics $\upar=p_T^{bos}$ and $\uperp = 0$. However the calorimeter resolution is causing relatively wide distributions for these projections. The parallel component \upar is sensitive to a possible bias in the hadron recoil, while the perpendicular \uperp can be used for determination of the resolution discrepancies. The mean and the width of these distributions can depend on different variables, such as a mean number of interactions in event, hadronic activity, boson $P_{T}^{bos}$ etc. 
 
-\begin{figure}[!tbp]
-\centering
-\includegraphics[width=0.5\textwidth]{HadronRecoil/W_Event_Mu.pdf}
-\caption{Pileup}
-\label{HadrRecoil:mu}
-\end{figure} 
  
 It is convinient to use Z boson decays for a hadron recoil calibration, since its transverse momentum can be determined not only by a hadron recoil, but also from its decay products.  Zpt resolution coming from lepton reconstruction is 3-4 times better, than from a hadron recoil. This is allowing to treat leptonically reconstructed $P_T^{Z}$ as a truth $P_T$ of the boson and compare directly \uperp and \upar in data and MC. Small size of the Z sample in 2.76TeV data will lead to a high statistics error for this distributions. Also, calibration constants can be also derived from W boson decays through the indirect measurments. This corrections can be biased by a possible truth boson $P_T$ mismodelling. 
  
@@ -100,8 +25,15 @@ It is convinient to use Z boson decays for a hadron recoil calibration, since it
 
 The combined Z and W boson determination procedure have been used. This section describes a procedure of calibrating bias and resolution mismodelling in a hadron recoil, that was apapted for 2.76 TeV data. 
 
-\subsection{Hadron recoil resolution correction}
+\section{Hadron recoil resolution correction}
 
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.5\textwidth]{HadronRecoil/W_Event_Mu.pdf}
+\caption{Pileup}
+\label{HadrRecoil:mu}
+\end{figure} 
 
 Event activity plays an important role in a \etmiss reconstruction. Since \sumet and hadron recoil resolution values are correlated, the possible mismodelling of event activity can lead to a differences between data and monte carlo \etmiss resolution (Fig. \ref{ris:sumetCor}). There are two possible ways of resolution correction in a 2.76 TeV data. It could be corrected by reweigting \sumet distribution to match a data. Remaining differences can be corrected on a second step. On another hand it is also possible to neglect second order effects on \etmiss from \sumet distribution and directly correct difference between data and MC. 
 
@@ -141,7 +73,7 @@ Event activity plays an important role in a \etmiss reconstruction. Since \sumet
 \label{HadrRecoil:CorrSumet}
 \end{figure}
 
-\subsubsection{Sumet distribution correction}
+\subsection{Sumet distribution correction}
 
 Distribution of \sumet  events are shown on a Fig. \ref{HadrRecoil:UncorrSumet}. There is a clear sign of shift in this distribution in a both channels. Unfortunatelly, size of the Z sample is not sufficient for correcting this discrepancies. 
 The determination of sumet reweighting constants uses W boson decays. Since \sumet and \ptw are correlated correction factors are derived inside $p_T^{W, rec}$  as follows:
@@ -209,7 +141,7 @@ $W^{-} \to \mu^{-}\nu$ & -0.21\%  & -0.27\% & 0.03\% \\
 \end{table}
 
 
-\subsubsection{Resolution correction using Z events}
+\subsection{Resolution correction using Z events}
 Another way to check resolution effects is to use \uperp and \upar  $ - p_T^{Z}$ distributions in a Z events. This correction assumes, that any resolution mismodelling reflects discrepancies in the \sumet distribution, while difference in resolution at a given \sumet is a subleading. There is a clear difference in a rms of this distributions between data and MC, that cannot be accounted as a statistical error in data. Difference in resolutions is consistent for \uperp and \upar $- p_T^{Z}$ distributions, but depends on a flavor of the analysis.  The resolution is corrected by smearing with a Gaussian distribution each component of a hadron recoil:
 
 \begin{figure}[!tbp]
@@ -265,7 +197,7 @@ Due to a random nature of this correction, effect is not stable for a small $d\s
 \end{figure}
 
 
-\subsection{Hadron recoil bias correction}
+\section{Hadron recoil bias correction}
 
 \begin{table}[!tbp]
 \caption{}
