@@ -1,4 +1,5 @@
 \chapter{Frozen Showers}\label{chap:FS}
+\minitoc
 
 As it was mentioned in a previous chapter, fast simulation techniques are the essential part of Monte-Carlo production at \atlas experiment. Typical time for a simulation of $t\bar{t}$ event is around 1 minute, and most of the time is spend on a simulation of particle interaction in calorimeters. This motivates a development of fast calorimetry techniques. 
 
@@ -6,17 +7,7 @@ Frozen showers is currently the main fast calorimeter simulation approach used a
 
 Frozen shower method uses pre-simulated "frozen" showers instead of the full simulation. This is allowing to reduce time spend on a simulation of a large amount of low energy sub showers. This method is allowing to have a 25\% speedup in simulation. It is required to have an  in advance generation of a libraries for each detector and particle used in this method. Each shower from a library stores it's lateral and transverse size and list of the all energy depositions inside sensitive material (hits) with information about their energy, position and time. During a simulation, if energy of secondary electron falls below cutoff energy it is replaced by a shower from a library, as shown on a Fig. ~\ref{fig:MC_FS_method}. Main parameters used in \atlas simulation are summarized in a Tab. ~\ref{tab:MC_FS_params}.
 
-
-\begin{figure}[!bp]
-\center{
-\includegraphics[width=0.6\textwidth]{MC/FSMethod2.png}
-\caption{Diagram showing the shower substitution of the low-energy particle, during the high-energy particle simulation. Some of the showers from a particles, substituted by frozen showers method marked by a red squares}
-\label{fig:MC_FS_method}
-}
-\end{figure}
-
-
-\begin{table}[!tbp]
+\begin{table}[!bp]
 \caption{Main parameters used for the frozen shower libraries}
 \label{tab:MC_FS_params}
 \centering
@@ -34,7 +25,21 @@ Energy range              &  $E_{\gamma}<10$~MeV,  $E_{e}<1000$~MeV,  $T_n<100$~
 \end{table}
 
 
+\begin{figure}[!tbp]
+\center{
+\includegraphics[width=0.7\textwidth]{MC/FSMethod2.png}
+\caption{Diagram showing the shower substitution of the low-energy particle, during the high-energy particle simulation. Some of the showers from a particles, substituted by frozen showers method marked by a red squares}
+\label{fig:MC_FS_method}
+}
+\end{figure}
+
+
+
+
 \section{Problem description}\label{sec:FSproblem}
+
+
+
 
 %\begin{figure}[!b]
 %\center{\includegraphics[width=0.5\linewidth]{MC/xySumE.png} }
@@ -179,11 +184,11 @@ Usual tuning consists of 2-step manual procedure:
 \section{Machine learning based bin finding procedure}
 
 Since frozen showers are planned to be used in Run-2 Monte-Carlo production, there is a need for a more automatic procedure of library generation with proper electrons resolution. One of the possible ways is to choose different position of liquid argon bin during libraries generation using machine learning tools. In this section automatic bin finding procedure will be discussed.
-\subsection{Machine Learning} 
+\subsection{Machine learning introduction} 
 
 Machine learning is a set of algorithms, what allows computers to learn and give a predictions without being specifically programmed. This is a modern field of computer science, that is wildly used in a different fields like computer vision, natural language processing, data science etc. There are two main types of machine learning algorithms: supervised, where example of desired output is given by the "teacher" and the goal is to learn a general rule, that maps inputs to outputs and unsupervised learning, then there are no labels given to algorithm, and algorithms is discovering hidden patterns in data. Initial data parameters of interest, that are used in algorithm to learn are called features. 
 
-Machine learning algorithms can be used for solving a classification problem, where each event should be identified to one of the specified classes. Since the first introduction of the machine learning classifiyng algorithms called perceptron by a Rosenblatt <ref> many different algrothims have been invented. In this analysis decision trees and support vector machines have been used.
+Machine learning algorithms can be used for solving a classification problem, where each event should be identified to one of the specified classes. Since the first introduction of the machine learning classifiyng algorithms called perceptron by a Rosenblatt <ref> many different algorithms have been invented. In this analysis decision trees and support vector machines have been used.
 
 \subsubsection{Binary decision trees}
 

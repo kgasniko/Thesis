@@ -1,4 +1,5 @@
 \chapter{Uncertainties in the cross-section measurement}\label{chap:Unc}
+\minitoc
 Cross-section measurement relies on theoretical models and corrections, used in Monte-Carlo. Thus, their intrinsic uncertainties should be propagated to a final result. This chapter discusses main methods of uncertainties measurements and sources on $C_{W,Z}$ and $A_{W,Z}$ correction factors. 
 
 \section{Methods of uncertainties propagation}
@@ -9,13 +10,13 @@ U_i^{offset}=\frac{\sigma_{i}^{up}-\sigma_{i}^{down}}{2},
 where $\sigma_{i}^{up(down)}$ - the change in a observable due to the shift of the correction on $\sigma$ up or down. 
 
 Another method used for a uncertainties propagation is a toy MC method, that uses a pseudo experiments with modified input corrections. For a scale factors binned $p_T$ and $\eta$ uncertainties inside each bin can be divided to a correlated  and uncorrelated systematic components and statistical error. For each pseudo-experiment, a table of new scale factors is filled, where inside each bin a scale factor is randomly varied as:
-\begin{equation}
+\begin{equation}\label{eq:ToyMethod}
 SF_{i}^{Toy_{n}} = SF_{i}+ Gauss(0,\Delta SF_{i} ^{uncorr+stat}) + \sum \Delta SF_{i} ^{corr} \cdot Gauss(0, 1),
 \end{equation}
 where $SF_{i}^{Toy_{n}}$ is a new scale factor in i-th bin, $\Delta SF_{i} ^{uncorr+stat}$ - is the quadratic sum of uncorrelated and statistical errors and $\Delta SF_{i} ^{corr}$ is a correlated error.
 
 The overall effect on a observable is calculated as a standard deviation of the values in a pseudo-experiments:
-\begin{equation}
+\begin{equation}\label{eq:ToyError}
 U_{i}=\sqrt{\frac{\sum_{Toy_n=1}^{N} \sigma^2_{i}} {N} + \frac{\sum_{Toy_n=1}^{N} \sigma^2_{i}} {N} }
 \end{equation}
 The number N of pseudo experiments should be sufficiently large to avoid possible bias in the uncertainty estimation.
