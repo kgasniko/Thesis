@@ -14,30 +14,30 @@ Electron reconstruction & Toy MC &  \RecEffToyWplusenu  & \RecEffToyWminenu & - 
 Electron identification  & Toy MC &  \IDEffToyWplusenu  & \IDEffToyWminenu &  - & -  & \IDEffToyZee  &  - \\
 Electron trigger efficiency & Toy MC &  \TrigToyWplusenu  & \TrigToyWminenu & - & -  & \TrigToyZee  & - \\ 
 Muon reco+id & Toy MC &  -  & - & \muIDEffToyWplusmunu & \muIDEffToyWminmunu   & - & \muIDEffToyZmumu \\
-Muon trigger  & Offset&  -  & - & \muTrigWplusmunu & \muTrigWminmunu & - & \muTrigZmumu \\
-Electron energy scale & Offset &  &  & - & - &  & -\\
-\tab - Statistical error & Offset &  &  & - & - &  & -\\
-\tab - Bias in method  & Offset &  &  & - & - &  & -\\
-\tab - Scale uncertainty &  Offset&  &  & -  & - &  & -\\
-\tab - Presampler energy scale & Offset &  &  &-  & - &  &- \\
-\tab - Material knowledge &  Offset &  &  & - & - &  &- \\
+%Muon trigger  & Offset&  -  & - & \muTrigWplusmunu & \muTrigWminmunu & - & \muTrigZmumu \\
+Electron energy scale & Offset & \elecEnScaleTotalWplusenu & \elecEnScaleTotalWminenu & - & - & \elecEnScaleTotalZee & -\\
+\tab - Statistical error & Offset & \ElecEnZeeStatWplusenu & \ElecEnZeeStatWminenu & - & - & \ElecEnZeeStatZee & -\\
+\tab - Bias in method  & Offset & \ElecEnZeeMethodWplusenu & \ElecEnZeeMethodWminenu & - & - & \ElecEnZeeMethodZee & -\\
+\tab - Scale uncertainty &  Offset& 0.0 & 0.0 & -  & - & 0.0 & -\\
+\tab - Low Pt & Offset & 0.0 & 0.0 & -  & - & \ElecEnLowPtZee & - \\
+\tab - Presampler energy scale  &  Offset & \ElecEnPSStatWplusenu & \ElecEnPSStatWminenu & - & - & \ElecEnPSStatZee &- \\
+\tab - Material knowledge & Offset & \ElecEnRStatWplusenu & \ElecEnRStatWminenu &-  & - & \ElecEnRStatZee &- \\
 Electron energy resolution & Offset &\SmearWplusenu  & \SmearWminenu & - & - & \SmearZee  &- \\
-Muon energy scale & Offset & - & - & \MuSmearingScaleWplusmunu & \MuSmearingScaleWplusmunu & - & \MuSmearingScaleZmumu \\
-Muon energy resolution total & Offset &- & - & Wplusmunu & Wminmunu & - & Zmumu\\ 
+Muon energy scale & Offset & - & - & \MuScaleWplusmunu & \MuScaleWplusmunu & - & \MuScaleZmumu \\
+Muon energy resolution total & Offset &- & - & \muonResolutionTotalWplusmunu & \muonResolutionTotalWminmunu & - & \muonResolutionTotalZmumu\\ 
 \tab - Muon ID energy scale & Offset & - & - & \MuSmearingMSWplusmunu & \MuSmearingMSWminmunu & - & \MuSmearingMSZmumu\\ 
 \tab - Muon MS energy scale & Offset & - & - & \MuSmearingIDWplusmunu & \MuSmearingIDWminmunu & - & \MuSmearingIDZmumu\\ 
-Hadron recoil scale & Offset &  &  &  &   & - & -\\
+Hadron recoil scale & Offset & \HadronRecoilScaleCorrectionWplusenu & \HadronRecoilScaleCorrectionWminenu & \HadronRecoilScaleCorrectionWplusmunu  & \HadronRecoilScaleCorrectionWminmunu  & - & -\\
 Hadron recoil resolution & Offset &  &  &  &  & - & - \\
-EWK + $t\bar{t}$ background &  &  &  &  &  &  & \\
-QCD  &  &  &  &  & - & - & \\
+EWK + $t\bar{t}$ background & & \ewkWplusenu & \ewkWminenu & \ewkWplusmunu & \ewkWminmunu & \ewkZee & \ewkZmumu\\
+QCD  &  & \qcdWplusenu & \qcdWminenu & \qcdWplusmunu & \qcdWminmunu & - & -\\
 \hline
 PDF error & &  &  &  &  &  & \\
 \hline
-Total& &  &  &  &  &  & \\
+Total& & \CWplusenuSystUpErr & \CWminenuSystUpErr & \CWplusmunuSystUpErr & \CWminmunuSystUpErr & \CZeeSystUpErr & \CZmumuSystUpErr  \\
 \hline
-Statistics & &  &  &  &  &  & \\
+Statistics & & \statWplusenu & \statWminenu & \statWplusmunu & \statWminmunu & \statZee & \statZmumu \\
 \hline
-Luminosity & &  &  &  &  &  & \\
 \end{tabular}
 \end{center}
 \end{table}

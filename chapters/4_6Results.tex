@@ -1,5 +1,36 @@
 \chapter{Results of the Cross Section Measurement}
+The cross-sections are calculated as described in Chap.~\ref{chap:Met}. All of the W cross-sections are summarized in Tab. \ref{tab:Wcs}.  The total uncertainty of the measurements in the fiducial region consists of the statistical, systematical and luminosity errors. The methods of these uncertainties determination are described in Chap. \ref{chap:Unc}.
 
+Because of the lepton universality of the Standard Model, the results, obtained in electron and muon channel are expected to agree with each other. The ratio in electron and muon channel is calculated with the respect of the correlated systematic uncertainties is shown in Fig.\ref{fig:LeptUnivers}. The ratios errors are mostly dominated by the statistics on the W and Z samples and agrees with Standard Model predictions within the uncertainty.
+
+\begin{figure}[!b]
+\begin{center}
+\begin{minipage}[h]{0.8\linewidth}
+\includegraphics[width=1\textwidth]{Results/Univers.pdf}
+\end{minipage}
+\caption{Ratio of Z and W-boson production fiducial cross sections obtained in electron electron and muon channel compared to the expectations of the Standard Model and previous experimental checks of the lepton universality provided as PDG average bands.}
+\label{fig:LeptUnivers}
+\end{center}
+\end{figure}
+
+\input{tables/CsFidW.tex}
 \section{Combined results}
 
+Since the results between channels are agreeing well, it is possible to perform averaging as described in Sec. \ref{sec:Aver}. Systematic uncertainties for the averaging are taken from Tab. \ref{tab:Unc}. The systematic uncertainties calculated using Toy MC are included in the averaging following the prescription from Sec. \ref{sec:Cor}. The common luminosity uncertainty is excluded from the combination process. The systematic uncertainties from electroweak background sources are considered uncorrelated between W and Z bosons and 100\% correlated for different W and Z channels.
+
+The combination yields a good $\chi^2/NDF$=1.0/3 indicating good agreement between measurements. The combined cross-section is extrapolated to the full fiducial phase-space using $A_{W/Z}$ factors. The resulting cross-sections are summarized in Tab. \ref{tab:csComb}.
+\input{tables/CsComb.tex}
+
+\section{Cross-sections ratios}
+The combination cross-section are in a fiducial region:
+\begin{itemize}
+\item $R_{W/Z} = \valfidWZ \pm \statfidWZ \, (stat)\, \pm \sysfidWZ\, (sys)\,  $
+\item $R_{W^{+}/Z} = \valfidWpZ \pm \statfidWpZ\, (stat)\, \pm \sysfidWpZ \, (sys)\, $
+\item $R_{W^{-}/Z} = \valfidWmZ \pm \statfidWmZ\, (stat)\,  \pm \sysfidWmZ\,  (sys)\, $
+\item $R_{W^{+}/W^{-}} = \valfidWpWm \pm \statfidWpWm\, (stat)\, \pm \sysfidWpWm\,  (sys)\,  $
+\end{itemize}
+
+
 \section{Comparation with Theoretical Predictions}
+The theoretical predictions for cross-section measurements are obtained at NLO using MCFM/APPLIGRID for a different PDF sets: ABM12nlo, CT14nlo, MMHTnlo, ATLAS-epWZnlo, HERAPDF2.0nlo. 
+\section{PDF fits}

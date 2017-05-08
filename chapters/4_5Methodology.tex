@@ -1,50 +1,86 @@
-\chapter{Methodology of Cross-Section Measurement}
+\chapter{Methodology of the measurement}\label{chap:Met}
+\minitoc
+\section{Cross-Section methodology}
 
-The production of W and Z bosons is measured in a fiducial volume using the equation:
+The production cross-section of W and Z bosons in a fiducial region, corresponding to the geometrical acceptance of the detector and of the kinematic selection, measured using the  equation:
 \begin{equation}
-\sigma_{fid} = \frac{N-B}{C_{W/Z}L_{int}},
+\sigma^{fid}_{W/Z} = \frac{N-B}{C_{W/Z}L_{int}},
 \end{equation}
 where 
 \begin{itemize}
 \item N is the number of candidates measured in a data
 \item B is the number of background events
 \item $L_{int}$ is the integrated luminosity corresponding to a run selections and trigger requirements
-\item Efficiency correction factor $C_{W}$. 
+\item $C_{W/Z}$ is a correction factor for an experimental selection and resolution effects.
 \end{itemize}
 
-The efficiency scale factor $C_{W}$ is calculated from MC and defined as :
+The correction factors $C_{W/Z}$ is calculated from MC for each process and each decay channel separatelly and defined as :
 \begin{equation}
 C_{W/Z}=\frac{N_{MC, rec}}{N_{MC,gen, cut}}, 
 \end{equation}
-where $N_{MC, rec}$ are sums of weights of events after simulation, reconstruction and selection, $N_{MC,gen, cut}$ - are taken on the generator level after fiducial cuts.
+where $N_{MC, rec}$ are sums of weights of events after simulation, reconstruction and selection, $N_{MC,gen, cut}$ - are taken on the generator level after fiducial cuts. These correction factor are including efficiencies for trigger, reconstruction and identification (see Sec.\ref{sec:Eff}).
 
-The total W and Z cross-sections are calculated as:
+In addition, this measurement could be extrapolated to the full phase-space using as:
 \begin{equation}
-\sigma_{tot}=\sigma_{W/Z} \cdot BR(W/Z\to l\nu/ll)= \frac{\sigma_{fid}}{A_{W/Z}}= \frac{N-B}{A_{W/Z}C_{W/Z}L_{int}},
+\sigma^{tot}_{W/Z}= \frac{\sigma^{fid}_{W/Z}}{A_{W/Z}}= \frac{N-B}{A_{W/Z}C_{W/Z}L_{int}},
 \end{equation}
-where the acceptance $A_{W/Z}$ is used to extrapolate the cross-section measurment in the fiducial volume to the full kinematic region. It is derived from MC and affected only by the theoretical uncertainties. It is obtained as follows:
+where $\sigma^{tot}_{W/Z}$ are the total inclusive production cross-section of the W and Z bosons, and $A_{W/Z}$  is an acceptance. 
+
+The $A_{W/Z}$ factor determined from Monte Carlo simulation as: 
 \begin{equation}
 A_{W/Z}=\frac{N_{MC,gen, cut}}{N_{MC,gen,all}},
 \end{equation}
-where $N_{MC,gen,all}$ are the sum of weights of all generated MC events
+where $N_{MC,gen,all}$ are the sum of weights of all generated MC events. Both $A_{W/Z}$ and $C_{W/Z}$ are defined at the "born level", i.e. before the decay leptons emit photons via QED final state radiation.
 
-\section{Fiducial volume definition}
-In order to combine results  fiducial region is defined commonly for a different flavors of the analysis:
-\begin{equation}
-W \to l \nu: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, p_T^{\nu} <20 GeV, \, M_T^W > 40 GeV
+\subsection{Fiducial phase-space definition}
+The definition of fiducial volume for W bosons in both electron and muon channels is:
+\begin{itemize}
+\item $P_T^l$ > 20 GeV
+\item $|\eta^l|$ < 2.5 
+\item $P_T^{\nu}$ > 25 GeV
+\item \mtw > 40 GeV
+\end{itemize}
+where $P_T^l$ and $P_T^{\nu}$ are the charged lepton and neutrino transverse momentums respectivelly, $\eta^l $ is a lepton pseudo-rapidity, and \mtw is the transverse mass, defined as:
+\begin{equation}\label{Eq:mtW}
+\mtw = \sqrt{ 2 P_T^l \cdot P_T^{\nu} [ 1 - cos (\phi_l - \phi_{\nu})]},
 \end{equation}
-\begin{equation}
-Z \to ll: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, \, 66 GeV <m_{ll} < 116 GeV
-\end{equation}
+where $\phi_l$ is an azimutal angle of the charged lepton and $\phi_{\nu}$ is an azimutal angle of neutrino.
 
-Additionally, for a future combination, 13 TeV analysis fiducial phase space have been used:
+For the Z boson measurment fiducial phase-space is defined as:
+\begin{itemize}
+\item $P_T^l$ > 20 GeV
+\item $|\eta^l|$ < 2.5 
+\item 66 GeV <$M_{Z}$ < 116 GeV
+\end{itemize}
+where $M_{Z}$ is an di-lepton invariant mass.
 
-\begin{equation}
-W \to l \nu: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, p_T^{\nu} <20 GeV, \, M_T^W > 40 GeV
-\end{equation}
-\begin{equation}
-Z \to ll: \, \, \, p_T^l > 20 GeV, \, |\eta^l| < 2.5, \, 66 GeV <m_{ll} < 116 GeV
-\end{equation}
+\subsection{Extrapolation to the 13 TeV fiducial phase-space}
 
-\section{Results combination}
+Since the  13 TeV inclusive cross-section measurement  uses another definition of the fiducial phase space, it is possible to extrapolate cross-section to a new fiducial phase-space as:
+\begin{equation}
+\sigma^{fid,13}_{W/Z} = \frac{\sigma^{fid}_{W/Z}}{E_{W/Z}},
+\end{equation}
+where $E_{W/Z}$ is an additional extrapolation factor:
+\begin{equation}
+E_{W/Z}=\frac{N_{MC,gen, cut}}{N_{MC,gen, cut^{new}}},
+\end{equation}
+where $N_{MC,gen, cut^{new}}$ is the sum of the weights of Monte-Carlo events after the new set of cuts on the generator level.
+
+The 13 TeV fiducial phase-space is defined as:
+\begin{itemize}
+\item $P_T^l$ > 25 GeV
+\item $|\eta^l|$ < 2.5 
+\item $P_T^{\nu}$ > 25 GeV
+\item \mtw > 50 GeV
+\end{itemize}
+for the W decays and 
+\begin{itemize}
+\item $P_T^l$ > 25 GeV
+\item $|\eta^l|$ < 2.5 
+\item 66 GeV <$m_{Z}$ < 116 GeV
+\end{itemize}
+for the Z measurements.
+
+\section{Ratios calculation}
+\section{Results combination}\label{sec:Aver}
 \section{PDF fits}

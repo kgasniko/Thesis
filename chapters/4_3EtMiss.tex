@@ -59,16 +59,16 @@ The event activity plays an important role in the \etmiss reconstruction. Since 
 \end{itemize}
 
 
-\subsection{\sumet distribution correction}\label{sec:SumetCor}
+\subsection{ Event activity correction}\label{sec:SumetCor}
 
 
 
 \begin{figure}[!tbp]
-\begin{minipage}[h]{0.5\linewidth}
+\begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/UncorrSumet/W_EtMiss_CorRecoilSumet.pdf} \\ a)}
 \end{minipage}
 \hfill
-\begin{minipage}[h]{0.5\linewidth}
+\begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{HadronRecoil/UncorrSumet/Wmu_EtMiss_CorRecoilSumet.pdf} \\ b)}
 \end{minipage}
 \caption{Event activity \sumet distribution from a) the \wenu selection and b) the \wmunu selection. There is a clear sign of the event activity mismodelling in both channels, that should be corrected.}
@@ -361,8 +361,7 @@ Additionally, a cut on \mtw lower value may be used to reduce the multijet backg
 \label{HadrRecoil:ZScan}
 \end{figure}
  
-Similarly to the W channel, scale correction in the Z sample can be determined from the $HR_{SF}$ scan in the $\frac{\upar}{p_T^{ll}}$ distribution, as shown on a Fig. \ref{HadrRecoil:ZScan}. 
-Since there is no choise of the range and dependency on $P_T^{bos}$ modeling, there is just one source of uncertainty.
+Similarly to the W channel, scale correction in the Z sample can be determined from the $HR_{SF}$ scan in the $\frac{\upar}{p_T^{ll}}$ distribution, as shown on a Fig. \ref{HadrRecoil:ZScan}. All of the sources of backgrounds are considered negligible in this case. Results of \chiD test for data and MC in different channel are shown in a Fig. \ref{uPAr}. Fit of the combined $Z \to ll$ distribution gives the most precise estimation of hadron recoil bias $HR_{SF} = 1.00 \pm 0.01$.  Since there is no choise of the range and dependency on $P_T^{bos}$ modeling, there is just one statistical source of uncertainty.
 
 
 \begin{figure}[!tbp]
@@ -380,20 +379,7 @@ b) Distribution of \chiD  between data and MC for transverse momentum $<\mtw>$ a
   
 \subsection{Sytematic uncertainty estimation}
 
-Results on a hadron scale factros and it's errors are shown in a Table \ref{tab:SFHadronRecoil}. The results are consistent within 1 sigma. 
-
-\begin{figure}[!tbp]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CWElectron.pdf} \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CWMuon.pdf} \\ b)}
-\end{minipage}
-\caption{Effect on a \cw for a different $d\sigma$ for a) \wenu b)\wmunu channel}
-\label{ris:Cw}
-\end{figure}
-
+Results on a hadron scale factors and it's errors are shown in a Table \ref{tab:SFHadronRecoil}. The results are consistent within one sigma.  As a final result it was decided to choose $HR_{SF}$ determined from $Z\to ll$ selection as a correction factor, leaving other as a reference cross-check. 
 \begin{table}[!tbp]
 \caption{Hadronic recoil bias determination results and errors for different methods.}
 \label{tab:SFHadronRecoil}
@@ -410,4 +396,36 @@ $M_T^{W}$ \chiD & 1.01 & 0.07 \\
 \end{tabular}
 \end{center}
 \end{table}
+
+Effect of the hadronic recoil bias correction for different bias scale factors presented in Fig. \ref{ris:Cw}. Systematical error, coming from bias correction estimated using offset method (see Chap. \ref{chap:Unc}). 
+
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CWElectron.pdf} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{HadronRecoil/CWMuon.pdf} \\ b)}
+\end{minipage}
+\caption{Effect on a \cw for a different $d\sigma$ for a) \wenu b)\wmunu channel}
+\label{ris:Cw}
+\end{figure}
+
+
 \section{Summary on hadronic recoil systematics}
+
+\begin{table}[!tbp]
+\caption{Hadronic recoil bias systematics for different W boson channels.}
+\label{tab:SFHadronRecoilBias}
+\begin{center}
+\begin{tabular}{| l || c | c | c | c |}
+\hline
+Systematic source & $W^{+} \to e^{+}\nu$ & $W^{-} \to e^{-}\nu$  & $W^{+} \to \mu^{+}\nu$ & $W^{-} \to \mu^{-}\nu$ \\
+\hline
+\hline
+Hadronic recoil resolution & -0.2\% & -0.11\% & -0.16\% & -0.12\% \\
+Hadronic recoil scale &  0.21\% & 0.20\% & 0.23\% & 0.24\% \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

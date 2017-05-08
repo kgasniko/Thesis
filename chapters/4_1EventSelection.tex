@@ -13,6 +13,45 @@ Events, where LAr calorimeter was malfunctioning are excluded by LAr quality cri
 
 Online selection of events is based on a single lepton trigger, depending on a lepton flavor. For electron analysis EF\_e15\_loose1 trigger is used, which records electrons with $E_T$ > 15 GeV. This trigger uses additional "loose" isolation requirements to exclude jets, that are misidentified as electrons. In the muon channel lowest single lepton trigger is EF\_mu10.  It records events with muons $E_T$ >10 GeV.
 
+
+\begin{table}[!tbp]
+    \caption{Number of W boson candidates in data and signal MC, remaining after each major requirement. The signal MC is normalised to the NNLO cross-section shown in Tab. \ref{tab:Backgrounds}}
+    \label{tab:CutFlowW}
+    \begin{center}
+    \begin{tabular}{ l | c | c || c | c  }
+    \hline
+    Requirement & \multicolumn{4}{c}{Number of candidates} \\
+    \hline
+     & Data & signal MC & Data & signal MC \\
+     \hline
+     \hline
+    & \multicolumn{2}{c}{$W^{+}\to e\nu$} & \multicolumn{2}{c}{$W^{-}\to e\nu$}    \\
+    \hline
+    No selection & \cutFlowTotWplusenuData & \cutFlowTotWplusenuMC & \cutFlowTotWminenuData & \cutFlowTotWminenuMC \\
+    Event selection &\cutFlowEventWplusenuData &\cutFlowEventWplusenuMC &\cutFlowEventWminenuData & \cutFlowEventWminenuMC \\
+    Lepton selection &\cutFlowLeptonWplusenuData  & \cutFlowLeptonWplusenuMC & \cutFlowLeptonWminenuData & \cutFlowLeptonWminenuMC  \\
+    Boson selection & \cutFlowBosonWplusenuData & \cutFlowBosonWplusenuMC & \cutFlowBosonWminenuData &\cutFlowBosonWminenuMC  \\
+    \hline
+    \hline
+    & \multicolumn{2}{c}{$W^{+}\to \mu\nu$} & \multicolumn{2}{c}{$W^{-}\to \mu\nu$} \\
+    \hline
+    No selection & \cutFlowTotWplusmunuData & \cutFlowTotWplusmunuMC & \cutFlowTotWminmunuData & \cutFlowTotWminmunuMC \\
+    Event selection & \cutFlowEventWplusmunuData & \cutFlowEventWplusmunuMC & \cutFlowEventWminmunuData & \cutFlowEventWminmunuMC\\ 
+    Lepton selection & \cutFlowLeptonWplusmunuData &\cutFlowLeptonWplusmunuMC & \cutFlowLeptonWminmunuData & \cutFlowLeptonWminmunuMC \\
+    Boson selection &\cutFlowBosonWplusmunuData &\cutFlowBosonWplusmunuMC &\cutFlowBosonWminmunuData &\cutFlowBosonWminmunuMC \\
+    \hline
+    \hline
+        & \multicolumn{2}{c}{$Z \to ee$} & \multicolumn{2}{c}{$Z \to \mu\mu$} \\
+        \hline
+    No selection &  \cutFlowTotZeeData & \cutFlowTotZeeMC & \cutFlowTotZeeData & \cutFlowTotZeeMC \\
+    Event selection & \cutFlowEventZeeData &\cutFlowEventZeeMC & \cutFlowEventZeeData & \cutFlowEventZeeMC \\
+    Lepton selection & \cutFlowLeptonZeeData  & \cutFlowLeptonZeeMC & \cutFlowLeptonZeeData & \cutFlowLeptonZeeMC \\
+    Boson selection & \cutFlowBosonZeeData & \cutFlowBosonZeeMC & \cutFlowBosonZeeData & \cutFlowBosonZeeMC \\
+    \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
 \section{Lepton quality cuts}
 
 Both analyses use similar selection criteria, applied on a leptons. The leptons must satisfy requirement \ptl > 20 GeV and match to the event trigger.
@@ -22,7 +61,7 @@ Electron candidates are required to be within pseudorapidity range \etall < 2.47
 Muons have to satisfy the following criteria: they should be reconstructed by a staco algorithm in a muon spectrometer and fall within range \etall < 2.5 . Set of medium requirements is applied. They must also satisfy \ptcone < 0.1 isolation criteria.
 
 \section{Boson selection}
-The events, containing W boson candidates are required to have exactly one lepton, fulfilling the lepton selection. Missing transverse energy, used as a proxy for a neutrino from W decay is required to be \etmiss $>25 GeV$.  The transverse mass, calculated from the lepton and missing transverse energy as in Eq. ~\ref{eq:mtW} has to be bigger than 40 GeV (\mtw > 40 GeV). 
+The events, containing W boson candidates are required to have exactly one lepton, fulfilling the lepton selection. Missing transverse energy, used as a proxy for a neutrino from W decay is required to be \etmiss $>25 GeV$.  The transverse mass, calculated from the lepton and missing transverse energy as in Eq. ~\ref{Eq:mtW} has to be bigger than 40 GeV (\mtw > 40 GeV). 
 
 The reconstructed lepton pair in case of Z boson analysis is required to have the invariant mass between 66 and 116 GeV. Both upper and bottom limits allow to exclude regions with high background contamination. 
 
@@ -30,7 +69,5 @@ The full set of cuts is summarized in a Tab. ~\ref{tab:eventSelection}.
 
 \section{Cut flow}
 
-The effect of each selection can be studied using cut-flows, which show the number of events passing each set of cuts in a sequential order. Cut flows for W and Z analysis are shown in a Tab. ~\ref{tab:CutFlowW} and Tab. ~\ref{tab:CutFlowZ} respectively.
-
-
+The effect of each selection can be studied using cut-flows, which show the number of events passing each set of cuts in a sequential order. Cut flows for W and Z analysis are shown in a Tab. ~\ref{tab:CutFlowW}.
 

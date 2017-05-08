@@ -2,7 +2,7 @@
 Monte Carlo plays important role in the cross-section measurement. It is constantly being improved, in order to obtain a better precision in data description. Part of these corrections have been described in Chap. \ref{chap:MC}. Unfortunately, not everything can be taken into account during simulation itself. This leads to differences between data and Monte Carlo, that need to be accounted for. There are two possible methods to correct Monte Carlo without regenerating it. First one is to apply event weights, so that each MC event can contribute by a non one entry to a histogram. This procedure called event reweighting. Second one is MC smearing. It uses random numbers to alter the reconstructed 4-vectors. 
 This chapter describes all additional corrections, that have been applied on MC samples in this analysis. All of these correction are introducing additional systematic error, that will be discussed in the Chap. \ref{chap:Unc}.
 
-\section{Lepton efficiency corrections}
+\section{Lepton efficiency corrections}\label{sec:Eff}
 
 The efficiency of lepton detection at \atlas detector can be divided into three components:
 \begin{itemize}
@@ -40,11 +40,11 @@ The scale factors are calculated in a \ptl and $\eta^{l}$ bins and have associat
 It is possible however to use scale factors for 8 TeV 2012 data. The main difference between these data samples are center of mass energy and the pile-up conditions (10 in 2012 and less than 1 in 2013). This effects have been studied on a $Z\to ee$ sample. Fig. \ref{eff_comp} shows the scale factors for different \ptl ranges as a function of $\eta^{l}$. The differences in the scale factors are negligible and fully covered by the statistical errors. This justifies the usage of 8 TeV scaling factors with increased uncertainty (that is considered to be fully statistical) in the analysis at 2.76 TeV. 
 
 \subsection{Muon Trigger SF}
-Unfortunatelly, single muon trigger haven't been present in the 2012 data, so muon trigger scale factor had to be derived from the 2.76 TeV data. The size of the Z sample is not big enough to make tje scale factors in \ptl and $\eta^{l}$ bins. 
+Unfortunatelly, single muon trigger haven't been present in the 2012 data, so muon trigger scale factor had to be derived from the 2.76 TeV data. The size of the Z sample is not big enough to make the scale factors in \ptl and $\eta^{l}$ bins. 
 
 Since the $P_{T}^{\mu}$ cut is significantly higher, than the trigger threshold, efficiency $P_{T}^{\mu}$ dependency can be considered flat. On the another hand, $\eta$ dependence are expected. Binning in $\eta$ is motivated by a detector construction. Muon trajectory is bend in a magnetic field. That can lead to small differences in a trigger efficiencies for different muon charges. Possible charge dependency of the scale factors have been also studied. 
 
-Trigger efficiencies for data and MC in $\eta$ bins are shown in a Fig. \ref{fig:MuSF}. Total scale factors are presented in Tab. \ref{tab:MuSF}. Scale factors for $\mu^{+}$ and $\mu^{-}$ are more than 3$\sigma$ away from each other, that is a clear indicator of a charge dependency. 
+Trigger efficiencies for data and MC in $\eta$ bins are shown in a Fig. \ref{fig:MuSF}. Total scale factors are presented in Tab. \ref{tab:MuonSF}. Scale factors for $\mu^{+}$ and $\mu^{-}$ are more than 3$\sigma$ away from each other, that is a clear indicator of a charge dependency. 
 
 Effect of applying different scale factors on muon for W analysis is shown on Fig. ~\ref{fig:SFBined1} - ~\ref{fig:SFBined3}. Best agreement with data is achieved by applying single bin scale factor. This motivates a choice of single bin charge dependent scale factor for this analysis. 
 

@@ -1,13 +1,20 @@
 \chapter{Frozen Showers}\label{chap:FS}
 \minitoc
 
+\begin{figure}[!b]
+\center{
+\includegraphics[width=0.7\textwidth]{MC/FSMethod2.png}
+\caption{Diagram showing the shower substitution of the low-energy particle, during the high-energy particle simulation. Some of the showers from a particles, substituted by frozen showers method marked by a red squares}
+\label{fig:MC_FS_method}
+}
+\end{figure}
 As it was mentioned in a previous chapter, fast simulation techniques are the essential part of Monte-Carlo production at \atlas experiment. Typical time for a simulation of $t\bar{t}$ event is around 1 minute, and most of the time is spend on a simulation of particle interaction in calorimeters. This motivates a development of fast calorimetry techniques. 
 
 Frozen showers is currently the main fast calorimeter simulation approach used at \atlas experiment. In this chapter we will discuss main principles,difficulties and current developments in this method.
 
 Frozen shower method uses pre-simulated "frozen" showers instead of the full simulation. This is allowing to reduce time spend on a simulation of a large amount of low energy sub showers. This method is allowing to have a 25\% speedup in simulation. It is required to have an  in advance generation of a libraries for each detector and particle used in this method. Each shower from a library stores it's lateral and transverse size and list of the all energy depositions inside sensitive material (hits) with information about their energy, position and time. During a simulation, if energy of secondary electron falls below cutoff energy it is replaced by a shower from a library, as shown on a Fig. ~\ref{fig:MC_FS_method}. Main parameters used in \atlas simulation are summarized in a Tab. ~\ref{tab:MC_FS_params}.
 
-\begin{table}[!bp]
+\begin{table}[!tbp]
 \caption{Main parameters used for the frozen shower libraries}
 \label{tab:MC_FS_params}
 \centering
@@ -25,14 +32,20 @@ Energy range              &  $E_{\gamma}<10$~MeV,  $E_{e}<1000$~MeV,  $T_n<100$~
 \end{table}
 
 
-\begin{figure}[!tbp]
-\center{
-\includegraphics[width=0.7\textwidth]{MC/FSMethod2.png}
-\caption{Diagram showing the shower substitution of the low-energy particle, during the high-energy particle simulation. Some of the showers from a particles, substituted by frozen showers method marked by a red squares}
-\label{fig:MC_FS_method}
-}
-\end{figure}
 
+\begin{figure}[!b]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.9\linewidth]{MC/xySumE.png} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=0.9\linewidth]{MC/DistanceCalculation.png} \\b)}
+\end{minipage}
+\caption{ a) Shower energy response histogram in the x vs y plane for electrons, generated with uniformly distributed x and y and energy less than 1 GeV. Light circles are corresponding to a showers, started inside a LAr gaps with on average higher energy response, while the dark parts are corresponding to dead material respectively with smaller sum of the "hits" energy.
+b) Distance to a closest rod center scheme, where $d_{rod} = min( d(1,e), d(2, e), d(3, e))$. Rod centers and liquid argon gaps are shown by black and red circles respectivelly.}
+%\caption{Distribution a) electron energies and b) mean number of hits in a shower vs energy of electron for electrons with energy less than 1 GeV coming from initial electron with energy 1 TeV. }
+\label{fig:FSFluctuations}
+\end{figure}
 
 
 
@@ -48,20 +61,19 @@ Energy range              &  $E_{\gamma}<10$~MeV,  $E_{e}<1000$~MeV,  $T_n<100$~
 %\end{figure}
 
 
-\begin{figure}[!tbp]
+
+
+\begin{figure}[!b]
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=0.9\linewidth]{MC/xySumE.png} \\ a)}
+\center{\includegraphics[width=1.0\linewidth]{MC/FSEnergy.pdf}  \\ a)}
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=0.9\linewidth]{MC/DistanceCalculation.png} \\b)}
+\center{\includegraphics[width=1.0\linewidth]{MC/nHitsMean.pdf} \\ b)}
 \end{minipage}
-\caption{ a) Shower energy response histogram in the x vs y plane for electrons, generated with uniformly distributed x and y and energy less than 1 GeV. Light circles are corresponding to a showers, started inside a LAr gaps with on average higher energy response, while the dark parts are corresponding to dead material respectively with smaller sum of the "hits" energy.
-b) Distance to a closest rod center scheme, where $d_{rod} = min( d(1,e), d(2, e), d(3, e))$. Rod centers and liquid argon gaps are shown by black and red circles respectivelly.}
-%\caption{Distribution a) electron energies and b) mean number of hits in a shower vs energy of electron for electrons with energy less than 1 GeV coming from initial electron with energy 1 TeV. }
-\label{fig:FSFluctuations}
+\caption{Distribution a) electron energies and b) mean number of hits in a shower vs energy of electron for electrons with energy less than 1 GeV coming from initial electron with energy 1 TeV. }
+\label{fig:TrackEnergy}
 \end{figure}
-
 
 Fast simulation of forward calorimeters (FCAL) is a complicated task due to its complex structure. As it was mentioned in a Sec. ~\ref{sec:forwardCalo} FCAL consists of hexagonal absorber cells with anode tube and cathod rod in the cell center and liquid argon in the gap between rod and tube. In order to simulate resolution of high energetic electrons, good fast simulation technique should take this feature of large amount of non-uniformly distributed sensitive material.
 
@@ -79,17 +91,7 @@ where $E_i^{hits}$ is an energy of i-th shower deposit inside sensitive material
 
 Typical electron substituted by a frozen showers coming from a simulation of high energy electrons have a relativelly small energy (Fig. ~\ref{fig:TrackEnergy} a)). Mean number of depositions in a sensitive material in a "frozen" shower is around 5 and this value rises with electron energy (Fig. ~\ref{fig:TrackEnergy} b).  Fig. ~\ref{fig:FSProduction} presents a distribution showers for electrons with energy below 1 GeV coming from initial electrons with energy 1 TeV in the distance to a closest rod center vs shower energy plane. Liquid argon gap is marked by a red lines. There is a clear difference in a showers energies between electrons born in a sensitive and dead material. Difference in a shower properties are also visible for number of hits  (Fig. ~\ref{fig:ShowerProp} a) and standard deviation energy of hits in shower (Fig. ~\ref{fig:ShowerProp} b) distributions. Size of this differences depends on a electron energies and higher for a smaller energies (Fig. ~\ref{fig:FSProduction2} a) and less significant for a higher energies (Fig. ~\ref{fig:FSProduction2} b).  This fact combined with energy distribution states an importance of proper simulation non-uniformities for showers coming from a small energy electrons.
 
-\begin{figure}[!tbp]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.0\linewidth]{MC/FSEnergy.pdf}  \\ a)}
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[width=1.0\linewidth]{MC/nHitsMean.pdf} \\ b)}
-\end{minipage}
-\caption{Distribution a) electron energies and b) mean number of hits in a shower vs energy of electron for electrons with energy less than 1 GeV coming from initial electron with energy 1 TeV. }
-\label{fig:TrackEnergy}
-\end{figure}
+
 
 
 
@@ -196,6 +198,7 @@ Binary decision trees are one of the most commonly used machine learning algorit
  For each node the best feature is selected and it's cut value are obtained by calculating each possible variation in the feature set and then ranking them. One of the main advantages of the decision trees is a simplicity of visualization and interpretation. 
 
 \subsubsection{Support vector machines}
+
 \begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{MC/DecisionTree.png} \\ a)}
@@ -232,52 +235,73 @@ y_i(\vec{w}\cdot \vec{x} - b ) \geqslant 1
 \end{equation}
 
 It is also possible to construct a non-linear classifier by replacing dot-product with a differen \textit{kernel} function. In this thesis, a radial basis function (RBF) kernel is used:
-\begin{equation}
+\begin{equation}\label{eq:RBF}
 K_{rbf}(\vec{x}_i, \vec{x}_j) = e^{-\gamma | \vec{x}_i - \vec{x}_j|^2} \, \gamma >0,
 \end{equation}
 where parameter $\gamma$ adjusts the width of the kernel.
 
 
-
-\subsection{Model description}
-
-\begin{figure}
+\begin{figure}[!t]
 \center{
 \includegraphics[width=0.5\textwidth]{MC/Model2.png}
 \caption{Schematic representation of the model. Electron 1 is created in a liquid argon gap. Electron 2 is created near liquid argon gap and crosses it. This causing a smearing of sensitive material showers distribution. Electrons created in a sensitive material tend to create more energetic showers, than electrons from a dead material. However, electrons, shown on this scheme, may give similar shower and therefore be not distinguishable.}
 \label{fig:Model}}
 \end{figure}
 
+\subsection{Model description}
 
-As it was mentioned in a previous sections, modules in FCAL are consisting of different types of material and showers started inside dead material are usually having smaller energies, than a sensitive material once. However, electron, created in a dead material, can cross a liquid argon gap and give a hit there (Fig. \ref{fig:Model}). It was decided to treat this electrons together with electrons created in sensitive material, and call a caused showers as a sensitive material showers. Oppositely, showers that did not crossed a liquid argon gap, are called a dead material showers. This model leads to a bigger gap width by a definition.
 
 
-\begin{figure}
+As it was mentioned in a previous sections, modules in FCAL are consisting of different types of material and showers started inside dead material are usually having smaller energies, than a sensitive material once. However, the validation (Fig. \ref{fig:FS_resolution}) can be interpreted as the that there are high energy showers outside of the liquid argon gap. It could be explained by the fact, that electron, created in a dead material, can cross a liquid argon gap and give a hit there as it shown in Fig. \ref{fig:Model} (electron 2). These electrons would be indistinguishable from electrons, created directly in a sensitive material (electron 1 in Fig. \ref{fig:Model}). 
+
+It was decided to treat this electrons together with electrons created in sensitive material, and call a caused showers as a sensitive material showers. Oppositely, showers that did not crossed a liquid argon gap, are called a dead material showers. This model leads to a bigger gap.  
+
+From the definition, this model leads to the dependency of the liquid gap width on:
+\begin{description}
+
+\item [Electron energy] Gap should get wider with higher energy of the initial electron, because of the growth of the mean free path with energy.
+\item [Direction of the electron] Electron aligned collinearly with liquid argon gap will have smaller probability to cross liquid argon gap. This probability will grow with the angle reaching its maximum at  $90^{\circ}$
+
+\end{description}
+
+\subsubsection{Training sample}
+
+Real distributions, used in simulation, have a complicated structure and depend on a physical processes simulated. Machine learning could catch these dependencies, instead of the needed ones. This is why a more simplified data as a training sample for machine learning  is needed.  Training sample was made by a simulation of the electrons, created in forward calorimeters. In order to treat equally high and low initial electron energy showers, the uniform distribution of the energies is used.
+
+Most of the showers have direction in $\eta$ range between 3.0 and 5.0 (Fig. \ref{fig:EtaMomVsEnergy}), that is corresponding to a position of the calorimeter. Distribution of the showers directions in different positional $\eta$ bins shows, that there is indeed the correlation between direction and the position of the electrons. Because of this it was decided to use an electrons with direction, uniformly distributed between 3.0 and and 5.0.
+
+
+\begin{figure}[!tbp]
 \center{
 \includegraphics[width=0.8\textwidth]{MC/FSEtaMomVsEnergy.pdf}
 \caption{Distribution of showers used in production of 1000 GeV electrons on shower energy vs $\eta_{momentum}$ plane.}
 \label{fig:EtaMomVsEnergy}}
 \end{figure}
 
+\subsubsection{First classifier}
 
-\begin{figure}
+First classifier classifier aims to classify all of the showers based on a shower parameters. It is possible to train supervised learning algorithm on pre-labeled artificially reduced training sample and then expand the classification on a full train sample. 
+
+Pre-labeling could be easily done from a definitions of sensitive and dead material showers based on a distance to a closest rod center (Fig. \ref{fig:SchemePresel}). Showers started in liquid argon gap are 100 \% sensitive material showers, while showers from electrons near rod center and on the edges of the the cells can be labeled as a dead material showers, since there is a small probability for an electron to reach liquid argon gap.
+
+For a classifier it was decided to use a simple decision trees, because it have showed good classification efficiency (around 97\%) on a reduced training sample. Variance of the different input parameters have been tested, and it was figured out, that the best set of the parameters is :
+
+\begin{itemize}
+\item Shower energy, that is equal to the sum of all "hits" in sensitive material energies in shower
+\item Maximum hit fraction. This quantity is calculated as energy of the most energetic hit divided by the shower energy
+\item RMS of the hits, calculated as a standard deviation of the hits energy in a shower
+\end{itemize}
+
+Predictions of the first classifier on a full training sample is shown in a Fig. \ref{fig:Class} a). 
+
+\begin{figure}[!tbp]
 \center{
 \includegraphics[width=0.8\textwidth]{MC/FirstClassifierData.png}
 \caption{Schematic representation of preselected data for a first classifier in x vs y plane and distance plane. Electrons, created near rod center and on the borders of the module have low probablity to cross the sensitive material, while oppositely all of the electrons created inside liquid argon gap are sensitive material showers.}
-\label{fig:Model}}
+\label{fig:SchemePresel}}
 \end{figure}
-\subsection{Interpretation of results}
-.
-As it was mentioned before, that there are two type of material used in a FCAL. Showers within them are giving different response, what is affecting overall reconstructed electron energy resolution.
 
-
-  At the first generations distance bin have been corresponding to LAr gap or dead material positions. During tuning bin with LAr was enlarged to gain a better agreement with full simulation. So, one of the basic ideas to improve frozen showers performance is to change a size of LAr gap in a library generation. 
-
-It was decided to treat showers, that have been born near LAr gap and crossed it on a radiation length, in a same way with showers in sensitive material gap, and call them sensitive material showers. Oppositely, showers, that haven't crossed LAr gap, are called dead showers. This model leads to a bigger gap width by a definition. One of the possible ways to find this bin position automatically is to use machine learning tools. 
-
-Machine Learning
-
-From a geometrical point of view, one of the main parameter is a direction of the shower. Eta momentum distribution is showed on a Figure ~\ref{fig:EtaMomVsEnergy} . Most of the showers are collinear to an electron direction. Because of this it was decided to use as a training sample simulation results for electrons with energies less than 1 GeV and momentum uniformly distributed between eta 3.0 and 4.0. This allowing to study equally low and high energy showers equally.
+\subsubsection{Second classifier}
 
 \begin{figure}[!tbp]
 \begin{minipage}[h]{0.49\linewidth}
@@ -287,12 +311,36 @@ From a geometrical point of view, one of the main parameter is a direction of th
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[width=1.\linewidth]{MC/secondClassifier.png} \\ b)}
 \end{minipage}
-\caption{Results of machine learning for a) first classifier b) second classifier. Cyan dots are corresponding to sensitive material showers, red - dead material showers}
+\caption{Results of machine learning for a) first classifier b) second classifier. Cyan dots are corresponding to sensitive material showers, red - dead material showers. Black lines in Fig. b are corresponding to a resulting bin positions}
 \label{fig:Class}
 \end{figure}
 
+Second classifier uses predictions of the first classifier as an input label. It is trying to reconstuct a best dividing hyperplane between two methods using a support vector machines. It uses as an input truth parameters of the electron, e.g. energy of the initial electron and its distance to a closest rod center. Different kernels have been tested and the best predictions have been obtained using RBF kernel (Eq. \ref{eq:RBF}).  Assuming, that $\eta^{momentum} \approx \eta^{position}$ classification is performed in each $\eta^{distance}$ bin used in a library. Example of the classifier output is shown in a Fig. \ref{fig:Class} b). As it is expected from the model, gap position is getting wider with higher energies of the electron.  Variation of the obtained parameters have been found small, so the mean of the parameters have been used.  
 
-From out definition of 2 classes of showers, it is simple to construct a pre-labelled training sample. This is done by reducing initial sample and taking showers near rod center and inside liquid argon gap. Output of this classifier, that was trained on with sample with shower features, such as energy response and number of hits, than can be used to expand our labels to a full distance range. Than it can be used as an input to a second classifier, which will separate two types of showers using particle parameters, such as energy and distance to a rod center. For a first step decision trees have showed good classification efficiency (around 97\%). For a second classifier support vector machines have been used. This method is trying to reconstruct a hyperplane, that is dividing two classes. Outputs of both of this classifiers are shown on a figure . New gap position is determined using borders of hyperplane. This procedure is giving expected from the initial model results. Gap is wider, than and original one. It is also getting bigger with bigger energy, because of the radiation length growth. 
+\subsubsection{Interpretation of results}
+
+Because a full new regeneration of libraries and validation on a reconstructed variables is an a time-consuming procedure, the toy Monte-Carlo method have been developed for a cross-check of a classifiers and its interpretation. It uses pseudorapidity $\eta^{position}$, energy of electron and distance to a closest rod center from a data as a reference for a random generator. This simulation allows to compare shower energies and shower energy divided by  the energy of initial electron (SumE/E) distributions with and distributions from a full simulation, that are considered as a reference.
+
+Several interpretations of the bin positions have been tested and the best one is showed in Fig. ~\ref{fig:Class} b) by a black lines. It was decided to make 3 bins corresponding to a liquid argon position instead of the only one. One contains, according to a classifier just sensitive material showers events, while in other 2 there is a mixture of dead material and sensitive material showers. The obtained positions of the liquid argon bins are wider, than a nominal ones, as expected from the model.
+Comparison of SumE/E distributions using toy MC on old libraries (Fig. ~\ref{fig:Interpret} a) and the libraries with the new binning (Fig. ~\ref{fig:Interpret} b) have showed, that we could expect a better perfomance on a reconstructed values.
+
+
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/oldSumE.png} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/newSumE.png} \\ b)}
+\end{minipage}
+\caption{Comparison of the distribtuions of shower energy divided by  the energy of initial electron between full simulation and toy MC using libraries for liquid argon gap bins and 2 closest to them bins for a) old "tuned" libraries with 1 liquid argon gap bin  b) new libraries binning with 3 liquid argon gap bins. There are still remaining differences between full simulation and toy MC, but new machine learning binning performs better.}
+\label{fig:Interpret}
+\end{figure}
+
+
+\section{Validation of the new libraries}\label{sec:FSValidation}
+
+
 Validation results for two different eta bins are shown on figure ~ a) and b). In a bin this new binning is performing better, than original one without any additional tuning. Unfortunately this is not true for all of the bins, as we can see on a figure ~ b). This eta bin have showed worst performance for a new binning, but it is performing still better, than original binning without tuning.
 
 \begin{figure}[!tbp]
@@ -304,10 +352,20 @@ Validation results for two different eta bins are shown on figure ~ a) and b). I
 \center{\includegraphics[width=1.\linewidth]{MC/rms3p5.pdf} \\ b)}
 \end{minipage}
 \caption{Resolution of reconstructed electrons for full simulation, new libraries with ML binning and old tuned libraries with original binning for a) eta =3.95 b)eta=3.5 }
-\label{fig:Class}
+\label{fig:Reso}
+\end{figure}
+
+\subsubsection{Validation on another objects}
+\begin{figure}[!tbp]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/Electron_Frwd_All_KinPlots_eta.png} \\ a)}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[width=1.\linewidth]{MC/erhResponseVsEta.png} \\ b)}
+\end{minipage}
+\caption{Resolution of reconstructed electrons for full simulation, new libraries with ML binning and old tuned libraries with original binning for a) eta =3.95 b)eta=3.5 }
+\label{fig:OtherVal}
 \end{figure}
 
 This binning was used in a production of new libraries for Monte Carlo in a Run-2. It is planned to use more precise training sample for a future iterations of this procedure for improving performance of outlying eta bins.
-
-\section{Validation of the new libraries}\label{sec:FSValidation}
-\section{Plans for a future developments}

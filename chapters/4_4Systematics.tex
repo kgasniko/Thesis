@@ -17,7 +17,7 @@ where $SF_{i}^{Toy_{n}}$ is a new scale factor in i-th bin, $\Delta SF_{i} ^{unc
 
 The overall effect on a observable is calculated as a standard deviation of the values in a pseudo-experiments:
 \begin{equation}\label{eq:ToyError}
-U_{i}=\sqrt{\frac{\sum_{Toy_n=1}^{N} \sigma^2_{i}} {N} + \frac{\sum_{Toy_n=1}^{N} \sigma^2_{i}} {N} }
+U_{i}=\sqrt{\frac{\sum_{Toy_n=1}^{N} \sigma^2_{i}} {N} - \Bigg(\frac{\sum_{Toy_n=1}^{N} \sigma_{i}} {N}\Bigg)^2}
 \end{equation}
 The number N of pseudo experiments should be sufficiently large to avoid possible bias in the uncertainty estimation.
  
@@ -49,53 +49,6 @@ The uncertainty contribution from each component is estimated using offset metho
  
  \input{tables/C_Systematics.tex}
 
-\begin{table}[!tbp]
-\caption{}
-\label{tab:Unc}
-\begin{center}
-\begin{tabular}{l | c  || c | c || c | c   }
-Source of uncertainty & Method & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ \\
- &  & $W^{+}\to e\nu$ & $W^{-}\to e\nu$ & $W^{+}\to \mu\nu$ & $W^{+}\to \mu\nu$ \\
-\hline
-Electron reconstruction & Toy MC & \RecEffToyWplusenu  & \RecEffToyWminenu & - & - \\
-Electron identification  & Toy MC & \IDEffToyWplusenu  & \IDEffToyWminenu &  - & - \\
-Electron trigger efficiency & Toy MC & \TrigToyWplusenu  & \TrigToyWminenu & - & - \\
-Muon reco+id & Toy MC &  -  & - & \muIDEffToyWplusmunu & \muIDEffToyWminmunu \\
-Muon trigger  & Offset &   -  & - & \muIDEffToyWplusmunu & \muIDEffToyWminmunu \\
-Electron energy scale & Offset &  Wplusenu  & Wminenu & - & -  \\
-Electron energy resolution & Offset &\SmearWplusenu  & \SmearWminenu & - & - \\
-Muon energy scale & Offset &  -  & - & Wplusmunu & Wminmunu \\
-Muon energy resolution & Offset &  -  & - & Wplusmunu & Wminmunu \\
-Hadron recoil scale & Offset & Wplusenu  & Wminenu & Wplusmunu & Wminmunu \\
-Hadron recoil resolution & Offset & Wplusenu  & Wminenu & Wplusmunu & Wminmunu \\
-\hline
-Total & &  &  &  &  \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-\begin{table}[!tbp]
-\begin{center}
-\begin{tabular}{l | c  || c | c || c | c   }
-Source of uncertainty & Method & $\delta C_{Z} / C_{Z} (\%) $ & $\delta C_{Z} / C_{Z} (\%) $  \\
- &  & $Z\to ee$ & $Z\to \mu\mu$  \\
-\hline
-Electron reconstruction & Toy MC & \RecEffToyZee  & Zmumu  \\
-Electron identification  & Toy MC &  Zee  & Zmumu  \\
-Electron trigger efficiency & Toy MC & \TrigToyZee  & Zmumu  \\
-Muon reco+id & Toy MC & Zee  & Zmumu  \\
-Muon trigger  & Offset&  Zee  & Zmumu  \\
-Electron energy scale & Offset & Zee  & Zmumu  \\
-Electron energy resolution & Offset & \SmearZee  & Zmumu  \\
-Muon energy scale & Offset &  Zee  & Zmumu  \\
-Muon energy resolution & Offset & Zee  & Zmumu  \\
-\hline
-Total & &  &    \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
 \section{Theoretical uncertainty}
 \begin{itemize}
 
@@ -107,7 +60,7 @@ Error coming from an arbirtary choice of PDF set is estimated by PDF reweighting
 \end{equation}
 \item The uncertainties arising from the choise of generator and parton showering model are considered small. They can be calculated as a difference in the acceptances  $A_{W,Z}$ for MC samples, generated using same PDF set, but different models for showering and matrix element, namely Powheg + Pythia and Sherpa
 \end{itemize}
-\section{Correlation between uncertainties}
+\section{Correlation between uncertainties}\label{sec:Cor}
 \subsection{Toy MC correlations}
 A correlation coefficient between two observables $o_1$ and $o_2$ can be estimated as:
 \begin{equation}
@@ -125,28 +78,3 @@ Correlations for $A_{W,Z}$ and $C_{W,Z}$ for a CT10nlo set have been estimated, 
 \begin{equation}
 \rho_{XY}=\frac{1}{4\delta_X\delta_Y}\sum(X^{+}-X^{-})\cdot (Y^{+}-Y^{-})
 \end{equation}
-
-\begin{table}[!tbp]
-\begin{center}
-\begin{tabular}{ c || c | c | c | c }
-
-PDF Set &  $\delta A_{W} / A_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta A_{W} / A_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ \\
-
- \hline 
-  & \multicolumn{2}{c}{$W^{+}\to e\nu$} & \multicolumn{2}{c}{$W^{-}\to e\nu$} \\
-  \hline 
- CT10 &  & & & \\
- ATLAS-epWZ12  &  & & & \\
- abkm09  &  & & & \\
- NNPDF23 &  & & & \\
-  \hline 
-  & \multicolumn{2}{c}{$W^{+}\to \mu\nu$} & \multicolumn{2}{c}{$W^{-}\to \mu\nu$} \\
-  \hline 
- CT10 &  & & & \\
- ATLAS-epWZ12  &  & & & \\
- abkm09  &  & & & \\
- NNPDF23 &  & & & \\
-\end{tabular}
-\end{center}
-\end{table}
-
