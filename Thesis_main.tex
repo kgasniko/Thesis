@@ -12,7 +12,7 @@
 \usepackage{cite}
 \usepackage{lineno}
 \usepackage{mathpazo}
-\usepackage{helvet}%      Choose default sans serif
+%\usepackage{helvet}%      Choose default sans serif
 %\usepackage{gillius}%      Choose default sans serif
 \usepackage{sectsty}%     Change style of headings (should precede section redefinitions below)  
 \allsectionsfont{\sffamily}% Set sans serif for all headings
@@ -26,6 +26,7 @@
 \input{Aux/SetupFra}
 \input{Aux/CrossSections}
 \input{Aux/cutFlows.tex}
+\input{Aux/testUnivers.tex}
 %% images directorty
 \graphicspath{{figures/}}
 \usepackage[outdir=figures/]{epstopdf}
@@ -118,14 +119,14 @@
 %% Main matter
 \linenumbers
   \mainmatter
-  \part{Thesis overview}
+
   \input{chapters/1Intro.tex}
   \part{Theory introduction}
   \input{chapters/2Theory.tex}
   \input{chapters/4_5Methodology.tex}
   \part{Experimental setup}
   \input{chapters/3_1LHC.tex}
-  \input{chapters/3_2Atlas.tex}
+  %\input{chapters/3_2Atlas.tex}
   \input{chapters/3_3Software.tex}
   \input{chapters/3_4MonteCarlo.tex}
   \input{chapters/3_5FrozenShowers.tex}
@@ -137,10 +138,9 @@
   \input{chapters/4_3BackgroundEstimation.tex}
   \input{chapters/4_5ControlPlots.tex}
   \input{chapters/4_4Systematics.tex}
-   \part{Results}
   \input{chapters/4_6Results.tex}
 
-  %\input{chapters/5PDF.tex}
+  \input{chapters/5PDF.tex}
 
 %\input{Chapters/Intro.tex}
 %\input{Chapters/Theory.tex}
@@ -162,18 +162,20 @@
 %\newpage
   
 %% Bibliography
-%\backmatter
+\backmatter
   
 %\hypersetup{colorlinks=true,linkcolor=red}
-%\cleardoublepage
-%\phantomsection
-%\addcontentsline{toc}{chapter}{Bibliography}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
 %\bibliographystyle{lucas_unsrt}
 %\bibliographystyle{fra_hannes_lucas_unsrt}
-\bibliographystyle{plain}
-%{\small
-\bibliography{biblioThesis_Me}{} 
-
+%\bibliographystyle{plain}
+\bibliographystyle{unsrt}
+{\small
+%\addbibresource{Thesis_Main.bib}
+\bibliography{Thesis_Main}{} 
+}
 %\input{Aux/OathEpi.tex}
 %% Acknowledgements  
 %\input{Chapters/Acknowledgements.tex}

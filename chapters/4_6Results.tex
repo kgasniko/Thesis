@@ -1,36 +1,81 @@
-\chapter{Results of the Cross Section Measurement}
-The cross-sections are calculated as described in Chap.~\ref{chap:Met}. All of the W cross-sections are summarized in Tab. \ref{tab:Wcs}.  The total uncertainty of the measurements in the fiducial region consists of the statistical, systematical and luminosity errors. The methods of these uncertainties determination are described in Chap. \ref{chap:Unc}.
+\chapter{Results of the cross-section measurement}
+\minitoc
 
-Because of the lepton universality of the Standard Model, the results, obtained in electron and muon channel are expected to agree with each other. The ratio in electron and muon channel is calculated with the respect of the correlated systematic uncertainties is shown in Fig.\ref{fig:LeptUnivers}. The ratios errors are mostly dominated by the statistics on the W and Z samples and agrees with Standard Model predictions within the uncertainty.
+In this chapter results of the W/Z cross-section measurements will be discussed. 
+In Sec. \ref{sec:flavCs} the cross-sections measured in each lepton flavors are presented. These results are used to test lepton universality in 2.76 TeV data.
 
-\begin{figure}[!b]
+Section \ref{sec:CombCs} describes a results obtained for combined W and Z cross-sections. Additionally, the cross-section ratios are presented. In Sec. \ref{sec:CompCs} the combined cross-sections are compared to the theoretical NLO predictions for different PDF sets. Finally, the results of cross-section measurement are interpreted using PDF profiling.
+
+\section{Cross-sections results}\label{sec:flavCs}
+
+The cross-sections are calculated as described in Chap.~\ref{chap:Met}. Table \ref{tab:Values} reports the number of candidates, the estimated background events and $C_{W/Z}$, $A_{W/Z}$ and $E_{W/Z}$ used in a different measurements are presented. 
+
+The total uncertainty of the measurements in the fiducial region consists of the statistical, systematical and luminosity errors. The methods of these uncertainties determination are described in Chap. \ref{chap:Unc}. Uncertainty coming from luminosity measurments is labeled lumi. and is considered to be correlated for each channel. The statistical uncertainty is labeled stat. and is a dominant one for Z measurements and W boson measurements in electron channel. For W boson in electron channel the systematic uncertainty is around 1\%, that makes it significantly lower, than a statistical uncertainty. For W boson in a muon channel cross-sections the overall systematical uncertainty is higher because of the trigger scale factors, and is around 1.2\%, that makes it comparable with the statistical uncertainty. 
+
+%\input{tables/Values.tex}
+\input{tables/CsFidW.tex}
+
+\subsection{Lepton universality test}
+
+\begin{figure}[!tb]
 \begin{center}
 \begin{minipage}[h]{0.8\linewidth}
 \includegraphics[width=1\textwidth]{Results/Univers.pdf}
 \end{minipage}
-\caption{Ratio of Z and W-boson production fiducial cross sections obtained in electron electron and muon channel compared to the expectations of the Standard Model and previous experimental checks of the lepton universality provided as PDG average bands.}
+\caption{The correlated measurement of the electron-to-muon fiducial cross-section ratios in the W and the Z channels. The vertical (horizontal) band represents the uncertainty of the cor- responding Z (W) branching fractions based on the current world average data. The green ellipse illustrates the 68\% CL for the correlated measurement of $R_W$ and $R_Z$.}
 \label{fig:LeptUnivers}
 \end{center}
 \end{figure}
 
-\input{tables/CsFidW.tex}
-\section{Combined results}
 
-Since the results between channels are agreeing well, it is possible to perform averaging as described in Sec. \ref{sec:Aver}. Systematic uncertainties for the averaging are taken from Tab. \ref{tab:Unc}. The systematic uncertainties calculated using Toy MC are included in the averaging following the prescription from Sec. \ref{sec:Cor}. The common luminosity uncertainty is excluded from the combination process. The systematic uncertainties from electroweak background sources are considered uncorrelated between W and Z bosons and 100\% correlated for different W and Z channels.
+Because of the lepton universality of the Standard Model, the results, obtained in electron and muon channel are expected to agree with each other. The 2.76 TeV data could be used to test it via fiducial cross-section ratios of e and $\mu$ branching fractions:
+\begin{center}
+$R_{W}=\frac{\sigma^{\mu}_W}{\sigma^{e}_W} = \frac{BR(\wmunu)}{BR(\wenu)}= \valWunivers \pm \sysWunivers (sys.) \pm \statWunivers (stat.)$,
+\end{center}
+where the W cross-sections are calculated in fiducial region following the prescription from Sec. \ref{sec:Wcs}:
+\begin{center}
+$\sigma^{fid}_{W}(\wenu) = \valWenu  \pm \statWenu (stat.) \pm \sysWenu (sys.) \pm \lumiWenu (lumi.) \, [pb]$\\
+$\sigma^{fid}_{W}(\wmunu) = \valWmunu  \pm \statWmunu (stat.) \pm \sysWmunu (sys.) \pm \lumiWmunu (lumi.) \, [pb]$
+\end{center}
+This result agrees within the uncertainty with the world average of $0.991\pm0.018$ \cite{Agashe:2014kda}. 
 
-The combination yields a good $\chi^2/NDF$=1.0/3 indicating good agreement between measurements. The combined cross-section is extrapolated to the full fiducial phase-space using $A_{W/Z}$ factors. The resulting cross-sections are summarized in Tab. \ref{tab:csComb}.
+Similarly, this ratio can be measured in a Z boson decays as:
+\begin{center}
+$R_{Z}=\frac{\sigma^{\mu}_Z}{\sigma^{e}_Z} = \frac{BR(Z\to \mu\mu)}{BR(Z \to ee)}= \valZunivers \pm \sysZunivers(sys.) \pm \statZunivers (stat.)$
+\end{center}
+This ratio value is statistics dominated. The world average for a corresponding value is a $1.0009 \pm 0.0028$ \cite{Agashe:2014kda}. Comparison of the $R_W$ and $R_Z$ with the respect of the correlated systematic uncertainties with the world average is shown in Fig. \ref{fig:LeptUnivers}. The obtained values are agreeing withing the systematic uncertainty with the standard model expectations.
+
+
+
+
+\section{Combined results}\label{sec:CombCs}
+
+Since the results between channels are agreeing well, it is possible to perform averaging as described in Sec. \ref{sec:Aver}. The combination is done separately for fiducial, full and new 13 TeV cross-sections. Systematic uncertainties for the averaging are taken from Tab. \ref{tab:Unc}. The systematic uncertainties calculated using Toy MC are included in the averaging following the prescription from Sec. \ref{sec:Cor}. The common luminosity uncertainty is excluded from the combination process. The systematic uncertainties from electroweak background sources are considered uncorrelated between W and Z bosons and 100\% correlated for different W and Z channels.
+
+The resulting cross-sections are summarized in Tab. \ref{tab:csComb}. The total systematic uncertainty for W cross-sections is below 2\%, what is smaller, than a statistical one, while the Z boson cross-sections uncertanties are fully dominated by the statistics. The uncertainties due to the extrapolation to the new 13 TeV common phase-space are also negligible. The luminosity uncertainty 3\% is fully correlated between the measurments.
+
+
+The combination yields a good $\chi^2/NDF$=1.0/3 indicating good agreement between measurements. The combined cross-section is extrapolated to the full fiducial phase-space using $A_{W/Z}$ factors. 
 \input{tables/CsComb.tex}
 
-\section{Cross-sections ratios}
-The combination cross-section are in a fiducial region:
-\begin{itemize}
-\item $R_{W/Z} = \valfidWZ \pm \statfidWZ \, (stat)\, \pm \sysfidWZ\, (sys)\,  $
-\item $R_{W^{+}/Z} = \valfidWpZ \pm \statfidWpZ\, (stat)\, \pm \sysfidWpZ \, (sys)\, $
-\item $R_{W^{-}/Z} = \valfidWmZ \pm \statfidWmZ\, (stat)\,  \pm \sysfidWmZ\,  (sys)\, $
-\item $R_{W^{+}/W^{-}} = \valfidWpWm \pm \statfidWpWm\, (stat)\, \pm \sysfidWpWm\,  (sys)\,  $
-\end{itemize}
+\subsection{Cross-sections ratios}
+
+Measurement of the ratios is a powerful tool to test PDF predictions, since it allows to cancell the biggest uncertainty coming from luminosity. The ratios for W/Z cross section have been calculated in a fiducial region following the prescription from Sec.~\ref{sec:Rat}. The obtained results are:
+
+\begin{center}
+$R_{W/Z} = \valfidWZ \pm \statfidWZ \, (stat.)\, \pm \sysfidWZ\, (sys.)\,  $ \\
+$R_{W^{+}/Z} = \valfidWpZ \pm \statfidWpZ\, (stat.)\, \pm \sysfidWpZ \, (sys.)\, $ \\
+$R_{W^{-}/Z} = \valfidWmZ \pm \statfidWmZ\, (stat.)\,  \pm \sysfidWmZ\,  (sys.)\, $ \\
+$R_{W^{+}/W^{-}} = \valfidWpWm \pm \statfidWpWm\, (stat.)\, \pm \sysfidWpWm\,  (sys.)\,  $ \\
+\end{center}
 
 
-\section{Comparation with Theoretical Predictions}
-The theoretical predictions for cross-section measurements are obtained at NLO using MCFM/APPLIGRID for a different PDF sets: ABM12nlo, CT14nlo, MMHTnlo, ATLAS-epWZnlo, HERAPDF2.0nlo. 
-\section{PDF fits}
+\section{Comparation with theoretical predictions}\label{sec:CompCs}
+
+The theoretical predictions are calculated at NLO using MCFM\cite{MCFM} for a different PDF sets: ABM12nlo\cite{ABM12}, CT14nlo\cite{CT14}, MMHTnlo\cite{MMHT}, ATLAS-epWZnlo, HERAPDF2.0nlo in fiducial region. The MCFM is a parton-level Monte-Carlo generator, that gives a predictions at LO and NLO level. It is interfaces with APPLGRID\cite{APPLGRID}, that provides a $x$ vs $Q^2$ grid for MCFM. The comparison of cross-sections for a combined channes is shown in Fig. \ref{}. The theoretical predictions are agreeing with experimental results within 2$\sigma$, however, the difference for the ratios (Fig.\ref{}) is higher. 
+
+
+
+\section{Effect on PDF distributions}\label{sec:PDFCs}
+
+The effect of these cross-sections measurements estimated using PDF profiling method on CT10 nlo set with uncertainties estimated following prescription in Sec. \ref{sec:PDFFit}. The fit gives \chiD/NDF= , that showes a good agrement with data.  The impact is shown in Fig. \ref{}, where results, obtained using CT10 PDF set are compared to the profiled results with this measurement included. The impact of data on experimental uncertainties is not visible for most of the distribtions, however it slightly improves knowledge of valence quarks densities.

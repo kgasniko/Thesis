@@ -3,10 +3,16 @@
 
 \begin{landscape}
 \begin{table}[p]
-\caption{}
+\caption{Summary of the different terms contributing to the uncertainty on C factors for all analyses}
 \label{tab:Unc}
 \begin{center}
-\begin{tabular}{l | c  || c | c || c | c || c | c ||  }
+\begin{tabular}{l | c  || c | c || c | c || c | c   }
+\hline
+ & & $W^{+}\to e\nu$ & $W^{-}\to e\nu$ & $W^{+}\to \mu\nu$ & $W^{+}\to \mu\nu$ & $Z\to ee$ & $Z\to \mu\mu$ \\
+\hline
+Value C & & \CWplusenu & \CWminenu & \CWplusmunu & \CWminmunu & \CZee & \CZmumu \\
+\hline
+\hline
 Source of uncertainty & Method & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{W} / C_{W} (\%) $ & $\delta C_{Z} / C_{Z} (\%) $ & $\delta C_{Z} / C_{Z} (\%) $\\
  &  & $W^{+}\to e\nu$ & $W^{-}\to e\nu$ & $W^{+}\to \mu\nu$ & $W^{+}\to \mu\nu$ & $Z\to ee$ & $Z\to \mu\mu$ \\
 \hline
@@ -28,13 +34,14 @@ Muon energy resolution total & Offset &- & - & \muonResolutionTotalWplusmunu & \
 \tab - Muon ID energy scale & Offset & - & - & \MuSmearingMSWplusmunu & \MuSmearingMSWminmunu & - & \MuSmearingMSZmumu\\ 
 \tab - Muon MS energy scale & Offset & - & - & \MuSmearingIDWplusmunu & \MuSmearingIDWminmunu & - & \MuSmearingIDZmumu\\ 
 Hadron recoil scale & Offset & \HadronRecoilScaleCorrectionWplusenu & \HadronRecoilScaleCorrectionWminenu & \HadronRecoilScaleCorrectionWplusmunu  & \HadronRecoilScaleCorrectionWminmunu  & - & -\\
-Hadron recoil resolution & Offset &  &  &  &  & - & - \\
-EWK + $t\bar{t}$ background & & \ewkWplusenu & \ewkWminenu & \ewkWplusmunu & \ewkWminmunu & \ewkZee & \ewkZmumu\\
-QCD  &  & \qcdWplusenu & \qcdWminenu & \qcdWplusmunu & \qcdWminmunu & - & -\\
+Hadron recoil resolution & On/Off &  &  &  &  & - & - \\
+EWK + $t\bar{t}$ background &Offset & \ewkWplusenu & \ewkWminenu & \ewkWplusmunu & \ewkWminmunu & \ewkZee & \ewkZmumu\\
+QCD  & Offset & \qcdWplusenu & \qcdWminenu & \qcdWplusmunu & \qcdWminmunu & - & -\\
 \hline
-PDF error & &  &  &  &  &  & \\
+Theory & &  &  &  &  &  & \\
 \hline
 Total& & \CWplusenuSystUpErr & \CWminenuSystUpErr & \CWplusmunuSystUpErr & \CWminmunuSystUpErr & \CZeeSystUpErr & \CZmumuSystUpErr  \\
+\hline
 \hline
 Statistics & & \statWplusenu & \statWminenu & \statWplusmunu & \statWminmunu & \statZee & \statZmumu \\
 \hline
