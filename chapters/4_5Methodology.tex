@@ -1,40 +1,44 @@
 \chapter{Methodology of the measurement}\label{chap:Met}
 \minitoc
-\section{Cross-Section methodology}
 
-The production cross-section of W and Z bosons in a fiducial region, corresponding to the geometrical acceptance of the detector and of the kinematic selection, measured using the  equation:
+This thesis presents various measurements on 2.76 TeV data: cross-section measurement for different lepton flavors, combination of the cross-sections and interpretation of the obtained cross-sections in terms of pdf distributions.
+
+ In this chapter a methodology of the measurements is given. First section gives a description of cross-section measurement in the different phase-space regions. The second chapter shows the methodology of linear averaging of the results, used for combination of electron and muon analyses. In the last section the pdf fit procedure is described.
+ 
+\section{Cross-Section methodology}
+Due to the limited geometrical detector acceptance and reconstruction efficiency the cross-section of a process of interest cannot be measured in the full phase-space. The fiducial cross-section, i.e. the cross-section limited to selection region, is measured, as:
 \begin{equation}
 \sigma^{fid}_{W/Z} = \frac{N^{W/Z}-B^{W/Z}}{C_{W/Z}L_{int}}=\frac{N^{W/Z}_{sig}}{C_{W/Z}L_{int}},
 \end{equation}
-where 
+where:
 \begin{itemize}
-\item N is the number of candidates measured in a data
-\item B is the number of background events
-\item $N^{W/Z}_{sig}=N^{W/Z}-B^{W/Z}$ of the signal events
-\item $L_{int}$ is the integrated luminosity corresponding to a run selections and trigger requirements
+\item N is the number of candidates measured in the data;
+\item B is the number of background events;
+\item $N^{W/Z}_{sig}=N^{W/Z}-B^{W/Z}$ is the number of the signal events;
+\item $L_{int}$ is the integrated luminosity calculated for the given run selection and trigger requirements;
 \item $C_{W/Z}$ is a correction factor for an experimental selection and resolution effects.
 \end{itemize}
 
-The correction factors $C_{W/Z}$ is calculated from MC for each process and each decay channel separatelly and defined as :
+The correction factor $C_{W/Z}$ is calculated from Monte Carlo (MC) for each process and each decay channel separately and defined as :
 \begin{equation}
 C_{W/Z}=\frac{N_{MC, rec}}{N_{MC,gen, cut}}, 
 \end{equation}
-where $N_{MC, rec}$ are sums of weights of events after simulation, reconstruction and selection, $N_{MC,gen, cut}$ - are taken on the generator level after fiducial cuts. These correction factor are including efficiencies for trigger, reconstruction and identification (see Sec.\ref{sec:Eff}).
+where $N_{MC, rec}$ is a sum of weights of events after simulation, reconstruction and selection, $N_{MC,gen, cut}$ - is taken on the generator level after fiducial cuts. This correction factor are includes efficiencies for trigger, reconstruction and identification (see Sec.\ref{sec:Eff}).
 
-In addition, this measurement could be extrapolated to the full phase-space using as:
+Later, this measurement can be extrapolated to the full phase-space using MC information:
 \begin{equation}
 \sigma^{tot}_{W/Z}= \frac{\sigma^{fid}_{W/Z}}{A_{W/Z}}= \frac{N^{W/Z}_{sig}}{A_{W/Z}C_{W/Z}L_{int}},
 \end{equation}
-where $\sigma^{tot}_{W/Z}$ are the total inclusive production cross-section of the W and Z bosons, and $A_{W/Z}$  is an acceptance. 
+where $\sigma^{tot}_{W/Z}$ is the total inclusive production cross-section of the W or Z bosons, and $A_{W/Z}$  is the acceptance. 
 
-The $A_{W/Z}$ factor determined from Monte Carlo simulation as: 
+The $A_{W/Z}$ factor is determined from Monte Carlo simulation as: 
 \begin{equation}
 A_{W/Z}=\frac{N_{MC,gen, cut}}{N_{MC,gen,all}},
 \end{equation}
 where $N_{MC,gen,all}$ are the sum of weights of all generated MC events. Both $A_{W/Z}$ and $C_{W/Z}$ are defined at the "born level", i.e. before the decay leptons emit photons via QED final state radiation.
 
 \subsection{Fiducial phase-space definition}
-The definition of fiducial volume for W bosons in both electron and muon channels is:
+The fiducial volume definition correponds to the analysis selection described in Chap.~\ref{chap:EventSelection}. For W boson measurement it is:
 \begin{itemize}
 \item $P_T^l$ > 20 GeV
 \item $|\eta^l|$ < 2.5 
@@ -53,11 +57,13 @@ For the Z boson measurement fiducial phase-space is defined as:
 \item $|\eta^l|$ < 2.5 
 \item 66 GeV <$M_{Z}$ < 116 GeV
 \end{itemize}
-where $M_{Z}$ is an di-lepton invariant mass.
+where $M_{Z}$ is a di-lepton invariant mass. 
+
+The differences between analysis selection for electrons and muons are neglected in this definition.
 
 \subsection{Extrapolation to the 13 TeV fiducial phase-space}
 
-Since the  13 TeV inclusive cross-section measurement  uses another definition of the fiducial phase space, it is possible to extrapolate cross-section to a new fiducial phase-space as:
+The  13 TeV inclusive cross-section measurement  uses stricter set of analysis criteria and therefore another definition of the fiducial phase space. However, it is possible to extrapolate cross-section to a new fiducial phase-space as:
 \begin{equation}
 \sigma^{fid,13}_{W/Z} = \frac{\sigma^{fid}_{W/Z}}{E_{W/Z}},
 \end{equation}
@@ -65,7 +71,7 @@ where $E_{W/Z}$ is an additional extrapolation factor:
 \begin{equation}
 E_{W/Z}=\frac{N_{MC,gen, cut}}{N_{MC,gen, cut^{new}}},
 \end{equation}
-where $N_{MC,gen, cut^{new}}$ is the sum of the weights of Monte-Carlo events after the new set of cuts on the generator level.
+where $N_{MC,gen, cut^{new}}$ is the sum of the weights of Monte-Carlo events after the new set of cuts on the generator level. This extrapolation allows to directly calculate the cross-sections ratios for a different $\sqrt{s}$ for correlated uncertainties cancellation.
 
 The 13 TeV fiducial phase-space is defined as:
 \begin{itemize}
@@ -82,10 +88,10 @@ for the W decays and
 \end{itemize}
 for the Z measurements.
 
-\subsection{Combination of $W^{+}$ and $W^{-}$ cross-sections}\label{sec:Wcs}
-In this analysis cross-section of W boson is calculated indirectly by combining $W^{+}$ and $W^{-}$ cross-sections the following way:
+\subsection{The $W^{+/-}$ boson cross-section calculation}\label{sec:Wcs}
+In this analysis the cross-section for the production of W bosons is calculated indirectly by combining $W^{+}$ and $W^{-}$ cross-sections in the following way:
 \begin{equation}
-\sigma_{W}=\sigma_{W^{+}}+\sigma_{W^{-}} = \frac{1}{L_{int}} \cdot \Big(\frac{N^{W^+}_{sig}}{A_{W^+}C_{W^+}} +  \frac{N^{W^-}_{sig}}{A_{W^-}C_{W^-}} \Big), 
+\sigma_{W}=\sigma_{W^{+}}+\sigma_{W^{-}} = \frac{1}{L_{int}} \cdot \Big(\frac{N^{W^+}_{sig}}{A_{W^+}C_{W^+}} +  \frac{N^{W^-}_{sig}}{A_{W^-}C_{W^-}} \Big). 
 \end{equation}
 
 The absolute uncertainty of this measurement is calculated from uncertainties of $W^{+}$ and $W^{-}$ cross-sections as:
@@ -95,24 +101,27 @@ The absolute uncertainty of this measurement is calculated from uncertainties of
 where $\delta X$ is a systematic component on the cross-section and $\rho^{X}_{W^+W^-}$ is a correlation between $W^{+}$ and $W^{-}$ for this component, which will be estimated in Chap. \ref{chap:Unc}. 
 \section{Ratios calculation}\label{sec:Rat}
 
-The ratio for two cross-section measurements $\sigma_i$ and $\sigma_j$ is calculated as:
+Ratio calculation is a powerful tool for testing the predictions of the theory, because of the cancellation of the correlated uncertainties. The ratio for two cross-section measurements $\sigma_i$ and $\sigma_j$ is calculated as:
 \begin{equation}
 R_{i,j}=\frac{\sigma_i}{\sigma_j}=\frac{\frac{N^{i}_{sig}}{A^{i}_{W/Z}C^{i}_{W/Z}L_{int}}}{ \frac{N^{j}_{sig}}{A^{j}_{W/Z}C^{j}_{W/Z}L_{int}}}
 =\frac{N^{i}_{sig}}{N^{j}_{sig}}\cdot \frac{A^{j}_{W/Z}}{A^{i}_{W/Z}} \cdot \frac{C^{j}_{W/Z}}{C^{i}_{W/Z}}=\frac{N^{i}_{sig}}{N^{j}_{sig}}\cdot A_{i/j} C_{i/j},
 \end{equation}
+what means that this value does not depend on the integrated luminosity and its uncertainty.
 
-The relative uncertainty is therefore can be obtained, taking into account correlation between two measurements as:
+The relative uncertainty can herefore be obtained taking into account correlation between two measurements as:
 \begin{equation}
-\Big(\frac{\delta R }{R}\Big)^2=\Big(\frac{\delta N^{i}_{sig}}{N^{i}_{sig}}\Big)^2+\Big(\frac{\delta N^{j}_{sig}}{N^{j}_{sig}}\Big)^2+\Big(\frac{\delta A_{i/j}}{A_{i/j}}\Big)^2+\Big(\frac{\delta C_{i/j}}{C_{i/j}}\Big)^2
+\Big(\frac{\delta R }{R}\Big)^2=\Big(\frac{\delta N^{i}_{sig}}{N^{i}_{sig}}\Big)^2+\Big(\frac{\delta N^{j}_{sig}}{N^{j}_{sig}}\Big)^2+\Big(\frac{\delta A_{i/j}}{A_{i/j}}\Big)^2+\Big(\frac{\delta C_{i/j}}{C_{i/j}}\Big)^2.
 \end{equation}
 
-Uncertainties on first two terms is considered to be uncorrelated, while other are derived using the following error propagation formula:
+Uncertainties on first two terms are considered to be uncorrelated, while other are derived using the following error propagation formula:
 \begin{equation}
 \Big(\frac{\delta X_{i/j} }{X_{i/j}}\Big)^2= \Big(\frac{\delta X_{i} }{X_{i}}\Big)^2+\Big(\frac{\delta X_{j} }{X_{j}}\Big)^2-2\rho_{ij}\frac{\delta X_{i}}{X_{i}}\frac{\delta X_{j}}{X_{j}},
 \end{equation}
-where X is a systematic component on the A or C and $\rho_{ij}$ is a correlation between two estimates. Estimation of correlation parameters will be discussed in Chap.~\ref{chap:Unc}.
+where X is a systematic component on the A or C and $\rho_{ij}$ is a correlation between two estimates. The estimation of correlation parameters will be discussed in Chap.~\ref{chap:Unc}.
 
 \section{Combination of electron and muon cross-section measurements}\label{sec:Aver}
+
+The standard model predicts the same branching ratios for the leptonic decays of W and Z bosons. Therefore, it is possible to combine the measurements in electron and muon channel into one cross-section by averaging them. This analysis uses the standard tool for the averaging of the measurements called Havereger, that was originally developed  for the HERA data \cite{HERADIS}. This program uses the method of linear averaging, that is described below.
 
 The probability density function for a "true" value $m$ to get a value $\mu$ with uncertainty $\Delta$ in measurement is:
 \begin{equation}
@@ -135,39 +144,41 @@ that can be rewritten in the form of the Eq. \ref{eq:chi2Ave}:
 \begin{equation}\label{eq:chi2Sum}
 \chi_{sum}^2(m) =\frac{(m-\mu_{ave})^2}{\Delta_{ave}^2}+\chi^{2}_{0}, 
 \end{equation}
-where $mu_{ave}$ and $\Delta_{ave}$ are the average value and its uncertainty.  These values are found by minimizing $\chi^{2}_{sum}$ with the respect to m. Value $\chi^2_0$ indicate a consistency of the measurements and should be $\chi^2_0/N \approx 1$.
+where $\mu_{ave}$ and $\Delta_{ave}$ are the average value and its uncertainty respectively.  These values are found by minimizing $\chi^{2}_{sum}$ with respect to$m$.  The value $\chi^2_0$ indicate a consistency of the measurements and should be $\chi^2_0/N \approx 1$.
 
 Systematic uncertainties can are treated as a result of an experiment (e.g. measurement of the calibration) and added to the \chiD as:
 \begin{equation}
 \chiD_{syst}(\alpha) = \frac{\alpha-\alpha_0}{\Delta_{\alpha}^2}\equiv b^2,
 \end{equation}
-where nuisance parameter b corresponds to a coherent change of the measurements $\mu_i \to \mu_i+\mathbf{bF_i}$. Using this nuisance representation, Eq. \ref{eq:chi2Sum} can be rewritten in more general way:
+where $\alpha$ is the "true" parameter, what is measured at the experiment as $\alpha_0$ with uncertainty $\Delta_{\alpha}$. The nuisance parameter $b$ corresponds to a coherent change of the measurements $\mu_i \to \mu_i+\mathbf{bF_i}$. 
+
+Using this nuisance parameters representation, Eq. \ref{eq:chi2Sum} can be rewritten in a more general way:
 \begin{equation}\label{Eq:ChiDParam}
 \chi^{2}_{sum}(\mathbf{m},\mathbf{b})=\sum_{i} \frac{(m-\mu_i-\sum_j\Gamma_i^jb_j)^2}{\Delta_i^2}+\sum_j b_j^2, 
 \end{equation}
 where
 \begin{itemize}
-\item $i$ runs over all experiments used in averaging. 
-\item $\mathbf{b}$ is the vector of nuisance parameters $b_j$ corresponding to each source of systematic uncertainty
-\item $\Gamma_i^j$ is the absolute correlated systematic uncertainty
+\item $i$ runs over all experiments used in averaging;
+\item $\mathbf{b}$ is the vector of nuisance parameters $b_j$ corresponding to each source of systematic uncertainty;
+\item $\Gamma_i^j$ is the absolute correlated systematic uncertainty;
 \item $\Delta_i^2$ is the uncorrelated (statistical) uncertainty.
 \end{itemize}
 
 
 \section{PDF fits}\label{sec:PDFFit}
-In this thesis the xfitter program have been used for determine the parton distribution functions. In this section the main fit formalism used is presented in details, such as parametrisation of the PDFs at the starting scale, definition of \chiD and treatment of experimental uncertainties.
+In this thesis the xFitter program\cite{Xfitter} has been used to determine the parton distribution functions. In this section the used fit formalism  is presented in details, such as parametrisation of the PDFs at the starting scale, definition of \chiD and the treatment of the experimental uncertainties.
 
-The parton distribution functions can be parametrized differently at the starting scale $Q^2_0$. Standard form, adapted by PDF groups, uses a simple polynomial for interpolation between low and high x regions:
+The parton distribution functions can be parametrized differently at the starting scale $Q^2_0$. Standard form, adapted by the groups, providing the PDF distributions, uses a simple polynomial for interpolation between low and high x regions:
 \begin{equation}
 xf(x; Q^2_0) = A x^{B} (1-x)^{C} P_{i}(x),
 \end{equation}
 where $P_{i}$ is a polynomial of some order. In this analysis a standard HERA style parametrisation is used, so its implementation will be discussed in details
 
-There are, in principle, 11 different partons to consider, however heavy parton (c and d quarks) distributions can be determined perturbativelly, that leaves at least 7 independent combinations. The parameterised PDS at HERA are the valence distributions $xu_{v}$ and $xd_{v}$, the gluon distribution $xg$, and the u-type and d-type sea $x\bar{U}$ and $x\bar{D}$, where:
+There are, in principle, 11 different partons to consider, however heavy parton ($c$ and $b$ quarks) distributions can be determined perturbativelly, that leaves at least 7 independent combinations. The parameterized PDFs at HERA are the valence distributions $xu_{v}$ and $xd_{v}$, the gluon distribution $xg$, and the u-type and d-type sea $x\bar{U}$ and $x\bar{D}$ respectively, where:
 \begin{center}
 $xu_{v} = xu - x\bar{u}$,  $xd_{v} = xd-x\bar{d}$,   $x\bar{U}=x\bar{u}$,  $x\bar{D}=x\bar{d}+x\bar{s}$. 
 \end{center}
-For the strange quark distributions it is assumed, that $xs = x\bar{s} = f_sx\bar{D}$ at $Q^2_0$, where $f_s = 0.31$ - is a strange fraction chosen to match the experiment data. 
+For the strange quark distributions it is assumed, that $xs = x\bar{s} = f_sx\bar{D}$ at $Q^2_0$, where $f_s = 0.31$ - is a strange fraction chosen to match the experimental data. 
 
 The following functional form is used for parametrization:
 \begin{equation}
@@ -181,23 +192,23 @@ Similarly to averaging procedure, the nuisance parameters representation of the 
 \end{equation}
 where:
 \begin{itemize}
-\item $m_i(\mathbf{p})$ is the true value, that depends on set of parameters $\mathbf{p} = (p_1, p_2,...)$
-\item $\mu_i$ is the value, observed in the experiment,
-\item $\sigma_i$ is the statistical and systematic uncertainty,
-\item $\Gamma_{\alpha}^{i}$ is the sensitivity of i-th measurement to the correlated systematic source $\alpha$,
-\item $r_i$ are the normal random variables
+\item $m_i(\mathbf{p})$ is the true value, that depends on set of parameters $\mathbf{p} = (p_1, p_2,...)$;
+\item $\mu_i$ is the value, observed in the experiment;
+\item $\sigma_i$ are the statistical and systematic uncertainties;
+\item $\Gamma_{\alpha}^{i}$ is the sensitivity of i-th measurement to the correlated systematic source $\alpha$;
+\item $r_i$ are the normal random variables;
 \item $b_{\alpha}$ are the nuisance parameters.
 \end{itemize}
 
-The simple parametrisation form of \chiD is defined in Eq. \ref{Eq:ChiDParam}. This equation can be rewritten using a Poisson distribution for statistical error:
+The simple parametrisation form of \chiD is defined in Eq. \ref{Eq:ChiDParam}. This equation can be rewritten using a Poisson distribution for the statistical error:
 \begin{equation}
 \chi^{2}_{sum}(\mathbf{m},\mathbf{b})=\sum_{i} \frac{(m-\mu_i-\sum_j\Gamma_i^jb_j)^2}{\delta^{2}_{i,stat}\mu^{i}m^{i}\prod_{\alpha}exp(-\gamma_{\alpha}^ib_{\alpha})}+\sum_{\alpha} b_{\alpha}^2, 
 \end{equation}
 
-The PDF uncertainties are estimated by varying the data points within their statistical ans systematic uncertainties using a Monte-Carlo technique. For each data set an QCD fit is performed to extract the PDF set.  Typical number of data sets is N>100. The pdf uncertainties are estimated using the values and RMS of the replicas.
+The PDF uncertainties are estimated by varying the data points within their statistical and systematic uncertainties using a Monte-Carlo technique. For each data set a QCD fit is performed to extract the PDF set.  Typical number of data sets is N>100. The pdf uncertainties are estimated using the values and RMS of the replicas.
 
-The impact of the new data set on a given PDF set can be estimated using the profiling procedure <reference>. It is preformed using \chiD function with both theoretical and experimental uncertainties in the following nuisance parameters representation:
+The effect of adding new data to the PDF determination can be evaluated using the profiling procedure\cite{PDFProf}. It is preformed using the following representation of the \chiD function with both theoretical and experimental uncertainties included:
 \begin{equation}
-\chi^{2}_{sum}(\mathbf{m},\mathbf{b_{exp}}, \mathbf{b_{th}})=\sum_{i} \frac{(m-\mu_i-\sum_j\Gamma_i^jb_j)^2}{\delta^{2}_{i,stat}\mu^{i}m^{i}\prod_{\alpha}exp(-\gamma_{\alpha}^ib_{\alpha})}+\sum_{\alpha} b_{\alpha, exp}^2 + \sum_{\beta} b_{\beta, th}^2,
+\chi^{2}(\mathbf{m},\mathbf{b_{exp}}, \mathbf{b_{th}})=\sum_{i} \frac{(m-\mu_i-\sum_\alpha \Gamma_\alpha^{exp}b_{\alpha, exp}+\sum_\beta \Gamma_\beta^{th}b_{\beta, th})^2}{\delta^{2}_{i,stat}\mu^{i}m^{i}\prod_{\alpha}exp(-\gamma_{\alpha}^ib_{\alpha})}+\sum_{\alpha} b_{\alpha, exp}^2 + \sum_{\beta} b_{\beta, th}^2,
 \end{equation}
-where $\mathbf{b_{exp}$ and $\mathbf{b_{th}$ are the vectors of correlated experimental and theoretical uncertainties respectively. Their influence on parameters is described by $$ and $$ 
+where $\mathbf{b_{exp}}$ and $\mathbf{b_{th}}$ are the vectors of correlated experimental and theoretical uncertainties respectively. The sensitivity of the measurments is splitted into two experimental and theoretical components $\Gamma_\alpha^{exp}$ and $\Gamma_\beta^{th}$. This \chiD function can be represented as a system of linear equations, that are minimized iterativelly, allowing to determine shifted PDF parameters. The minumum value of \chiD provides a compatibility of the measurement.

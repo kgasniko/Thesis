@@ -1,4 +1,4 @@
-\newcommand{\rot}{\rotatebox{90}}
+\newcommand{\rot}{\rotatebox{-90}}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \begin{landscape}
@@ -34,16 +34,22 @@ Muon energy resolution total & Offset &- & - & \muonResolutionTotalWplusmunu & \
 \tab - Muon ID energy scale & Offset & - & - & \MuSmearingMSWplusmunu & \MuSmearingMSWminmunu & - & \MuSmearingMSZmumu\\ 
 \tab - Muon MS energy scale & Offset & - & - & \MuSmearingIDWplusmunu & \MuSmearingIDWminmunu & - & \MuSmearingIDZmumu\\ 
 Hadron recoil scale & Offset & \HadronRecoilScaleCorrectionWplusenu & \HadronRecoilScaleCorrectionWminenu & \HadronRecoilScaleCorrectionWplusmunu  & \HadronRecoilScaleCorrectionWminmunu  & - & -\\
-Hadron recoil resolution & On/Off &  &  &  &  & - & - \\
+Hadron recoil resolution & On/Off & \HadrRecoilSmearWplusenu & \HadrRecoilSmearWminenu  & \HadrRecoilSmearWplusmunu & \HadrRecoilSmearWminmunu & - & - \\
+MC statistics & & \MCStatWplusenu & \MCStatWminenu & \MCStatWplusmunu & \MCStatWminmunu & \MCStatZee & \MCStatZmumu \\
+\hline
+Theory &  & \WplusenuPDFSetUp & \WminenuPDFSetUp  & \WplusmunuPDFSetUp  & \WminmunuPDFSetUp & \ZeePDFSetUp  & \ZmumuPDFSetUp \\
+\hline
+Total& & \WplusenuTOTUp & \WminenuTOTUp & \WplusmunuTOTUp & \WminmunuTOTUp & \ZeeTOTUp & \ZmumuTOTUp  \\
+\hline
+\hline
+& & \multicolumn{6}{c}{Backgrounds}\\
+\hline
 EWK + $t\bar{t}$ background &Offset & \ewkWplusenu & \ewkWminenu & \ewkWplusmunu & \ewkWminmunu & \ewkZee & \ewkZmumu\\
 QCD  & Offset & \qcdWplusenu & \qcdWminenu & \qcdWplusmunu & \qcdWminmunu & - & -\\
 \hline
-Theory & &  &  &  &  &  & \\
+& & \multicolumn{6}{c}{Data statistics}\\
 \hline
-Total& & \CWplusenuSystUpErr & \CWminenuSystUpErr & \CWplusmunuSystUpErr & \CWminmunuSystUpErr & \CZeeSystUpErr & \CZmumuSystUpErr  \\
-\hline
-\hline
-Statistics & & \statWplusenu & \statWminenu & \statWplusmunu & \statWminmunu & \statZee & \statZmumu \\
+& & \statWplusenu & \statWminenu & \statWplusmunu & \statWminmunu & \statZee & \statZmumu \\
 \hline
 \end{tabular}
 \end{center}

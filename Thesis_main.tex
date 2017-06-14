@@ -12,7 +12,7 @@
 \usepackage{cite}
 \usepackage{lineno}
 \usepackage{mathpazo}
-%\usepackage{helvet}%      Choose default sans serif
+\usepackage{helvet}%      Choose default sans serif
 %\usepackage{gillius}%      Choose default sans serif
 \usepackage{sectsty}%     Change style of headings (should precede section redefinitions below)  
 \allsectionsfont{\sffamily}% Set sans serif for all headings
@@ -56,6 +56,8 @@
 \input{Aux/Ratios_fid.tex}
 \input{Aux/Ratios_full.tex}
 \input{Aux/Ratios_thr.tex}
+\input{Aux/electronAnalyses.tex}
+\input{Aux/muonAnalyses.tex}
 %\input{SystematicsTexFormat/Wplusenu}
 %\input{SystematicsTexFormat/Wplusmunu}
 %\input{SystematicsTexFormat/Wminenu}
@@ -87,19 +89,19 @@
   \dominitoc[n]  
 
 %% Title page
-%\input{Aux/TitlePage.tex}
+\input{Aux/TitlePage.tex}
 
-%\frontmatter 
+\frontmatter 
 
 %\linenumbers
 %%% Abstract
-%\input{Aux/Abstract.tex}
+\input{Aux/Abstract.tex}
 
 %% Contents  
 %\cleardoublepage
 %\setcounter{tocdepth}{1}  % set TOC depth (no subsecs)
 % Add Contents to PDF bookmarks
-%\pdfbookmark{\contentsname}{Contents}
+\pdfbookmark{\contentsname}{Contents}
 \tableofcontents
 %  \mtcaddchapter
 
@@ -153,7 +155,7 @@
 %\input{Chapters/Summary.tex}
 
 % %%% Appendix
-%\input{Chapters/Appendixes}
+\input{Chapters/Appendixes}
   
 %% List of Tables and Figures
 %\thispagestyle{empty}
@@ -172,12 +174,11 @@
 %\bibliographystyle{fra_hannes_lucas_unsrt}
 %\bibliographystyle{plain}
 \bibliographystyle{unsrt}
-{\small
+%{\small
 %\addbibresource{Thesis_Main.bib}
 \bibliography{Thesis_Main}{} 
-}
+%}
 %\input{Aux/OathEpi.tex}
 %% Acknowledgements  
-%\input{Chapters/Acknowledgements.tex}
-
+%\input{Chapters/Acknowledgem
 \end{document}

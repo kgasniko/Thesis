@@ -1,4 +1,5 @@
 \chapter{Selection}\label{chap:EventSelection}
+
 Selection criteria is a set of requirements, that are applied both on data and MC. The selection criteria should  separate process of interest (signal) from other processes. For $pp \to W \to e\nu/\mu\nu$ and $pp \to Z/\gamma^* \to ee/\mu\mu$ selection criteria can be divided into 3 groups: data quality, lepton and boson cuts. The full set of cuts is summarized in a Tab. \ref{tab:eventSelection}. In this chapter all of them will be discussed and a cut flow presented. 
 %In this chapter selection criteria for $pp \to W \to e\nu/\mu\nu$ and $pp \to Z/\gamma^* \to ee/\mu\mu$  are presented.  
 %you need to add what is truth level in the previous chapter
@@ -25,28 +26,28 @@ Online selection of events is based on a single lepton trigger, depending on a l
      & Data & signal MC & Data & signal MC \\
      \hline
      \hline
-    & \multicolumn{2}{c}{$W^{+}\to e\nu$} & \multicolumn{2}{c}{$W^{-}\to e\nu$}    \\
+    & \multicolumn{2}{c}{$W^{+}\to e\nu$} & \multicolumn{2}{c}{$W^{+}\to \mu\nu$}    \\
     \hline
-    No selection & \cutFlowTotWplusenuData & \cutFlowTotWplusenuMC & \cutFlowTotWminenuData & \cutFlowTotWminenuMC \\
-    Event selection &\cutFlowEventWplusenuData &\cutFlowEventWplusenuMC &\cutFlowEventWminenuData & \cutFlowEventWminenuMC \\
-    Lepton selection &\cutFlowLeptonWplusenuData  & \cutFlowLeptonWplusenuMC & \cutFlowLeptonWminenuData & \cutFlowLeptonWminenuMC  \\
-    Boson selection & \cutFlowBosonWplusenuData & \cutFlowBosonWplusenuMC & \cutFlowBosonWminenuData &\cutFlowBosonWminenuMC  \\
+    No selection & \cutFlowTotWplusenuData & \cutFlowTotWplusenuMC  & \cutFlowTotWplusmunuData & \cutFlowTotWplusmunuMC  \\
+    Event selection &\cutFlowEventWplusenuData &\cutFlowEventWplusenuMC & \cutFlowEventWplusmunuData & \cutFlowEventWplusmunuMC  \\
+    Lepton selection &\cutFlowLeptonWplusenuData  & \cutFlowLeptonWplusenuMC  & \cutFlowLeptonWplusmunuData &\cutFlowLeptonWplusmunuMC \\
+    Boson selection & \cutFlowBosonWplusenuData & \cutFlowBosonWplusenuMC  &\cutFlowBosonWplusmunuData &\cutFlowBosonWplusmunuMC \\
     \hline
     \hline
-    & \multicolumn{2}{c}{$W^{+}\to \mu\nu$} & \multicolumn{2}{c}{$W^{-}\to \mu\nu$} \\
+    & \multicolumn{2}{c}{$W^{-}\to e\nu$} & \multicolumn{2}{c}{$W^{-}\to \mu\nu$} \\
     \hline
-    No selection & \cutFlowTotWplusmunuData & \cutFlowTotWplusmunuMC & \cutFlowTotWminmunuData & \cutFlowTotWminmunuMC \\
-    Event selection & \cutFlowEventWplusmunuData & \cutFlowEventWplusmunuMC & \cutFlowEventWminmunuData & \cutFlowEventWminmunuMC\\ 
-    Lepton selection & \cutFlowLeptonWplusmunuData &\cutFlowLeptonWplusmunuMC & \cutFlowLeptonWminmunuData & \cutFlowLeptonWminmunuMC \\
-    Boson selection &\cutFlowBosonWplusmunuData &\cutFlowBosonWplusmunuMC &\cutFlowBosonWminmunuData &\cutFlowBosonWminmunuMC \\
+    No selection & \cutFlowTotWminenuData & \cutFlowTotWminenuMC & \cutFlowTotWminmunuData & \cutFlowTotWminmunuMC \\
+    Event selection &\cutFlowEventWminenuData & \cutFlowEventWminenuMC  & \cutFlowEventWminmunuData & \cutFlowEventWminmunuMC\\ 
+    Lepton selection & \cutFlowLeptonWminenuData & \cutFlowLeptonWminenuMC  & \cutFlowLeptonWminmunuData & \cutFlowLeptonWminmunuMC \\
+    Boson selection  & \cutFlowBosonWminenuData &\cutFlowBosonWminenuMC  &\cutFlowBosonWminmunuData &\cutFlowBosonWminmunuMC \\
     \hline
     \hline
         & \multicolumn{2}{c}{$Z \to ee$} & \multicolumn{2}{c}{$Z \to \mu\mu$} \\
         \hline
-    No selection &  \cutFlowTotZeeData & \cutFlowTotZeeMC & \cutFlowTotZeeData & \cutFlowTotZeeMC \\
-    Event selection & \cutFlowEventZeeData &\cutFlowEventZeeMC & \cutFlowEventZeeData & \cutFlowEventZeeMC \\
-    Lepton selection & \cutFlowLeptonZeeData  & \cutFlowLeptonZeeMC & \cutFlowLeptonZeeData & \cutFlowLeptonZeeMC \\
-    Boson selection & \cutFlowBosonZeeData & \cutFlowBosonZeeMC & \cutFlowBosonZeeData & \cutFlowBosonZeeMC \\
+    No selection &  \cutFlowTotZeeData & \cutFlowTotZeeMC & \cutFlowTotZmumuData & \cutFlowTotZmumuMC \\
+    Event selection & \cutFlowEventZeeData &\cutFlowEventZeeMC & \cutFlowEventZmumuData & \cutFlowEventZmumuMC \\
+    Lepton selection & \cutFlowLeptonZeeData  & \cutFlowLeptonZeeMC & \cutFlowLeptonZmumuData & \cutFlowLeptonZmumuMC \\
+    Boson selection & \cutFlowBosonZeeData & \cutFlowBosonZeeMC & \cutFlowBosonZmumuData & \cutFlowBosonZmumuMC \\
     \hline
     \end{tabular}
   \end{center}
@@ -56,9 +57,11 @@ Online selection of events is based on a single lepton trigger, depending on a l
 
 Both analyses use similar selection criteria, applied on leptons. The leptons must satisfy requirement \ptl > 20 GeV and match to the event trigger.
 
-Electron candidates are required to be within pseudorapidity range \etall < 2.47. The electron candidates found within the transition region between the barrel and the endcap electromagnetic calorimeters, 1.37 < \etall < 1.52, are removed.  Additionally, for a better multijet background rejection  medium identification and \ptcone < 0.1 criterias are applied. The object quality (OQ) cut is applied in order to remove events from runs with dead front end boards in the calorimeter. 
+Electron candidates are required to be within pseudorapidity range \etall < 2.47. The electron candidates found within the transition region between the barrel and the endcap electromagnetic calorimeters, 1.37 < \etall < 1.52, are removed.  Additionally, for a better multijet background rejection  medium identification criteria is applied. The object quality (OQ) cut is applied in order to remove events from runs with dead front end boards in the calorimeter. 
 
-Muons have to satisfy the following criteria: they should be reconstructed by a staco algorithm in a muon spectrometer and fall within range \etall < 2.5 . Set of medium requirements is applied. They must also satisfy \ptcone < 0.1 isolation criteria.
+Muons have to satisfy the following criteria: they should be reconstructed by a staco algorithm and fall within range \etall < 2.5 . Additionally, for the better exclusion of background, it is required for muon to be combined. 
+
+In order to have better background rejection the \textit{isolation criteria} \ptcone < 0.1 is applied on both electrons and muons. This criteria uses the information about the tracks in ID that are fall within the region $\Delta R = \sqrt{\eta^2+\phi^2}=20$ of the selected lepton track. It excludes the events, there sum all of these tracks momenta (except for the selected lepton) is greater than $0.2\cdot\ptl$.
 
 \section{Boson selection}
 The events, containing W boson candidates are required to have exactly one lepton, fulfilling the lepton selection. Missing transverse energy, used as a proxy for a neutrino from W decay is required to be \etmiss $>25 GeV$.  The transverse mass, calculated from the lepton and missing transverse energy as in Eq. \ref{Eq:mtW} has to be bigger than 40 GeV (\mtw > 40 GeV). 

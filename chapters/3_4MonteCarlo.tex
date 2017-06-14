@@ -1,5 +1,6 @@
 
 \chapter{Monte-Carlo simulation}\label{chap:MC}
+\minitoc
 The Monte Carlo (MC) method was invented by scientists working on the atomic bomb in the 1940s. Its core idea is to use random samples of parameters or inputs to explore the behavior of a complex system or process.  Nowadays, MC experiments are essential part of research in both theoretical and experimental particle physics.
 This chapter gives an overview of the ATLAS experiment simulation scheme, the simulation methods and the software used. Also, techniques for fast simulation will be discussed. 
 
@@ -12,11 +13,11 @@ This chapter gives an overview of the ATLAS experiment simulation scheme, the si
 \label{fig:MC_gen2}}
 \end{figure}
 
-Monte Carlo method allows to perform different analyses, generate predictions for comparisons with data, study the the detector or the selection algorithms performance. All of these applications require accurate MC predictions. The simulation software implements precise physics models and uses statistics large enough , to exclude statistical uncertainties (usually 5 times more, than expected in a data). \atlas simulation software is integrated into Athena framework. 
+Monte Carlo method allows to perform different analyses, generate predictions for comparisons with data, study the the detector or the selection algorithms performance. All of these applications require accurate MC predictions. The simulation software implements precise physics models and uses statistics large enough , to exclude statistical uncertainties (usually 5 times more, than expected in a data). \atlas simulation software is integrated into Athena framework used at \atlas experiment \cite{Athena}. 
 
 Simulation chain is generally divided into 4 main steps (Figure ~\ref{fig:MC_gen2}):
 \begin{description}
-\item[Event generation]Simulation of hard interaction, partion evolution and hadronisation. This step is independent of the \atlas detector geometry.
+\item[Event generation]Simulation of hard interaction, parton evolution and hadronisation. This step is independent of the \atlas detector geometry.
 \item[Simulation]Simulation of energy depositions ("hits") which are produced by final state particles.
 \item[Digitalization] Simulation of detector responce using "hits" information:  first inputs to the read out drivers (ROD's), called "digits" are constructed, then ROD functionality is emulated. Detector noise effects are added at this stage. 
 \item[Reconstruction] Production of the Analysis Object Data (AOD) files, which are containing the information needed for physics analysis. This stage is identical for both data and MC

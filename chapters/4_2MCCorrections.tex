@@ -1,5 +1,5 @@
 \chapter{Monte-Carlo corrections}\label{chap:MCCor}
-Monte Carlo plays important role in the cross-section measurement. It is constantly being improved, in order to obtain a better precision in data description. Part of these corrections have been described in Chap. \ref{chap:MC}. Unfortunately, not everything can be taken into account during simulation itself. This leads to differences between data and Monte Carlo, that need to be accounted for. There are two possible methods to correct Monte Carlo without regenerating it. First one is to apply event weights, so that each MC event can contribute by a non one entry to a histogram. This procedure is called event reweighting. Second one is a MC smearing. It uses random numbers to alter the reconstructed 4-vectors. 
+\minitomWmineMonte Carlo plays important role in the cross-section measurement. It is constantly being improved, in order to obtain a better precision in data description. Part of these corrections have been described in Chap. \ref{chap:MC}. Unfortunately, not everything can be taken into account during simulation itself. This leads to differences between data and Monte Carlo, that need to be accounted for. There are two possible methods to correct Monte Carlo without regenerating it. First one is to apply event weights, so that each MC event can contribute by a non one entry to a histogram. This procedure is called event reweighting. Second one is a MC smearing. It uses random numbers to alter the reconstructed 4-vectors. 
 
 This chapter describes all additional corrections, that have been applied on MC samples in this analysis. All of these correction are introducing additional systematic error, that will be discussed in the Chap. \ref{chap:Unc}.
 
@@ -11,11 +11,20 @@ The efficiency of lepton detection at \atlas detector can be divided into three 
 \item The identification efficiency $\epsilon_{id \mid rec}$ is a probability that a reconstructed lepton survives  identification requirements. 
 \item The trigger efficiency $\epsilon_{trig \mid rec,id}$ is a probability, that the lepton satisfies the trigger requirements. 
 \end{itemize}
-The full efficiency for a single lepton can be written as:
+
+The full efficiency of a single lepton can be written as:
 \begin{equation}
 \epsilon_{total}=\epsilon_{rec} \times \epsilon_{id \mid rec} \times \epsilon_{trig \mid rec,id}
 \end{equation}
 All these efficiencies are measured using tag-and-probe method in $Z\to ll$ decays.  One of the leptons from Z boson, called "probe", is initially selected with all of the cuts, except the one under study. Second one, called "probe", satisfies tighter selection with some additional cut, e.g. trigger matching.
+
+Considering the event selection for W and Z events, the single lepton efficiencies can be translated to the corresponding efficiencies for the  detection of the lepton in W and Z bosons:
+\begin{equation}
+\epsilon^{W}_{total}=\epsilon_{rec} \times \epsilon_{id \mid rec} \times \epsilon_{trig \mid rec,id}
+\end{equation}
+\begin{equation}
+\epsilon^{Z}_{total}=\epsilon_{rec} \times \epsilon_{id \mid rec} \times (1+(1-\epsilon_{trig \mid rec,id})^2)
+\end{equation}
 
 The reconstruction efficiency is associated with the algorithm used in the event reconstruction process. This is causing differences between electrons and muons efficiencies. In the electron case the reconstruction efficiency is understood as a probability to reconstruct an electron which has deposited its energy in electromagnetic calorimeter cluster as an electron candidate.  
 
@@ -25,12 +34,15 @@ The muon reconstruction efficiency is given by:
 \end{equation}
 where $\epsilon_{reco,muon|ID}$ is a conditional probability that a muon reconstructed in ID is also reconstructed using MS as a combined muon, and  $\epsilon_{ID}$ is a probability that the muon is reconstructed as an ID track. This quantity $\epsilon_{ID}$ cannot be measured directly  in the data and therefore is replaced by $\epsilon_{ID|MS}$ - probability that muon reconstructed in MS is also reconstructed in ID, that can be measured by the tag-and-probe method. 
 
-\begin{figure}[t]
+
+
+\begin{figure}[!tbp]
 \centering
 \includegraphics[width=1\textwidth]{MCCorrections/sf.pdf}
-\caption{Comparition of electron efficiencies as calculated for 8TeV (blue points) and 2.76TeV (red points) for MC simulation. Efficiencies are shown as a function of pseudorapidity ($\eta$) for different electron $E_T$ bins. Both statistical and systematic uncertainties are shown. }
+\caption{Comparition of electron efficiencies as calculated for 8TeV (blue points) and 2.76TeV (red points) for MC simulation. Efficiencies are shown as a function of pseudorapidity ($\eta$) for different electron $E_T$ bins. Both statistical and systematic uncertainties are shown. \cite{ElecEff}}
 \label{eff_comp}
 \end{figure}
+
 Simulation samples are corrected to match data efficiencies by a scale-factor :
 \begin{equation}
 SF_{reco,id,trig}=\frac{\epsilon^{data}_{reco,id,trig}}{\epsilon^{MC}_{reco,id,trig}}.
@@ -38,7 +50,8 @@ SF_{reco,id,trig}=\frac{\epsilon^{data}_{reco,id,trig}}{\epsilon^{MC}_{reco,id,t
 
 The scale factors are calculated in \ptl and $\eta^{l}$ bins and have associated statistical and systematic uncertainty components. The statistical component is connected to a size of $Z\to ll$, which in our case is around 500 events per each lepton flavor. This makes statistical error the dominant one and means that precise calculation of scaling factors based on this data is difficult.
 
-It is possible, however, to use scale factors for 8 TeV 2012 data. The main difference between these data samples are center of mass energy and the pile-up conditions (10 in 2012 and less than 1 in 2013). The effects of these differences have been studied by the electron performance group at \atlas using $Z\to ee$ MC sample. Fig. \ref{eff_comp} shows the scale factors for different \ptl ranges as a function of $\eta^{l}$, for the MC data produced at 2.76TeV and 8 TeV centre-of-mass energy. The differences in the scale factors are negligible and fully covered by the statistical errors. This justifies the usage of 8 TeV scaling factors with increased uncertainty (that is considered to be fully statistical) in the analysis at 2.76 TeV. 
+It is possible, however, to use scale factors for 8 TeV 2012 data\cite{ElecEff}. The main difference between these data samples are center of mass energy and the pile-up conditions (10 in 2012 and less than 1 in 2013). The effects of these differences have been studied by the electron performance group at \atlas using $Z\to ee$ MC sample. Fig. \ref{eff_comp} shows the scale factors for different \ptl ranges as a function of $\eta^{l}$, for the MC data produced at 2.76TeV and 8 TeV centre-of-mass energy. The differences in the scale factors are negligible and fully covered by the statistical errors. This justifies the usage of 8 TeV scaling factors with increased uncertainty (that is considered to be fully statistical) in the analysis at 2.76 TeV. 
+
 
 \subsection{Muon Trigger SF}
 Unfortunatelly, single muon trigger has not been present in the 2012 data, so muon trigger scale factor had to be derived from the 2.76 TeV data. The size of the Z sample is not big enough to make the scale factors in \ptl and $\eta^{l}$ bins. 
@@ -115,14 +128,14 @@ Effect of applying different scale factors on muon for W analysis is shown on Fi
 \end{figure}
 
 \section{Electron energy scale and resolution}\label{sec:elecScale}
-The energy of the reconstructed electron clusters tends to be shifted in comparison to the true energy of the initial electron. The correction of this shift is done in both data and MC as a 3 step procedure:
+The energy of the reconstructed electron clusters tends to be shifted in comparison to the true energy of the initial electron. The correction of this shift is done in both data and MC as a 3 step procedure\cite{ElecCalib}:
 \begin{itemize}
 \item Electronic calibration, that transfers a raw signal from a readout to a cluster energy deposit.
 \item MC based calibration. It corrects the effects of the energy loss in the material in front of the calorimeter and the leakage into the hadronic calorimeter. This calibration is applied on both data and MC.
 \item Correction of the calorimeter cell responce in the data. This allows to get the right response in non-optimal HV-regions and to exclude biases in the calorimeter electronics reconstruction.
 \end{itemize}
 
-The energy shift is parametrised, as:
+The energy shift is parameterized, as:
 \begin{equation}
 E^{data}=E^{MC}(1+\alpha_i),
 \end{equation}
@@ -142,7 +155,7 @@ where $c_i$ is an $\eta$ dependent relative resolution correction. Similarly to 
 The correction values $\alpha_i$ and $c_i$are obtained via the $\chi^2$ fit of an invariant mass of electron pairs in data and MC. The resulting energy scale is applied to the data, while the resolution is corrected in MC. The resulting scale is validated using the $J/\psi \to ee$ and $Z/\gamma \to ee $ samples.
 
 \section{Muon momentum correction}\label{sec:MuonMomCor}
-The muon momentum resolution depends on $\eta$, $\phi$ and $p_T$ of the muon \cite{AtlasExperiment}. There is an empirical formula to describe it inside the detector (ID or MS):
+The muon momentum resolution depends on $\eta$, $\phi$ and $p_T$ of the muon \cite{AtlasExperiment}. There is an empirical formula to describe it inside the detector (ID or MS)\cite{MuonCalib}:
 \begin{equation}\label{eq:MuonResolution}
 \frac{\sigma_{Det}(p_T)}{p_T}=\frac{r^{Det}_0(\eta, \phi)}{p_T} \oplus r^{Det}_1 (\eta, \phi)  \oplus r^{Det}_2(\eta, \phi) \cdot p_T.
 \end{equation}

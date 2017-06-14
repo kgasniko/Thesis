@@ -2,7 +2,13 @@
 \section{Data sample}
 The data used in this analysis was collected in pp collisions with centre-of-mass energy 2.76 TeV during the Run-1 of the LHC operation using the ATLAS detector. This was a dedicated 2013 run for a heavy-ion group with unusual for LHC low pie-up. The mean number of interactions per bunch crossing, as shown in Fig. \ref{ris:DataSampleMu} a) was lower, than 1. 
 
-The this run \atlas collected 4.45 pb$^{-1}$ of data (Fig. \ref{ris:DataSampleMu} b)). However, not all of the data is applicable for a precise physics analysis, so the set of additional data quality (DQ) cuts was applied.  It uses an information about sub-detectors, that could be disabled during data-taking. These information is stored in so called Good Run List (GRL). Total luminosity, used in the analysis is 4.0 pb$^{-1}$. 
+The this run \atlas collected 4.45 pb$^{-1}$ of data (Fig. \ref{ris:DataSampleMu} b). However, not all of the data is applicable for a precise physics analysis, so the set of additional data quality (DQ) cuts was applied.  It uses an information about sub-detectors, that could be disabled during data-taking. These information is stored in so called Good Run List (GRL). Total luminosity, used in the analysis is 4.0 pb$^{-1}$ with the uncertainty 3.1\% \cite{myLumi}.
+
+This value, using the NNLO predictions from Eq.~\ref{eq:WcsNNLO}-\ref{eq:ZcsNNLO} could be translated to the expected number of events in data as:
+\begin{equation}
+N_{exp, bos} = \sigma_{bos} \cdot \lumi,
+\end{equation}
+what leads to the numbers $1.3\cdot 10^4$ and $1.2\cdot10^3$ events per channel for W and Z bosons respectively. However, due to the limited detector acceptance, reconstruction and analysis selection efficiency, not all of the boson would be visible in analyses.
 
 \begin{figure}[!b]
 \begin{minipage}[h]{0.49\linewidth}
@@ -32,29 +38,33 @@ The background sources are used to estimate fraction of the background events. T
 \begin{tabular}{l | c | c  }
 Process & Generator & $N_{events}$ \\
 \hline
-& \multicolumn{2}{c}{Signal MC}\\
+\multicolumn{3}{c}{Signal MC}\\
 \hline
-$W^{+} \to e\nu$ & Powheg+Pythia8 &  \\
-$W^{-} \to e\nu$ & Powheg+Pythia8 & \\
-$W^{+} \to \mu\nu$ & Powheg+Pythia8 &\\
-$W^{-} \to \mu\nu$ & Powheg+Pythia8 &  \\
-$Z \to ee$ & Powheg+Pythia8 &  \\
-$Z \to \mu\mu$ & Powheg+Pythia8 &  \\
-$W \to e\nu$ & Sherpa & \\
-$W \to \mu\nu$ & Sherpa & \\
+$W^{+} \to e\nu$ & Powheg+Pythia8 & $2.0\cdot10^5$ \\
+$W^{+} \to \mu\nu$ & Powheg+Pythia8 & $2.0\cdot10^5$ \\
+$W^{-} \to e\nu$ & Powheg+Pythia8 & $1.2\cdot10^5$ \\
+$W^{-} \to \mu\nu$ & Powheg+Pythia8 &  $1.2\cdot10^5$\\
+$Z \to ee$ & Powheg+Pythia8 & $9.5\cdot10^4$ \\
+$Z \to \mu\mu$ & Powheg+Pythia8 &  $7.0\cdot10^4$ \\
 \hline 
 \hline
-& \multicolumn{2}{c}{Background MC} \\
+\multicolumn{3}{c}{Background MC} \\
 \hline
-$W^{+} \to \tau\nu$ & Powheg+Pythia8 &\\
-$W^{-} \to \tau\nu$ & Powheg+Pythia8 & \\
-$Z \to \tau\tau$ & Powheg+Pythia8 &  \\
-$t \bar{t}$ & Powheg+Pythia6 &  \\
-$WW$ & Herwig &   \\
-$ZZ$ & Herwig &   \\
-$WZ$ & Herwig &   \\
-$b\bar{b}$ & Pythia8 & \\
-$c\bar{c}$ & Pythia8 & \\
+$W^{+} \to \tau\nu$ & Powheg+Pythia8 & $5.0\cdot10^4$ \\
+$W^{-} \to \tau\nu$ & Powheg+Pythia8 & $3.0\cdot10^4$ \\
+$Z \to \tau\tau$ & Powheg+Pythia8 & $2.0\cdot10^4$  \\
+$t \bar{t}$ & Powheg+Pythia6 &  $5.0\cdot10^3$\\
+$WW$ & Herwig &  $1.0\cdot10^3$ \\
+$ZZ$ & Herwig &   $5.0\cdot10^3$ \\
+$WZ$ & Herwig &  $1.0\cdot10^3$ \\
+$b\bar{b}$ & Pythia8 & $5.0 \cdot 10^5$ \\
+$c\bar{c}$ & Pythia8 &  $4.8 \cdot 10^5$ \\
+\hline
+\hline
+\multicolumn{3}{c}{Additional MC} \\
+\hline
+$W \to e\nu$ & Sherpa &  $4.9 \cdot 10^5$\\
+$W \to \mu\nu$ & Sherpa &$4.8 \cdot 10^5$ \\
 \hline
 \end{tabular}
 \end{center}

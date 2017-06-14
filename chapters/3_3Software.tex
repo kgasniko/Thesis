@@ -5,8 +5,9 @@ The raw detector infromation could not be used in the physics analysis. It is re
 It should be noted, that the missing transverse energy reconstruction stands separately, since the standard procedure was not applicable for 2.76 TeV data and a different approach have been adapted.
 
 \section{Tracks and vertexes}
-The tracks are reconstructed from the ID infromation. The reconstruction can be divided into 2 steps. 
-On the first step the inside-out algoritm is used for the pixel and silicon detector. Tracks are reconstructed from the random 3-points seed in the detector and then adds the new points, while moving to the interaction point using the the Kalman filter.  The Kalman filter is the iterative algorithm that provides the best estimate based on projection of previous and current measurment.  Abiguities in the track candidates are resolved and tracks are extended in TRT.
+
+The tracks and vertexes are reconstructed from the ID information\cite{Track}. The reconstruction can be divided into 2 steps. 
+On the first step the inside-out algoritm is used for the pixel and silicon detector. Tracks are reconstructed from the random 3-points seed in the detector and then adds the new points, while moving to the interaction point using the the Kalman filter\cite{Kalman}.  The Kalman filter is the iterative algorithm that provides the best estimate based on projection of previous and current measurment.  Abiguities in the track candidates are resolved and tracks are extended in TRT.
 
 At the second step, algorithm searches for the segments, reconstructed in TRT and then extends them into the silicon detector. The tracks in TRT with no silicon extension are referred as TRT-standalone tracks. 
 
@@ -17,7 +18,7 @@ Vertexes are reconstucted using the iterative vertex finding algorithm. The vert
 Due to the detector design electrons are divided into the 2 groups: central and forward. For the central electrons ($| \eta |$ < 2.5 ) there is a tracking information available. Presence of the ID track allows to perform the precise reconstruction and identification. On another hand, for the forward  ($| \eta |$ > 2.5 ) electrons could be reconstructed using just the calorimeter information, so the different algorithm is used. In this section the identification of the central electrons and reconstruction for both central and forward electrons will be discussed.
 
 \subsection{Central electrons reconstruction}
-The central electron reconstruction starts from the clusters in the EM calorimeter. On the first step the calorimeter is divided by the grid with the cell size $\Delta \eta \times \Delta \phi = 0.25 \times 0.25$. The EM calorimeter clusters are formed from the cells with total transverse energy in all layers above 2.5 GeV using the sliding window algorithm with size $3\times5$ cells. The position of the cluster is determined from its barycenter.
+The central electron reconstruction starts from the clusters in the EM calorimeter. On the first step the calorimeter is divided by the grid with the cell size $\Delta \eta \times \Delta \phi = 0.25 \times 0.25$. The EM calorimeter clusters are formed from the cells with total transverse energy in all layers above 2.5 GeV using the sliding window algorithm\cite{ElecClust} with size $3\times5$ cells. The position of the cluster is determined from its barycenter.
 
 On the second step track with $P_{T}$ > 0.5 GeV are extrapolated to the middle layer of the EM calorimeter. A track and a cluster are considered mathched to each other if the distance between track and cluster is $|\Delta\eta|$ < 0.5 GeV. In order to take into account effect of the bremsstrahlung losses the azimutal distance is allowed within $\Delta\phi$ < 0.1 on the side where the extrapolated track bends as it traverses the solenoidal magnetic field.
 
@@ -51,12 +52,7 @@ The \atlas experiment uses the information from ID and muon spectrometer  for a 
 \item[Calorimeter-tagged (CaloTag)]  Muons, that have a track in the calorimeter, that can be associated with the minimum ionizing particle.
 \end{description}
 
-The muons are reconstructed in MS in two steps: first the local segments within one layer are combined and then the segments are combined combined in a full track. The reconstruction of the MS and combined ID-MS track can be done using one of the two independent reconstruction procedures \cite{AtlasPerf}, called Staco and Muid.  
-
-The Muid algorithm performes full track refit using the parameters from ID and MS\cite{Muid}. 
-For the staco algorithm the reconstruction of the track in MS starts from the segment from the outers station. The segments from middle and  inner layers are iterativelly added till the full track is obtained. The matching between ID and MS sub-detectors performed via statistical combination of the parameters in ID and MS using the corresponding covariance matrices\cite{Staco}. Staco algorithm is the algorithm, used in this analysis. 
-
-The following additional requirements are applied on ID track for the muons:
+The ID track, used in muon reconstruction, should satisfy additional requirements:
 \begin{itemize}
 \item  at least 1 pixel hit
 \item at least 2 SCT hits
@@ -64,6 +60,10 @@ The following additional requirements are applied on ID track for the muons:
 \item in the region of full TRT acceptance (0.1 < $|\eta|$ < 1.9) at least 9 TRT hits.
 \end{itemize}
 
+The muons are reconstructed in MS in two steps: first the local segments within one layer are combined and then the segments are combined combined in a full track. The reconstruction of the MS and combined ID-MS track can be done using one of the two independent reconstruction procedures \cite{AtlasPerf}, called Staco and Muid.  
+
+The Muid algorithm performes full track refit using the parameters from ID and MS\cite{Muid}. 
+For the staco algorithm the reconstruction of the track in MS starts from the segment from the outers station. The segments from middle and  inner layers are iterativelly added till the full track is obtained. The matching between ID and MS sub-detectors performed via statistical combination of the parameters in ID and MS using the corresponding covariance matrices\cite{Staco}. Staco algorithm is the algorithm, used in this analysis. 
 
 \section{Missing transverse energy reconstruction}\label{sec:EtMissRec}
 \atlas detector has almost 4$\pi$ coverage. This allows to calculate imbalance of energies inside calorimeter, especially transversal part of it called \etmiss.  In W-analyses \etmiss is used as a proxy for neutrino from a $W \to l\nu$ decay. It leaves detector without interacting with it and that causes large energy imbalance in an eventA. In this section two methods of \etmiss reconstruction and the reasons for using non-standard one will be discussed.

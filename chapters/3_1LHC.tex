@@ -1,22 +1,22 @@
 \chapter{The Large Hadron Collider (LHC) and the ATLAS experiment.}
 \minitoc
 
-Particle physics requires to build a large machine for probing it theories. This a modern field of the physics, that pushes a limits of engineering. In this section an overview of the experimental setup, used to collect a data for this analysis will be given. The first section introduces an cutting edge of particle accelerators: LHC. In the send section an \atlas detector will be described. 
+Particle physics requires to build a large machine for probing it theories. This a modern field of the physics, that pushes a limits of engineering. In this section an overview of the experimental setup, used to collect a data for this analysis will be given. The first section introduces an cutting edge of particle accelerators: LHC. In the second section an \atlas detector will be described. 
 
 \section{The LHC and accelerator complex}
 
 Large hadron collider is the largest accelerator in the world. It was build in Geneva, Switzerland and started its operation with the first collisions in 2009. It lies in a tunnel 27 kilometers in circumference. It operates with pp and Pb-Pb beams with centre-of-mass energies up to 14 GeV. It was designed to make a precise studies of Standard Model predictions and to search for a new physics beyond standard model, such as suppersymmetry. The heavy ion program serves a purpose of studying matter properties and a quark-gluon plasma.
 
-Beams acceleration consists of several stages, as it shown in Fig. \ref{fig:LHC}. The beam source is a hydrogen gas or lead source in case of the heavy ion.  An electrical current is used to remove the electrons from each atom, and then the ion begin its ride through the only linear accelerator in the chain LINAC2, that accelerates protons up to 50 GeV or LINAC3 with up to 3.2 GeV/nucleon. The proton beams from linac are ejected into the PS booster, where they are further accelerated to 1.4 GeV.  During a heavy ion operations nucleons from LINAC3 are injected into the Low Energy Ion Ring (LEIR) and are accelerated up to 72.2 MeV/nucleon before injecting into PS.  The last steps before ejecting beams to the LHC are the rings of the Proton Synchrotron (PS) and Super Proton Synchrotron (SPC) that accelerates protons to 25 and 450 GeV respectively. The bunch structure of the beam is formed at PS step and has a nominal pattern of 39 groups of 72 bunches with time 25-50 ns time spacing. 
+Beams acceleration consists of several stages\cite{LHCMachine}, as it shown in Fig. \ref{fig:LHC}. The beam source is a hydrogen gas or lead source in case of the heavy ion.  An electrical current is used to remove the electrons from each atom, and then the ion begin its ride through the only linear accelerator in the chain LINAC2, that accelerates protons up to 50 GeV or LINAC3 with up to 3.2 GeV/nucleon. The proton beams from linac are ejected into the PS booster, where they are further accelerated to 1.4 GeV.  During a heavy ion operations nucleons from LINAC3 are injected into the Low Energy Ion Ring (LEIR) and are accelerated up to 72.2 MeV/nucleon before injecting into PS.  The last steps before ejecting beams to the LHC are the rings of the Proton Synchrotron (PS) and Super Proton Synchrotron (SPC) that accelerates protons to 25 and 450 GeV respectively. The bunch structure of the beam is formed at PS step and has a nominal pattern of 39 groups of 72 bunches with time 25-50 ns time spacing. 
 
 In LHC beams are accelerated up to 7 TeV ( yet 6.5 TeV achieved). The beams are circulating in opposite directions inside one of the 2 beam pipes, that are 6.3 cm in diameter. In order to bend beam trajectory, the pipes are surrounded by a 1232 superconducting dipole magnets. The superconducting cavities are used to accelerate the protons and maintain beam constant energy during the operation time. 
 
 As most of the circular colliders, LHC has several experiments installed in the regions, where beams are intersecting, that allows them to collect data in parallel. The main experiments are:
 \begin{description}
-\item [ALICE] A large Ion Collider Experiment - a dedicated heavy ion detector, build to in the physics of strongly interacting matter, where a new phase of mater (quark-gluon plasma) is expected.
-\item [ATLAS] A Toroidal LHC ApparatuS  is a largest particle detector build. It is a general purpose detector, that is used to study QCD and a Standard Model predictions and searches for a new physics. A detailed description of this detector is given in Sec. \ref{sec:ATLAS}.
-\item [CMS] the Compact Muon Solenoid is an another multiple purpose detector at LHC, build with the different technologies in the respect to ATLAS.
-\item [LHCb] the Large Hadron Collider beauty is specialized for measurement of heavy (charm and bottom) quark properties, that allows to study the parameters of CP violation.
+\item [ALICE] A large Ion Collider Experiment\cite{ALICE} - a dedicated heavy ion detector, build to in the physics of strongly interacting matter, where a new phase of mater (quark-gluon plasma) is expected.
+\item [ATLAS] A Toroidal LHC ApparatuS\cite{ATLASDetectorPlot} is a largest particle detector build. It is a general purpose detector, that is used to study QCD and a Standard Model predictions and searches for a new physics. A detailed description of this detector is given in Sec. \ref{sec:ATLAS}.
+\item [CMS] the Compact Muon\cite{CMS} Solenoid is an another multiple purpose detector at LHC, build with the different technologies in the respect to ATLAS.
+\item [LHCb] the Large Hadron Collider\cite{LHCb} beauty is specialized for measurement of heavy (charm and bottom) quark properties, that allows to study the parameters of CP violation.
 \end{description}
 
 
@@ -70,7 +70,7 @@ The transverse momentum is defined as:
 \begin{equation}
 p_T=\sqrt{p_x^2+p_y^2},
 \end{equation}
-where $p_x$ and $p_y$ are the x and y components of the particle momentum. Because the incoming protons are alligned along the z axis, the total transverse momentum (together with non-interacting particles) in the detector should be fixed to 0. 
+where $p_x$ and $p_y$ are the x and y components of the particle momentum. Because the incoming protons are aligned along the z axis, the total transverse momentum (together with non-interacting particles) in the detector should be fixed to 0. 
 
 \subsection{Inner detector}
 
@@ -129,9 +129,7 @@ There are four samplings in EMB calorimeter, as showed in Fig. \ref{fig:ATLASCal
 \item [3rd sampling] Just the highest energy electrons are reaching the third layer, therefore it has a bigger cell size.
 \end{description} 
 
-Each wheel of the EMEC calorimeter consists of the 2 co-axial wheels: Inner Wheel (IW) and Outer Wheel (OW). Each endcap wheel is divided into 8 wedge-shaped modules.  <MORE ABOUT EMEC.
-
-<Add about trigger>
+Each wheel of the EMEC calorimeter consists of the 2 co-axial wheels: Inner Wheel (IW) and Outer Wheel (OW). Each endcap wheel is divided into 8 wedge-shaped modules. In the central region $1.5<|\eta|<2.5$, the EMEC calorimeter consists of 3 layers with granularity $\Delta \eta \times \Delta \phi = 0.025 \times 0.025$. 
 
 \subsubsection{Hadronic calorimeters}
 
@@ -224,6 +222,12 @@ In case of LHC, that performs  head-on collisions of particle bunches, it could 
 \begin{equation}
 \lumi = \frac{N_p^2 N_b f_{\textrm{rev}}}{4\pi  \sigma_x \sigma_y}F , 
 \end{equation}
-where $N_{p}$ is the number of protons per beam, $N_b$ - number of bunches, $f_{\textrm{rev}}$ is the revolution frequency, $\sigma_x$ and $\sigma_y$ are the horizontal and vertical beam profile widths. The factor F is coming from the beam crossing angle. In 2012, at 8 TeV centre-of-mass energy, the LHC machine was able to reach an instanteneous luminosity $7.7\times10^{33}\, [cm^{-2}s^{-1}]$.  
+where $N_{p}$ is the number of protons per beam, $N_b$ - number of bunches, $f_{\textrm{rev}}$ is the revolution frequency, $\sigma_x$ and $\sigma_y$ are the horizontal and vertical beam profile widths. The factor F is coming from the beam crossing angle. In 2012, at 8 TeV centre-of-mass energy, the LHC machine was able to reach an instanteneous luminosity $7.7\times10^{33}\, [cm^{-2}s^{-1}]$. 
 
-The \atlas experiment uses several detectors to measure the recorded luminosity. The Beam Condition Monitor (BCM) monitores a beam parameters close to the interaction point and allows to measure bunch intensities. In the forward region a special detector for a luminosity measurements is placed: the LUCID (LUminosity measurement using Cerenkov Integrating Detector) detector. It detects the intelastic scattering.
+Luminosity can be also measured from the interaction rate $\mu_{vis}$ in a detector of some some process as:
+\begin{equation}
+L = \frac{\mu_{vis}n_b f_r}{\sigma_{vis}},
+\end{equation}
+where $\sigma_{vis}$ is the visible interaction cross-section.
+
+The \atlas experiment uses several detectors to measure the recorded luminosity. The Beam Condition Monitor (BCM) monitores a beam parameters close to the interaction point and allows to measure bunch intensities. In the forward region a special detector for a luminosity measurements is placed: the LUCID (LUminosity measurement using Cerenkov Integrating Detector) detector, that detects the inelastic scattering. The beam profile and the visible interaction cross-section $\sigma_{vis}$ are measured during so-called van-der-Meer scans \cite{vanderMeer}. 
