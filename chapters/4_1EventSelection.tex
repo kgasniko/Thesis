@@ -1,32 +1,50 @@
-\chapter{Selection}\label{chap:EventSelection}
+\chapter{Selection criteria}\label{chap:EventSelection}
 
-Selection criteria is a set of requirements, that are applied both on data and MC. The selection criteria should  separate process of interest (signal) from other processes. For $pp \to W \to e\nu/\mu\nu$ and $pp \to Z/\gamma^* \to ee/\mu\mu$ selection criteria can be divided into 3 groups: data quality, lepton and boson cuts. The full set of cuts is summarized in a Tab. \ref{tab:eventSelection}. In this chapter all of them will be discussed and a cut flow presented. 
+Selection criteria defined as a set of requirements used to  separate process of interest (signal) from other processes (background). For $pp \to W \to e\nu/\mu\nu$ and $pp \to Z/\gamma^* \to ee/\mu\mu$ selection criteria can be divided into three main groups: data quality requirements, lepton selection criteria and boson selection criteria. The full set of selection requirements used in the analysis is summarized in Tab.~\ref{tab:eventSelection} and are discussed in this chapter.
 %In this chapter selection criteria for $pp \to W \to e\nu/\mu\nu$ and $pp \to Z/\gamma^* \to ee/\mu\mu$  are presented.  
 %you need to add what is truth level in the previous chapter
-\section{Data quality cuts}
+\section{Event selection}
 
 \input{tables/EventSelectionTable.tex}
 
 
-Data taking conditions are important in the analysis because of the possible biases. In order to preserve high data quality some events must be rejected. The reason may be unstable beam conditions, disabled parts of the detector or events with too many noisy cells. Numbers of runs, that can be used in the analysis are stored in the so-called Good Run List (GRL), which in the addition to the run numbers contains also information about luminosity blocks. 
+Data-taking conditions are important in the analysis, so in order to preserve high data quality, the selection criteria are applied. The events with unstable beam conditions, disabled parts of the detector or events with high noise in calorimeter are rejected. Runs, that can be used in the analysis are stored in the so-called Good Run List (GRL).
 
-Events, where LAr calorimeter was malfunctioning are excluded by LAr quality criteria. Furthermore events are required to have at least one primary vertex from a hard scattering with at least 2 tracks, that are reconstructed from this vertex. 
+Events for which LAr calorimeter was malfunctioning are excluded by LAr quality criteria. Furthermore, events are required to have at least one primary vertex formed with at least three tracks. 
 
-Online selection of events is based on a single lepton trigger, depending on a lepton flavor. For electron analysis EF\_e15\_loose1 trigger is used, which records electrons with $E_T$ > 15 GeV. This trigger uses additional "loose" isolation requirements to exclude jets, that are misidentified as electrons. In the muon channel the lowest single lepton trigger is EF\_mu10.  It records events containing muons with $E_T$ >10 GeV.
+Online selection of events is based on single lepton triggers. For electrons EF\_e15\_loose1 trigger is used, which records electrons with $E_T$ > 15 GeV. This trigger uses additional "loose" isolation requirements to exclude jets, that are misidentified as electrons. In the muon channel, the lowest single lepton trigger is EF\_mu10.  It records events containing at least one muon with $P_T$ >10 GeV.
 
 
-\begin{table}[!tbp]
-    \caption{Number of W boson candidates in data and signal MC, remaining after each major requirement. The signal MC is normalised to the NNLO cross-section shown in Tab. \ref{tab:Backgrounds}}
+
+
+\section{Lepton selection}
+
+Both W and Z-boson analyses use similar offline lepton selection criteria. All leptons must satisfy a requirement, \ptl > 20 GeV. The leptons are required to trigger the event and therefore to be within the distance $\Delta R = \sqrt{\Delta\eta^2+\Delta\phi^2}=0.2$ with the event trigger.
+
+Electron candidates are required to be within pseudorapidity range of \etall < 2.47. Because the precise reconstruction of the electrons is not possible in the transition region between barrel and endcap, the electron candidates reconstructed within the pseudorapidity range 1.37 < \etall < 1.52 are not used.  Additionally, for a better multijet background rejection  medium identification criteria are applied. The object quality (OQ) criteria are also applied to electron candidates in order to remove events from runs where EM calorimeter was malfunctioning.
+
+Muons have to satisfy the following offline selection criteria: they should be reconstructed by a staco algorithm and fall within a range of \etall < 2.5. Additionally, for a better rejection of background, muons are required to be combined, i.e. having a matched track in both ID and MS.
+
+In order to reach a better background rejection, the \textit{isolation criteria} (\ptcone < 0.1) is applied on both electron and muon candidates. These criteria uses the information about ID tracks that fall within a distance of $\Delta R = \sqrt{\Delta\eta^2+\Delta\phi^2}=20$ around the lepton direction. Events with the sum of all tracks momenta (except for the selected lepton)  greater than $0.2\times \ptl$ are excluded from the analysis. 
+
+\section{Boson selection}
+Events, containing W-boson candidates are required to have exactly one reconstructed lepton. Missing transverse energy is required to be \etmiss > 25 GeV.  Transverse mass, calculated from the lepton and the missing transverse energy (Eq.~\ref{Eq:mtW}) has to be bigger than 40 GeV.
+
+Events for the Z-boson selection are required to contain exactly two, opposite sign, same flavor lepton candidates.  The invariant mass of the reconstructed lepton pair required to fall within region 66 GeV < $M^{Z}$ < 116 GeV. 
+
+The effect of each selection can be studied using the number of events passing each set of selections in a sequential order (Tab.~\ref{tab:CutFlowW}). The events, fulfilling the all of the W and Z-boson selection requirements are called W and Z-boson candidate events, respectively.
+
+\begin{table}[h]
+    \caption{Number of W and Z-boson candidate events in data and signal simulation, remaining after each major requirement. The simulation is normalized to the NNLO cross section shown in Tab.~\ref{tab:Backgrounds}.}
     \label{tab:CutFlowW}
     \begin{center}
     \begin{tabular}{ l | c | c || c | c  }
     \hline
-    Requirement & \multicolumn{4}{c}{Number of candidates} \\
-    \hline
-     & Data & signal MC & Data & signal MC \\
+     & \multicolumn{4}{c}{Number of candidates} \\
+     Requirements & Data & signal MC & Data & signal MC \\
      \hline
      \hline
-    & \multicolumn{2}{c}{$W^{+}\to e\nu$} & \multicolumn{2}{c}{$W^{+}\to \mu\nu$}    \\
+    & \multicolumn{2}{c ||}{$W^{+}\to e\nu$} & \multicolumn{2}{c}{$W^{+}\to \mu\nu$}    \\
     \hline
     No selection & \cutFlowTotWplusenuData & \cutFlowTotWplusenuMC  & \cutFlowTotWplusmunuData & \cutFlowTotWplusmunuMC  \\
     Event selection &\cutFlowEventWplusenuData &\cutFlowEventWplusenuMC & \cutFlowEventWplusmunuData & \cutFlowEventWplusmunuMC  \\
@@ -34,7 +52,7 @@ Online selection of events is based on a single lepton trigger, depending on a l
     Boson selection & \cutFlowBosonWplusenuData & \cutFlowBosonWplusenuMC  &\cutFlowBosonWplusmunuData &\cutFlowBosonWplusmunuMC \\
     \hline
     \hline
-    & \multicolumn{2}{c}{$W^{-}\to e\nu$} & \multicolumn{2}{c}{$W^{-}\to \mu\nu$} \\
+    & \multicolumn{2}{c ||}{$W^{-}\to e\nu$} & \multicolumn{2}{c}{$W^{-}\to \mu\nu$} \\
     \hline
     No selection & \cutFlowTotWminenuData & \cutFlowTotWminenuMC & \cutFlowTotWminmunuData & \cutFlowTotWminmunuMC \\
     Event selection &\cutFlowEventWminenuData & \cutFlowEventWminenuMC  & \cutFlowEventWminmunuData & \cutFlowEventWminmunuMC\\ 
@@ -42,7 +60,7 @@ Online selection of events is based on a single lepton trigger, depending on a l
     Boson selection  & \cutFlowBosonWminenuData &\cutFlowBosonWminenuMC  &\cutFlowBosonWminmunuData &\cutFlowBosonWminmunuMC \\
     \hline
     \hline
-        & \multicolumn{2}{c}{$Z \to ee$} & \multicolumn{2}{c}{$Z \to \mu\mu$} \\
+        & \multicolumn{2}{c ||}{$Z \to ee$} & \multicolumn{2}{c}{$Z \to \mu\mu$} \\
         \hline
     No selection &  \cutFlowTotZeeData & \cutFlowTotZeeMC & \cutFlowTotZmumuData & \cutFlowTotZmumuMC \\
     Event selection & \cutFlowEventZeeData &\cutFlowEventZeeMC & \cutFlowEventZmumuData & \cutFlowEventZmumuMC \\
@@ -52,23 +70,3 @@ Online selection of events is based on a single lepton trigger, depending on a l
     \end{tabular}
   \end{center}
 \end{table}
-
-\section{Lepton quality cuts}
-
-Both analyses use similar selection criteria, applied on leptons. The leptons must satisfy requirement \ptl > 20 GeV and match to the event trigger.
-
-Electron candidates are required to be within pseudorapidity range \etall < 2.47. The electron candidates found within the transition region between the barrel and the endcap electromagnetic calorimeters, 1.37 < \etall < 1.52, are removed.  Additionally, for a better multijet background rejection  medium identification criteria is applied. The object quality (OQ) cut is applied in order to remove events from runs with dead front end boards in the calorimeter. 
-
-Muons have to satisfy the following criteria: they should be reconstructed by a staco algorithm and fall within range \etall < 2.5 . Additionally, for the better exclusion of background, it is required for muon to be combined. 
-
-In order to have better background rejection the \textit{isolation criteria} \ptcone < 0.1 is applied on both electrons and muons. This criteria uses the information about the tracks in ID that are fall within the region $\Delta R = \sqrt{\eta^2+\phi^2}=20$ of the selected lepton track. It excludes the events, there sum all of these tracks momenta (except for the selected lepton) is greater than $0.2\cdot\ptl$.
-
-\section{Boson selection}
-The events, containing W boson candidates are required to have exactly one lepton, fulfilling the lepton selection. Missing transverse energy, used as a proxy for a neutrino from W decay is required to be \etmiss $>25 GeV$.  The transverse mass, calculated from the lepton and missing transverse energy as in Eq. \ref{Eq:mtW} has to be bigger than 40 GeV (\mtw > 40 GeV). 
-
-The reconstructed lepton pair in case of Z boson analysis is required to have the invariant mass between 66 and 116 GeV. Both upper and bottom limits allow to exclude regions with high background contamination. 
-
-\section{Cut flow}
-
-The effect of each selection can be studied using cut-flows, which show the number of events passing each set of cuts in a sequential order. Cut flows for W and Z analysis are shown in a Tab. \ref{tab:CutFlowW}.
-

@@ -6,11 +6,11 @@
 
 %\usepackage{multicolumn}
 %% Font setup
-\usepackage[default]{gillius}
+%\usepackage[default]{gillius}
 %\usepackage{glossaries}
 
 \usepackage{cite}
-\usepackage{lineno}
+%\usepackage{lineno}
 \usepackage{mathpazo}
 \usepackage{helvet}%      Choose default sans serif
 %\usepackage{gillius}%      Choose default sans serif
@@ -32,7 +32,7 @@
 \usepackage[outdir=figures/]{epstopdf}
 %\epstopdfsetup{outdir=figures/}
 %% line numbers
-\usepackage{lineno}
+%\usepackage{lineno}
 %\linenumbers
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,11 +119,11 @@
 
 
 %% Main matter
-\linenumbers
+%\linenumbers
   \mainmatter
 
   \input{chapters/1Intro.tex}
-  \part{Theory introduction}
+  \part{Theoretical basis}
   \input{chapters/2Theory.tex}
   \input{chapters/4_5Methodology.tex}
   \part{Experimental setup}
@@ -133,13 +133,13 @@
   \input{chapters/3_4MonteCarlo.tex}
   \input{chapters/3_5FrozenShowers.tex}
   \input{chapters/3_5DataSample.tex}
-  \part{The Measurement}
+  \part{The measurement}
   \input{chapters/4_1EventSelection.tex}
   \input{chapters/4_2MCCorrections.tex}
   \input{chapters/4_3EtMiss.tex}
   \input{chapters/4_3BackgroundEstimation.tex}
-  \input{chapters/4_5ControlPlots.tex}
   \input{chapters/4_4Systematics.tex}
+  \input{chapters/4_5ControlPlots.tex}
   \input{chapters/4_6Results.tex}
 
   \input{chapters/5PDF.tex}
@@ -170,15 +170,15 @@
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
-%\bibliographystyle{lucas_unsrt}
+\bibliographystyle{lucas_unsrt}
 %\bibliographystyle{fra_hannes_lucas_unsrt}
 %\bibliographystyle{plain}
-\bibliographystyle{unsrt}
+%\bibliographystyle{unsrt}
 %{\small
 %\addbibresource{Thesis_Main.bib}
 \bibliography{Thesis_Main}{} 
 %}
-%\input{Aux/OathEpi.tex}
+\input{Aux/OathEpi.tex}
 %% Acknowledgements  
 %\input{Chapters/Acknowledgem
 \end{document}
